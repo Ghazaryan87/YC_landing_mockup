@@ -16,6 +16,13 @@
    ============================================================ */
 
 :root {
+  /* type scale — accessibility floor: nothing below --fs-2xs */
+  --fs-2xs: 12px;    /* micro mono labels, tags */
+  --fs-xs: 13px;     /* chips, kickers, captions */
+  --fs-sm: 14px;     /* secondary text, small body */
+  --fs-sm2: 15px;    /* labels, nav, card meta */
+  --fs-base: 16px;   /* standard body */
+
   --sig: #5E63F2;        /* indigo — primary signal */
   --sig2: #7479FF;       /* indigo hover */
   --soft: #9BA0FF;       /* indigo-soft — dark-surface accent */
@@ -32,11 +39,11 @@
   --card-line: rgba(27, 28, 154, .12);
   --line: rgba(27, 28, 154, .12);
   --rule: rgba(27, 28, 154, .22);
-  --fg: #15163A;
-  --body: #50547E;
-  --strong: #2B2D5C;
-  --muted: #8B8FB5;
-  --dim: #A3A7C9;
+  --fg: #131433;
+  --body: #454A76;
+  --strong: #282A57;
+  --muted: #62678F;
+  --dim: #7E83AA;
   --accent: var(--sig);
   --chip-line: rgba(27, 28, 154, .18);
   --warn-fg: #8A6410;
@@ -53,11 +60,11 @@
   --card-line: rgba(27, 28, 154, .12);
   --line: rgba(27, 28, 154, .12);
   --rule: rgba(27, 28, 154, .22);
-  --fg: #15163A;
-  --body: #50547E;
-  --strong: #2B2D5C;
-  --muted: #8B8FB5;
-  --dim: #A3A7C9;
+  --fg: #131433;
+  --body: #454A76;
+  --strong: #282A57;
+  --muted: #62678F;
+  --dim: #7E83AA;
   --accent: var(--sig);
   --chip-line: rgba(27, 28, 154, .18);
   --warn-fg: #8A6410;
@@ -74,11 +81,11 @@
   --card-line: rgba(155, 160, 255, .13);
   --line: rgba(155, 160, 255, .13);
   --rule: rgba(155, 160, 255, .26);
-  --fg: #F2F3FA;
-  --body: #A7ABCB;
-  --strong: #D8DAF2;
-  --muted: #8B8FB5;
-  --dim: #666B93;
+  --fg: #F5F6FC;
+  --body: #B9BDDB;
+  --strong: #E2E4F7;
+  --muted: #9EA3C8;
+  --dim: #8388B2;
   --accent: var(--soft);
   --chip-line: rgba(155, 160, 255, .26);
   --warn-fg: #F2B95C;
@@ -95,11 +102,11 @@
   --card-line: rgba(155, 160, 255, .13);
   --line: rgba(155, 160, 255, .13);
   --rule: rgba(155, 160, 255, .26);
-  --fg: #F2F3FA;
-  --body: #A7ABCB;
-  --strong: #D8DAF2;
-  --muted: #8B8FB5;
-  --dim: #666B93;
+  --fg: #F5F6FC;
+  --body: #B9BDDB;
+  --strong: #E2E4F7;
+  --muted: #9EA3C8;
+  --dim: #8388B2;
   --accent: var(--soft);
   --chip-line: rgba(155, 160, 255, .26);
   --warn-fg: #F2B95C;
@@ -189,7 +196,7 @@ a:hover { color: var(--sig2); }
 
 .kicker {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 12px;
+  font-size: var(--fs-xs);
   letter-spacing: .2em;
   text-transform: uppercase;
   color: var(--accent);
@@ -228,7 +235,7 @@ a:hover { color: var(--sig2); }
 
 .badge {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px;
+  font-size: var(--fs-2xs);
   letter-spacing: .08em;
   border-radius: 999px;
   padding: 5px 11px;
@@ -245,7 +252,7 @@ a:hover { color: var(--sig2); }
   background: var(--sig);
   color: #fff;
   font-weight: 600;
-  font-size: 15px;
+  font-size: var(--fs-base);
   padding: 14px 26px;
   border-radius: 12px;
   position: relative;
@@ -273,7 +280,7 @@ a:hover { color: var(--sig2); }
   border: 1px solid var(--rule);
   color: var(--fg);
   font-weight: 500;
-  font-size: 15px;
+  font-size: var(--fs-base);
   padding: 14px 26px;
   border-radius: 12px;
   transition: border-color .25s, color .25s, background .25s;
@@ -328,13 +335,13 @@ a:hover { color: var(--sig2); }
   flex-wrap: wrap;
 }
 
-.nav__link { color: var(--body); font-size: 14px; }
+.nav__link { color: var(--body); font-size: var(--fs-sm2); }
 .nav__link:hover { color: var(--fg); }
 
 .nav__cta {
   background: var(--sig);
   color: #fff;
-  font-size: 14px;
+  font-size: var(--fs-sm2);
   font-weight: 600;
   padding: 10px 18px;
   border-radius: 999px;
@@ -399,7 +406,7 @@ a:hover { color: var(--sig2); }
   background: var(--sig);
   color: #fff;
   font-weight: 600;
-  font-size: 15px;
+  font-size: var(--fs-base);
   padding: 14px;
   border-radius: 999px;
   text-align: center;
@@ -426,7 +433,7 @@ a:hover { color: var(--sig2); }
 
 .hero__eyebrow {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 12px;
+  font-size: var(--fs-xs);
   letter-spacing: .2em;
   text-transform: uppercase;
   color: var(--muted);
@@ -470,7 +477,7 @@ a:hover { color: var(--sig2); }
 
 .draft-chip {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px;
+  font-size: var(--fs-2xs);
   letter-spacing: .1em;
   padding: 7px 14px;
   border-radius: 999px;
@@ -504,7 +511,7 @@ a:hover { color: var(--sig2); }
 
 .hero__proof {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 12.5px;
+  font-size: var(--fs-xs);
   letter-spacing: .05em;
   color: var(--muted);
   margin: 0;
@@ -559,7 +566,7 @@ a:hover { color: var(--sig2); }
   top: 18px;
   right: 18px;
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px;
+  font-size: var(--fs-2xs);
   letter-spacing: .16em;
   color: var(--dim);
   transition: color .3s ease;
@@ -569,7 +576,7 @@ a:hover { color: var(--sig2); }
 .pillar__label {
   font-family: 'Sora', sans-serif;
   font-weight: 600;
-  font-size: 15px;
+  font-size: var(--fs-base);
   letter-spacing: -.01em;
   color: var(--fg);
   margin-bottom: 8px;
@@ -577,7 +584,7 @@ a:hover { color: var(--sig2); }
 
 .pillar__text {
   color: var(--body);
-  font-size: 13.5px;
+  font-size: var(--fs-sm);
   line-height: 1.55;
   margin: 0;
   max-width: 30ch;
@@ -762,7 +769,7 @@ a:hover { color: var(--sig2); }
   gap: 10px;
   flex: 0 0 auto;
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 12px;
+  font-size: var(--fs-xs);
   letter-spacing: .2em;
   text-transform: uppercase;
   color: var(--accent);
@@ -837,7 +844,7 @@ a:hover { color: var(--sig2); }
 
 .service__num {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px;
+  font-size: var(--fs-2xs);
   letter-spacing: .18em;
   color: var(--dim);
   transition: color .3s ease;
@@ -860,7 +867,7 @@ a:hover { color: var(--sig2); }
 
 .service__desc {
   color: var(--body);
-  font-size: 14.5px;
+  font-size: var(--fs-sm2);
   line-height: 1.7;
   margin: 0;
   max-width: 46ch;
@@ -918,7 +925,7 @@ a:hover { color: var(--sig2); }
   align-items: center;
   justify-content: center;
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 13px;
+  font-size: var(--fs-sm);
   color: var(--accent);
   margin-bottom: 18px;
 }
@@ -938,13 +945,13 @@ a:hover { color: var(--sig2); }
 
 .journey__card p {
   color: var(--body);
-  font-size: 14.5px;
+  font-size: var(--fs-sm2);
   line-height: 1.65;
   margin: 0 0 14px;
 }
 .journey__card p:last-child { margin-bottom: 0; }
 
-.journey__link { color: var(--accent); font-size: 14px; font-weight: 600; }
+.journey__link { color: var(--accent); font-size: var(--fs-sm2); font-weight: 600; }
 .journey__link:hover { color: var(--fg); }
 
 .journey__quote {
@@ -1033,7 +1040,7 @@ a:hover { color: var(--sig2); }
 .rose__hub-text { position: relative; padding: 0 22px; }
 .rose__hub-kicker {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 9.5px;
+  font-size: var(--fs-2xs);
   letter-spacing: .18em;
   color: var(--sig2);
   margin-bottom: 8px;
@@ -1069,7 +1076,7 @@ a:hover { color: var(--sig2); }
 .bearing__tag {
   display: block;
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 9.5px;
+  font-size: var(--fs-2xs);
   letter-spacing: .16em;
   color: var(--dim);
   margin-bottom: 8px;
@@ -1110,7 +1117,7 @@ a:hover { color: var(--sig2); }
 .rose-stack__tag {
   display: block;
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 9.5px;
+  font-size: var(--fs-2xs);
   letter-spacing: .16em;
   color: var(--accent);
   margin-bottom: 6px;
@@ -1122,7 +1129,7 @@ a:hover { color: var(--sig2); }
   font-size: 18px;
   margin-bottom: 6px;
 }
-.rose-stack__desc { display: block; color: var(--body); font-size: 14px; line-height: 1.55; }
+.rose-stack__desc { display: block; color: var(--body); font-size: var(--fs-sm2); line-height: 1.55; }
 
 .rose-panel {
   max-width: 640px;
@@ -1135,13 +1142,13 @@ a:hover { color: var(--sig2); }
 }
 .rose-panel__kicker {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px;
+  font-size: var(--fs-2xs);
   letter-spacing: .16em;
   color: var(--accent);
   margin-bottom: 8px;
 }
 .rose-panel p { color: var(--strong); font-size: 16px; line-height: 1.6; margin: 0 0 10px; }
-.rose-panel a { font-size: 14px; font-weight: 600; color: var(--accent); }
+.rose-panel a { font-size: var(--fs-sm2); font-weight: 600; color: var(--accent); }
 
 /* ============================================================
    1.5 METHOD
@@ -1174,15 +1181,15 @@ a:hover { color: var(--sig2); }
 }
 .method__note-kicker {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px;
+  font-size: var(--fs-2xs);
   letter-spacing: .16em;
   color: var(--accent);
   margin-bottom: 8px;
 }
-.method__note p { color: var(--strong); font-size: 15px; line-height: 1.6; margin: 0; }
+.method__note p { color: var(--strong); font-size: var(--fs-base); line-height: 1.6; margin: 0; }
 
 .method__cta-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-.method__cta-row > span:first-child { color: var(--fg); font-size: 14.5px; font-weight: 600; }
+.method__cta-row > span:first-child { color: var(--fg); font-size: var(--fs-sm2); font-weight: 600; }
 
 .method__rail-head {
   display: flex;
@@ -1193,7 +1200,7 @@ a:hover { color: var(--sig2); }
 }
 .method__rail-head span {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 10.5px;
+  font-size: var(--fs-2xs);
   letter-spacing: .16em;
   color: var(--dim);
 }
@@ -1228,7 +1235,7 @@ a:hover { color: var(--sig2); }
 
 .mstep__num {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px;
+  font-size: var(--fs-2xs);
   letter-spacing: .08em;
   color: var(--dim);
   flex-shrink: 0;
@@ -1249,7 +1256,7 @@ a:hover { color: var(--sig2); }
 .mstep__meta {
   margin-left: auto;
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 9.5px;
+  font-size: var(--fs-2xs);
   letter-spacing: .16em;
   color: var(--dim);
   transition: color .25s;
@@ -1269,7 +1276,7 @@ a:hover { color: var(--sig2); }
   display: block;
   padding: 7px 0 2px 27px;
   color: var(--body);
-  font-size: 14px;
+  font-size: var(--fs-sm2);
   line-height: 1.6;
   opacity: 0;
   transition: opacity .4s ease .1s;
@@ -1278,7 +1285,7 @@ a:hover { color: var(--sig2); }
 
 .method__foot {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 10.5px;
+  font-size: var(--fs-2xs);
   letter-spacing: .06em;
   color: var(--dim);
   margin: 14px 0 0;
@@ -1300,7 +1307,7 @@ a:hover { color: var(--sig2); }
   margin: 0 auto clamp(36px, 5vw, 52px);
 }
 .demos__head-copy { max-width: 640px; }
-.demos__all { font-size: 15px; font-weight: 600; white-space: nowrap; color: var(--accent); }
+.demos__all { font-size: var(--fs-base); font-weight: 600; white-space: nowrap; color: var(--accent); }
 
 .demos__grid {
   display: grid;
@@ -1332,7 +1339,7 @@ a:hover { color: var(--sig2); }
   top: 14px;
   left: 16px;
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 9.5px;
+  font-size: var(--fs-2xs);
   letter-spacing: .12em;
   color: var(--muted);
   background: color-mix(in srgb, var(--surface) 85%, transparent);
@@ -1354,14 +1361,14 @@ a:hover { color: var(--sig2); }
 }
 .demo__caption-kicker {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 9px;
+  font-size: var(--fs-2xs);
   letter-spacing: .16em;
   color: var(--sig2);
   margin-bottom: 6px;
 }
 .demo__caption p {
   color: var(--paper);
-  font-size: 13.5px;
+  font-size: var(--fs-sm);
   line-height: 1.5;
   margin: 0;
   min-height: 2.9em;
@@ -1392,7 +1399,7 @@ a:hover { color: var(--sig2); }
 .demo__next {
   margin-left: auto;
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px;
+  font-size: var(--fs-2xs);
   color: var(--body);
   background: var(--surface);
   border: 1px solid var(--card-line);
@@ -1413,7 +1420,7 @@ a:hover { color: var(--sig2); }
 
 .demo__meta {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 11.5px;
+  font-size: var(--fs-2xs);
   letter-spacing: .04em;
   color: var(--muted);
   margin: 0;
@@ -1457,7 +1464,7 @@ a:hover { color: var(--sig2); }
 .showcase__nav-row { display: flex; align-items: center; gap: 14px; }
 .showcase__count {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 12px;
+  font-size: var(--fs-xs);
   letter-spacing: .12em;
   color: var(--dim);
 }
@@ -1522,7 +1529,7 @@ a:hover { color: var(--sig2); }
   top: clamp(14px, 2vw, 22px);
   left: clamp(14px, 2vw, 24px);
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px;
+  font-size: var(--fs-2xs);
   letter-spacing: .16em;
   color: #A7ABCB;
   background: rgba(11, 20, 27, .55);
@@ -1536,7 +1543,7 @@ a:hover { color: var(--sig2); }
   top: clamp(14px, 2vw, 22px);
   right: clamp(14px, 2vw, 24px);
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px;
+  font-size: var(--fs-2xs);
   letter-spacing: .08em;
   color: #F2F3FA;
   background: rgba(11, 20, 27, .66);
@@ -1592,13 +1599,13 @@ a:hover { color: var(--sig2); }
 }
 .stage__sub {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 11.5px;
+  font-size: var(--fs-2xs);
   letter-spacing: .05em;
   color: #A7ABCB;
 }
 .stage__cta {
   color: #F2F3FA;
-  font-size: 14px;
+  font-size: var(--fs-sm2);
   font-weight: 600;
   border: 1px solid rgba(242, 245, 247, .3);
   border-radius: 999px;
@@ -1662,7 +1669,7 @@ a:hover { color: var(--sig2); }
   top: 10px;
   left: 12px;
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 8.5px;
+  font-size: var(--fs-2xs);
   letter-spacing: .14em;
   color: #8B8FB5;
 }
@@ -1686,7 +1693,7 @@ a:hover { color: var(--sig2); }
   right: 12px;
   bottom: 14px;
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 9.5px;
+  font-size: var(--fs-2xs);
   letter-spacing: .06em;
   color: #A7ABCB;
 }
@@ -1695,7 +1702,7 @@ a:hover { color: var(--sig2); }
   display: block;
   font-family: 'Sora', sans-serif;
   font-weight: 600;
-  font-size: 14.5px;
+  font-size: var(--fs-sm2);
   line-height: 1.35;
   color: var(--body);
 }
@@ -1722,7 +1729,7 @@ a:hover { color: var(--sig2); }
 .cred { padding: 28px; }
 .cred__kicker {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px;
+  font-size: var(--fs-2xs);
   letter-spacing: .16em;
   color: var(--accent);
   margin-bottom: 14px;
@@ -1734,7 +1741,7 @@ a:hover { color: var(--sig2); }
   color: var(--fg);
   margin: 0 0 12px;
 }
-.cred p { color: var(--body); font-size: 14px; line-height: 1.6; margin: 0; }
+.cred p { color: var(--body); font-size: var(--fs-sm2); line-height: 1.6; margin: 0; }
 
 .cred__tiers {
   display: flex;
@@ -1745,7 +1752,7 @@ a:hover { color: var(--sig2); }
 }
 .cred__tier {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 10.5px;
+  font-size: var(--fs-2xs);
   color: var(--body);
   border: 1px solid var(--chip-line);
   border-radius: 7px;
@@ -1761,7 +1768,7 @@ a:hover { color: var(--sig2); }
 
 .cred__list { display: flex; flex-direction: column; gap: 9px; }
 .cred__list span {
-  font-size: 14.5px;
+  font-size: var(--fs-sm2);
   color: var(--strong);
   display: flex;
   align-items: center;
@@ -1813,7 +1820,7 @@ a:hover { color: var(--sig2); }
 
 .logos__label {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 10.5px;
+  font-size: var(--fs-2xs);
   letter-spacing: .18em;
   text-transform: uppercase;
   color: var(--muted);
@@ -1949,16 +1956,16 @@ a:hover { color: var(--sig2); }
   box-shadow: 0 14px 36px rgba(0, 0, 0, .4);
 }
 .globe-card__row { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; }
-.globe-card__flag { font-size: 15px; line-height: 1; }
+.globe-card__flag { font-size: var(--fs-base); line-height: 1; }
 .globe-card__name {
   font-family: 'Sora', sans-serif;
   font-weight: 600;
-  font-size: 14px;
+  font-size: var(--fs-sm2);
   color: #F2F3FA;
 }
 .globe-card__role {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 10.5px;
+  font-size: var(--fs-2xs);
   letter-spacing: .03em;
   color: #A7ABCB;
   line-height: 1.55;
@@ -1991,22 +1998,22 @@ a:hover { color: var(--sig2); }
   margin-bottom: 5px;
   flex-wrap: wrap;
 }
-.office__flag { font-size: 14px; line-height: 1; }
+.office__flag { font-size: var(--fs-sm2); line-height: 1; }
 .office__country {
   font-family: 'Sora', sans-serif;
   font-weight: 600;
-  font-size: 14px;
+  font-size: var(--fs-sm2);
   color: var(--fg);
 }
 .office__city {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px;
+  font-size: var(--fs-2xs);
   letter-spacing: .1em;
   color: var(--muted);
 }
 .office__role {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 10.5px;
+  font-size: var(--fs-2xs);
   letter-spacing: .03em;
   color: var(--body);
   line-height: 1.55;
@@ -2036,7 +2043,7 @@ a:hover { color: var(--sig2); }
 }
 .trust__head p {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 11.5px;
+  font-size: var(--fs-2xs);
   color: var(--muted);
   margin: 0;
 }
@@ -2076,7 +2083,7 @@ a:hover { color: var(--sig2); }
 }
 .stats__kicker {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px;
+  font-size: var(--fs-2xs);
   letter-spacing: .2em;
   text-transform: uppercase;
   color: var(--accent);
@@ -2092,7 +2099,7 @@ a:hover { color: var(--sig2); }
 }
 .stats__head > p {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 10.5px;
+  font-size: var(--fs-2xs);
   letter-spacing: .08em;
   color: var(--muted);
   margin: 0;
@@ -2125,7 +2132,7 @@ a:hover { color: var(--sig2); }
 
 .stat__label {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 10.5px;
+  font-size: var(--fs-2xs);
   letter-spacing: .1em;
   color: var(--muted);
   margin-top: 10px;
@@ -2161,7 +2168,7 @@ a:hover { color: var(--sig2); }
 }
 .team__lead { color: var(--body); font-size: 16px; line-height: 1.65; margin: 0 0 18px; }
 .team__lead strong { color: var(--fg); }
-.team__link { font-size: 15px; font-weight: 600; color: var(--accent); }
+.team__link { font-size: var(--fs-base); font-weight: 600; color: var(--accent); }
 
 .team__cards {
   display: grid;
@@ -2194,7 +2201,7 @@ a:hover { color: var(--sig2); }
 
 .team__stat-label {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 10.5px;
+  font-size: var(--fs-2xs);
   letter-spacing: .1em;
   color: var(--muted);
   margin-top: 12px;
@@ -2218,11 +2225,11 @@ a:hover { color: var(--sig2); }
   color: var(--fg);
   margin-bottom: 6px;
 }
-.team__wide-sub { color: var(--body); font-size: 14px; line-height: 1.6; }
+.team__wide-sub { color: var(--body); font-size: var(--fs-sm2); line-height: 1.6; }
 .team__tags { display: flex; gap: 8px; flex-wrap: wrap; }
 .team__tag {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px;
+  font-size: var(--fs-2xs);
   letter-spacing: .1em;
   color: var(--body);
   border: 1px solid var(--chip-line);
@@ -2296,11 +2303,11 @@ a:hover { color: var(--sig2); }
   color: #F2F3FA;
 }
 .footer__links { display: flex; gap: 20px; flex-wrap: wrap; }
-.footer__links a { color: #A7ABCB; font-size: 14px; }
+.footer__links a { color: #A7ABCB; font-size: var(--fs-sm2); }
 .footer__links a:hover { color: #F2F3FA; }
 .footer__note {
   color: #666B93;
-  font-size: 12px;
+  font-size: var(--fs-xs);
   font-family: 'IBM Plex Mono', monospace;
 }
 
@@ -2529,7 +2536,7 @@ a:hover { color: var(--sig2); }
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   color: var(--muted);
-  font-size: 13.5px;
+  font-size: var(--fs-sm);
   font-weight: 500;
   opacity: 0;
   transform: translateX(18px);
@@ -2638,7 +2645,7 @@ a:hover { color: var(--sig2); }
 .stat__num em { font-style: normal; color: var(--ice); }
 .stat__lbl {
   margin-top: 7px;
-  font-size: 13px;
+  font-size: var(--fs-sm);
   font-weight: 500;
   color: var(--muted);
   line-height: 1.45;
@@ -2707,7 +2714,7 @@ a:hover { color: var(--sig2); }
 }
 .core__d {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 11.5px;
+  font-size: var(--fs-2xs);
   letter-spacing: .18em;
   text-transform: uppercase;
   color: var(--ice);
@@ -2773,13 +2780,13 @@ a:hover { color: var(--sig2); }
   display: block;
   font-family: 'Sora', sans-serif;
   font-weight: 600;
-  font-size: 15px;
+  font-size: var(--fs-base);
   color: var(--fg);
 }
 .core__chip span {
   display: block;
   margin-top: 4px;
-  font-size: 12.5px;
+  font-size: var(--fs-xs);
   color: var(--muted);
 }
 @media (prefers-reduced-motion: reduce) { .core__stem::after { animation: none; opacity: 0; } }
@@ -2816,7 +2823,7 @@ a:hover { color: var(--sig2); }
 }
 .practice__desc {
   color: var(--body);
-  font-size: 14.5px;
+  font-size: var(--fs-sm2);
   line-height: 1.65;
   margin: 0 0 20px;
 }
@@ -2825,7 +2832,7 @@ a:hover { color: var(--sig2); }
   padding-top: 14px;
   border-top: 1px solid var(--card-line);
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 12.5px;
+  font-size: var(--fs-xs);
   line-height: 1.6;
   color: var(--ice);
 }
@@ -2947,7 +2954,7 @@ a:hover { color: var(--sig2); }
   justify-content: space-between;
   align-items: baseline;
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 11.5px;
+  font-size: var(--fs-2xs);
   letter-spacing: .16em;
   color: var(--dim);
   margin-bottom: 26px;
@@ -2980,7 +2987,7 @@ a:hover { color: var(--sig2); }
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 11.5px;
+  font-size: var(--fs-2xs);
   color: var(--muted);
   background: var(--surface);
   border: 1px solid var(--rule);
@@ -2990,13 +2997,13 @@ a:hover { color: var(--sig2); }
 .proc .mstep__title {
   font-family: 'Sora', sans-serif;
   font-weight: 500;
-  font-size: 13px;
+  font-size: var(--fs-sm);
   color: var(--muted);
   transition: color .3s;
 }
 .proc .mstep__meta {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 9.5px;
+  font-size: var(--fs-2xs);
   letter-spacing: .14em;
   color: var(--ice);
   min-height: 12px;
@@ -3042,12 +3049,12 @@ a:hover { color: var(--sig2); }
 }
 .method__strip-kicker {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px;
+  font-size: var(--fs-2xs);
   letter-spacing: .16em;
   color: var(--ice);
   white-space: nowrap;
 }
-.method__strip p { margin: 0; color: var(--body); font-size: 14.5px; }
+.method__strip p { margin: 0; color: var(--body); font-size: var(--fs-sm2); }
 
 @media (max-width: 940px) {
   .proc__steps { grid-template-columns: repeat(4, 1fr); row-gap: 26px; }
@@ -3083,7 +3090,7 @@ a:hover { color: var(--sig2); }
 /* smaller hub */
 .core-rose .rose__hub { width: 148px; height: 148px; }
 .core-rose .rose__hub-title { font-size: 16.5px; }
-.core-rose .rose__hub-kicker { font-size: 8.5px; margin-bottom: 6px; }
+.core-rose .rose__hub-kicker { font-size: var(--fs-2xs); margin-bottom: 6px; }
 .core-rose .rose__hub-text { padding: 0 16px; }
 
 /* branches: static cards — border colour is the only state change */
@@ -3103,8 +3110,8 @@ a:hover { color: var(--sig2); }
   border-color: var(--ice);
   box-shadow: none;
 }
-.core-rose .bearing__label { font-size: 15.5px; }
-.core-rose .bearing__tag { font-size: 9px; margin-bottom: 6px; }
+.core-rose .bearing__label { font-size: var(--fs-base); }
+.core-rose .bearing__tag { font-size: var(--fs-2xs); margin-bottom: 6px; }
 
 /* ---------- growth journey timeline ---------- */
 .journey__head { margin-bottom: clamp(40px, 5vw, 64px); }
@@ -3159,7 +3166,7 @@ a:hover { color: var(--sig2); }
 .tl__item--r .tl__card { text-align: left; }
 .tl__year {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 13px;
+  font-size: var(--fs-sm);
   letter-spacing: .16em;
   color: var(--ice);
   margin-bottom: 8px;
@@ -3175,7 +3182,7 @@ a:hover { color: var(--sig2); }
 .tl__card p {
   margin: 0;
   color: var(--body);
-  font-size: 14px;
+  font-size: var(--fs-sm2);
   line-height: 1.6;
 }
 .tl__card--now {
@@ -3210,9 +3217,9 @@ a:hover { color: var(--sig2); }
 .tl { max-width: 860px; }
 .tl__item { margin-bottom: 16px; grid-template-columns: 1fr 56px 1fr; }
 .tl__card { padding: 15px 19px; border-radius: 13px; }
-.tl__year { font-size: 11.5px; margin-bottom: 5px; }
-.tl__title { font-size: 15px; margin-bottom: 5px; }
-.tl__card p { font-size: 13px; line-height: 1.55; }
+.tl__year { font-size: var(--fs-2xs); margin-bottom: 5px; }
+.tl__title { font-size: var(--fs-base); margin-bottom: 5px; }
+.tl__card p { font-size: var(--fs-sm); line-height: 1.55; }
 .tl__node { width: 13px; height: 13px; }
 .tl__node i { width: 5px; height: 5px; }
 .journey { padding-top: clamp(56px, 7vw, 96px); padding-bottom: clamp(56px, 7vw, 96px); }
@@ -3228,6 +3235,340 @@ a:hover { color: var(--sig2); }
   background-clip: initial;
   color: var(--soft);
 }
+
+/* ---------- globe: brighter land dots on dark ---------- */
+.globe-canvas-wrap {
+  --globe-dot-rgb: 208, 216, 255;
+  --globe-ring: rgba(155, 160, 255, .26);
+}
+
+/* typed slot resized for the 3-word set */
+.typeslot { min-width: 10ch; }
+
+/* ---------- growth journey: horizontal roadmap ---------- */
+.htl { margin: 0 -12px; }
+.htl__track {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 14px;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 12px;
+}
+.htl__beam {
+  position: absolute;
+  left: calc(8.33% + 12px);       /* first node centre */
+  right: calc(8.33% + 12px);      /* last node centre */
+  top: 41px;                      /* year row + node centre */
+  height: 1.5px;
+  background: linear-gradient(90deg, var(--rule), var(--soft) 50%, var(--ice) 96%);
+}
+.htl__beam::after {               /* arrowhead: the journey continues */
+  content: "";
+  position: absolute;
+  right: -7px;
+  top: -4.25px;
+  border-left: 8px solid var(--ice);
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+}
+.htl__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.htl__year {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: var(--fs-sm);
+  letter-spacing: .14em;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.htl__node {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 1.5px solid var(--soft);
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+.htl__node i { width: 5px; height: 5px; border-radius: 50%; background: var(--soft); }
+.htl__stem {
+  width: 1.5px;
+  height: 26px;
+  background: linear-gradient(180deg, var(--rule), transparent);
+}
+.htl__card {
+  width: 100%;
+  flex: 1;
+  background: var(--card);
+  border: 1px solid var(--card-line);
+  border-radius: 14px;
+  padding: 18px 17px;
+  text-align: left;
+  transition: border-color .25s, transform .25s;
+}
+.htl__card:hover { border-color: var(--rule); transform: translateY(-3px); }
+.htl__card h3 {
+  font-family: 'Sora', sans-serif;
+  font-weight: 600;
+  font-size: var(--fs-sm2);
+  letter-spacing: -.015em;
+  line-height: 1.3;
+  color: var(--fg);
+  margin: 0 0 8px;
+}
+.htl__card p {
+  margin: 0;
+  color: var(--body);
+  font-size: var(--fs-xs);
+  line-height: 1.58;
+}
+/* the "now" milestone */
+.htl__item--now .htl__year { color: var(--ice); }
+.htl__item--now .htl__node { border-color: var(--ice); box-shadow: 0 0 16px -2px rgba(123, 212, 245, .8); }
+.htl__item--now .htl__node i { background: var(--ice); }
+.htl__item--now .htl__card { position: relative; }
+.htl__item--now .htl__card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 14px;
+  padding: 1px;
+  background: linear-gradient(140deg, var(--soft), transparent 40%, transparent 60%, var(--ice));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: .8;
+}
+
+/* tablet: 3 + 3, beam per implied row hidden for honesty */
+@media (max-width: 1120px) {
+  .htl__track { grid-template-columns: repeat(3, 1fr); row-gap: 34px; }
+  .htl__beam { display: none; }
+  .htl__stem { display: none; }
+  .htl__item { flex-direction: column; }
+  .htl__year { margin-bottom: 6px; }
+  .htl__node { display: none; }
+  .htl__card { flex: initial; }
+}
+/* mobile: single column ledger */
+@media (max-width: 640px) {
+  .htl__track { grid-template-columns: 1fr; row-gap: 16px; }
+  .htl__item { flex-direction: row; align-items: flex-start; gap: 14px; }
+  .htl__year { margin: 2px 0 0; min-width: 52px; }
+}
+
+/* ---------- rose alive: slow ring, breathing halo, room for S branch ---------- */
+.core-rose .rose__ticks { animation: v4Spin 200s linear infinite; }
+.core-rose .rose__halo { animation: v4Breathe 7s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .core-rose .rose__ticks, .core-rose .rose__halo { animation: none; }
+}
+.core-rose .rose { margin-bottom: 74px; }   /* S bearing extends past the canvas */
+.core-rose .rose__needle path,
+.core-rose .rose__needle circle { transition: none; }
+@media (max-width: 1000px) {
+  .core-rose .rose { margin-bottom: 0; }
+}
+
+/* ---------- journey cards: landmark silhouettes ---------- */
+.htl__card { position: relative; overflow: hidden; }
+.htl__sil {
+  position: absolute;
+  right: -6px;
+  bottom: -3px;
+  height: 60px;
+  width: auto;
+  color: var(--soft);
+  opacity: .1;
+  pointer-events: none;
+}
+.htl__sil path { fill: currentColor; }
+.htl__card h3, .htl__card p { position: relative; z-index: 1; }
+.htl__card:hover .htl__sil { opacity: .17; }
+.htl__item--now .htl__sil { color: var(--ice); opacity: .13; }
+
+/* ============================================================
+   JOURNEY — horizontal slideshow rail
+   ============================================================ */
+.htl { position: relative; margin: 0; }
+.htl__track {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 0 4px 18px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  cursor: grab;
+  mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
+}
+.htl__track::-webkit-scrollbar { display: none; }
+.htl__track.is-dragging { cursor: grabbing; scroll-snap-type: none; }
+
+.htl__item {
+  flex: 0 0 clamp(300px, 30vw, 380px);
+  scroll-snap-align: center;
+  position: relative;
+}
+/* the beam: per-item segments that join into one continuous line */
+.htl__item::before {
+  content: "";
+  position: absolute;
+  top: 33px;                 /* node centre: year(≈23) + margin + node/2 */
+  left: -20px;
+  right: 0;
+  height: 1.5px;
+  background: linear-gradient(90deg, var(--rule), var(--soft));
+}
+.htl__item:first-child::before { left: 50%; background: var(--rule); }
+.htl__item:last-child::before {
+  background: linear-gradient(90deg, var(--soft), var(--ice));
+}
+.htl__year { font-size: var(--fs-base); margin-bottom: 8px; }
+.htl__node { width: 17px; height: 17px; }
+.htl__stem { height: 30px; }
+.htl__card {
+  padding: 26px 26px 24px;
+  border-radius: 18px;
+  min-height: 210px;
+}
+.htl__card h3 { font-size: 18px; margin-bottom: 10px; }
+.htl__card p { font-size: var(--fs-sm); line-height: 1.62; max-width: 34ch; }
+.htl__sil { height: 96px; right: -8px; bottom: -4px; opacity: .11; }
+
+/* slideshow arrows */
+.htl__nav {
+  position: absolute;
+  top: 33px;
+  transform: translateY(-50%);
+  z-index: 5;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--rule);
+  background: color-mix(in srgb, var(--surface) 85%, transparent);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: var(--fg);
+  font-size: 17px;
+  cursor: pointer;
+  transition: border-color .25s, background .25s, opacity .25s;
+}
+.htl__nav:hover { border-color: var(--soft); background: var(--card); }
+.htl__nav--prev { left: -8px; }
+.htl__nav--next { right: -8px; }
+.htl__nav[disabled] { opacity: .3; cursor: default; }
+@media (max-width: 760px) {
+  .htl__item { flex-basis: 82vw; }
+  .htl__nav { display: none; }
+}
+
+
+/* slot fits "power of AI" */
+.typeslot { min-width: 11ch; }
+
+/* ============================================================
+   LARGE SCREENS — content fills 80% of viewport, type scales
+   with screen size instead of freezing at desktop caps.
+   ============================================================ */
+@media (min-width: 1500px) {
+  /* type scale becomes viewport-relative (caps keep it sane on ultrawides) */
+  :root {
+    --fs-2xs: clamp(12px, 0.82vw, 16px);
+    --fs-xs: clamp(13px, 0.88vw, 17px);
+    --fs-sm: clamp(14px, 0.95vw, 18px);
+    --fs-sm2: clamp(15px, 1.02vw, 19px);
+    --fs-base: clamp(16px, 1.08vw, 21px);
+  }
+
+  /* primary containers widen to 80vw */
+  .wrap,
+  .nav__inner,
+  .hero__inner,
+  .demos__grid,
+  .demos__head,
+  .showcase__inner,
+  .team__grid,
+  .globe-grid,
+  .logos__inner,
+  .credentials__grid,
+  .footer__inner {
+    max-width: 80vw;
+  }
+  .htl__track { max-width: none; }
+  .htl__item { flex-basis: clamp(340px, 21vw, 480px); }
+
+  /* copy blocks scale with the wider canvas */
+  .hero__copy { max-width: 62vw; }
+  .hero__sub { max-width: 46vw; font-size: clamp(17px, 1.15vw, 23px); }
+  .reframe__inner { max-width: 64vw; }
+  .reframe__body { max-width: 52ch; font-size: clamp(17px, 1.15vw, 23px); }
+  .method__head, .credentials__head, .journey__head { max-width: 56vw; }
+  .lead { font-size: clamp(16px, 1.1vw, 22px); }
+  .globe-body p { font-size: clamp(16px, 1.08vw, 21px); max-width: 44ch; }
+  .practice__desc, .htl__card p { font-size: clamp(14px, 0.98vw, 19px); }
+  .proc__panel p { font-size: clamp(16px, 1.08vw, 21px); }
+
+  /* display type: lift the desktop caps so headlines grow with the glass */
+  .hero__h1 { font-size: clamp(38px, 5vw, 108px); }
+  .h2 { font-size: clamp(30px, 3.6vw, 78px); }
+  .reframe__h2 { font-size: clamp(30px, 3.4vw, 74px); }
+  .team__h2 { font-size: clamp(26px, 3.2vw, 68px); }
+
+  /* rose + core scale up modestly */
+  .core-rose .rose { max-width: 44vw; }
+  .practices { max-width: 80vw; margin-left: auto; margin-right: auto; }
+}
+
+/* ---------- journey cards: details accordion ---------- */
+.htl__more { margin-top: 14px; border-top: 1px solid var(--card-line); padding-top: 10px; }
+.htl__more summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: var(--fs-2xs);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color .2s;
+  user-select: none;
+}
+.htl__more summary::-webkit-details-marker { display: none; }
+.htl__more summary::after {
+  content: "+";
+  font-size: 14px;
+  color: var(--soft);
+  transition: transform .25s;
+}
+.htl__more[open] summary::after { content: "–"; }
+.htl__more summary:hover { color: var(--fg); }
+.htl__more-body { padding-top: 10px; display: flex; flex-direction: column; gap: 8px; }
+.htl__more-body span { font-size: var(--fs-xs); line-height: 1.55; color: var(--body); }
+.htl__more-body b {
+  display: inline-block;
+  min-width: 52px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 500;
+  font-size: var(--fs-2xs);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ice);
+  margin-right: 6px;
+}
+.htl__card { display: flex; flex-direction: column; }
+.htl__card .htl__more { margin-top: auto; position: relative; z-index: 1; }
 
 </style>
 </head>
@@ -3251,7 +3592,7 @@ a:hover { color: var(--sig2); }
       <div class="nav__spacer"></div>
       <div class="nav__links">
         <a class="nav__link" href="AI%20Solutions.dc.html">AI Solutions</a>
-        <a class="nav__link" href="Foundry.html">AI Foundry</a>
+        <a class="nav__link" href="Foundry_2.html">AI Foundry</a>
         <a class="nav__link" href="#compass">Observability</a>
         <a class="nav__link" href="#compass">Enterprise</a>
         <a class="nav__link" href="#method">How We Work</a>
@@ -3272,7 +3613,7 @@ a:hover { color: var(--sig2); }
     <div class="nav__panel" id="mnav" data-mpanel hidden>
       <div class="nav__panel-inner">
         <a class="nav__panel-link" href="AI%20Solutions.dc.html"><span>AI Solutions</span><span>&rarr;</span></a>
-        <a class="nav__panel-link" href="Foundry.html"><span>AI Foundry</span><span>&rarr;</span></a>
+        <a class="nav__panel-link" href="Foundry_2.html"><span>AI Foundry</span><span>&rarr;</span></a>
         <a class="nav__panel-link" href="#compass"><span>Observability</span><span>&rarr;</span></a>
         <a class="nav__panel-link" href="#compass"><span>Enterprise</span><span>&rarr;</span></a>
         <a class="nav__panel-link" href="#method"><span>How We Work</span><span>&rarr;</span></a>
@@ -3495,21 +3836,13 @@ a:hover { color: var(--sig2); }
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.6-3 8.4-7 10-4-1.6-7-5.4-7-10V6l7-3z"></path><path d="M9 12l2 2 4-4"></path></svg>
           <span>Confidence</span>
         </div>
-        <div class="hero__icon-chip" data-word="excellence">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="5.5"></circle><path d="M8.5 13.5L7 21l5-2.4L17 21l-1.5-7.5"></path></svg>
-          <span>Excellence</span>
-        </div>
-        <div class="hero__icon-chip" data-word="experience">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5 9-5z"></path><path d="M3 13l9 5 9-5"></path><path d="M3 18l9 5 9-5" opacity=".45"></path></svg>
-          <span>Experience</span>
-        </div>
-        <div class="hero__icon-chip" data-word="innovations">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"></path><path d="M12 3a6.5 6.5 0 0 1 4 11.6c-.7.6-1 1.4-1 2.4H9c0-1-.3-1.8-1-2.4A6.5 6.5 0 0 1 12 3z"></path></svg>
-          <span>Innovations</span>
-        </div>
         <div class="hero__icon-chip" data-word="precision">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"></circle><circle cx="12" cy="12" r="3"></circle><path d="M12 1v4M12 19v4M1 12h4M19 12h4"></path></svg>
           <span>Precision</span>
+        </div>
+        <div class="hero__icon-chip" data-word="power of AI">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 L14.6 9.4 L22 12 L14.6 14.6 L12 22 L9.4 14.6 L2 12 L9.4 9.4 Z"></path></svg>
+          <span>Power of AI</span>
         </div>
       </div>
       <div class="hero__copy">
@@ -3518,7 +3851,7 @@ a:hover { color: var(--sig2); }
           Engineering-led Systems Integrator &middot; Global reach
         </div>
 
-        <h1 class="hero__h1">Transforming at scale,<br><span class="hero__line2">with <span class="typeslot"><em class="typeword" data-typewords="confidence,excellence,experience,innovations,precision"></em><span class="typecaret" aria-hidden="true"></span></span></span></h1>
+        <h1 class="hero__h1">Transforming at scale,<br><span class="hero__line2">with <span class="typeslot"><em class="typeword" data-typewords="confidence,precision,power of AI"></em><span class="typecaret" aria-hidden="true"></span></span></span></h1>
 
         <p class="hero__sub">YourCompass is an engineering-led systems integrator and digital transformation partner. We design and deliver systems integration, observability-led, and AI-powered solutions that give organisations real-time insight, operational control, and the confidence to transform at scale.</p>
 
@@ -3557,27 +3890,6 @@ a:hover { color: var(--sig2); }
   <!-- ============ 1.2 REFRAME ============ -->
 
   <!-- ============ 1.1b PROOF BAND ============ -->
-  <section class="section statband t-dark" data-screen-label="1.1b Proof">
-    <div class="wrap statband__grid">
-      <div class="stat" data-reveal>
-        <div class="stat__num"><span data-count="200">0</span><em>+</em></div>
-        <div class="stat__lbl">Projects delivered</div>
-      </div>
-      <div class="stat" data-reveal data-d="70">
-        <div class="stat__num"><span data-count="60">0</span><em>+</em></div>
-        <div class="stat__lbl">Customers served</div>
-      </div>
-      <div class="stat" data-reveal data-d="140">
-        <div class="stat__num"><span data-count="15">0</span><em>+</em></div>
-        <div class="stat__lbl">Years of experience</div>
-      </div>
-      <div class="stat stat--feature" data-reveal data-d="210">
-        <div class="stat__num">Top&nbsp;<span data-count="5">0</span></div>
-        <div class="stat__lbl">Certified Dynatrace bench globally</div>
-      </div>
-    </div>
-  </section>
-
   <!-- ============ 1.2a THE REFRAME ============ -->
   <section class="section reframe reframe--statement t-dark" data-screen-label="1.2a The reframe" hidden>
     <div class="glow reframe__glow" data-plx="0.05"></div>
@@ -3593,7 +3905,7 @@ a:hover { color: var(--sig2); }
     <div class="reframe__inner">
       <div class="kicker" data-reveal>One Intelligent Core &middot; Three Practices</div>
       <h2 class="reframe__h2" data-wordsplit>Intelligence runs through <em>everything we do</em></h2>
-      <p class="reframe__body" data-reveal data-d="200">Enterprise solutions, managed services, and observability — each practice engineered around a common intelligent core, so insight, automation, and governance compound across everything we deliver.</p>
+      <p class="reframe__body" data-reveal data-d="200">Enterprise solutions, managed services, and observability are not parallel offerings — they are engineered on a single intelligent core. Insight, automation, and governance are built once and leveraged across every engagement: capability compounds, complexity doesn't.</p>
     </div>
 
     <div class="wrap core-rose" id="compass">
@@ -3602,8 +3914,15 @@ a:hover { color: var(--sig2); }
           <circle class="rose__ring" cx="440" cy="330" r="238"></circle>
           <circle class="rose__ticks" cx="440" cy="330" r="238"></circle>
           <line class="rose__spoke" x1="440" y1="330" x2="440" y2="92"></line>
-          <line class="rose__spoke" x1="440" y1="330" x2="164" y2="486"></line>
-          <line class="rose__spoke" x1="440" y1="330" x2="716" y2="486"></line>
+          <line class="rose__spoke" x1="440" y1="330" x2="678" y2="330"></line>
+          <line class="rose__spoke" x1="440" y1="330" x2="440" y2="568"></line>
+          <line class="rose__spoke" x1="440" y1="330" x2="202" y2="330"></line>
+          <g class="rose__needle" data-rose-needle>
+            <path d="M440 128 L452 330 L440 318 L428 330 Z" fill="#7BD4F5"></path>
+            <path d="M440 532 L428 330 L440 342 L452 330 Z" fill="#9BA0FF" opacity=".45"></path>
+            <circle cx="440" cy="330" r="7" fill="#F5F6FC"></circle>
+            <circle cx="440" cy="330" r="12" fill="none" stroke="#9BA0FF" stroke-width="1.5" opacity=".5"></circle>
+          </g>
         </svg>
 
         <div class="rose__hub t-dark">
@@ -3629,14 +3948,19 @@ a:hover { color: var(--sig2); }
           <span class="rose-stack__desc">Agents delivered to production — built on our platform, inside your walls, on your data.</span>
         </a>
         <a class="rose-stack__card" href="AI%20Solutions.dc.html#architecture">
-          <span class="rose-stack__tag">SW</span>
+          <span class="rose-stack__tag">W</span>
           <span class="rose-stack__name">Observability</span>
           <span class="rose-stack__desc">Full stack — including AI workloads. Observability feeds the intelligence.</span>
         </a>
         <a class="rose-stack__card" href="AI%20Solutions.dc.html#build">
-          <span class="rose-stack__tag">SE</span>
+          <span class="rose-stack__tag">E</span>
           <span class="rose-stack__name">Enterprise Solutions</span>
-          <span class="rose-stack__desc">AIOps-enabled managed services — intelligence built into operations.</span>
+          <span class="rose-stack__desc">Full-stack platforms, infrastructure and cybersecurity — engineered with single-point accountability.</span>
+        </a>
+        <a class="rose-stack__card" href="AI%20Solutions.dc.html#build">
+          <span class="rose-stack__tag">S</span>
+          <span class="rose-stack__name">Managed Services</span>
+          <span class="rose-stack__desc">AIOps-enabled operations — intelligence built into every service we run.</span>
         </a>
       </div>
 
@@ -3699,7 +4023,7 @@ a:hover { color: var(--sig2); }
   </section>
 
   <!-- ============ 1.6 DEMOS ============ -->
-  <section class="section demos t-light" id="demos" data-screen-label="1.6 Demos">
+  <section class="section demos t-light" id="demos" data-screen-label="1.6 Demos" hidden>
     <div class="wrap">
       <div class="demos__head">
         <div class="demos__head-copy">
@@ -3758,7 +4082,7 @@ a:hover { color: var(--sig2); }
       <div class="showcase__head" data-reveal>
         <div class="showcase__head-copy">
           <div class="kicker">Showcase</div>
-          <h3 class="showcase__h3">The work, on screen.</h3>
+          <h3 class="showcase__h3">Don't take our word for it. Watch it work.</h3>
         </div>
         <div class="showcase__nav">
           <div class="showcase__nav-row">
@@ -3794,6 +4118,27 @@ a:hover { color: var(--sig2); }
     </div>
 
     <div class="reel" data-reel data-reveal></div>
+  </section>
+
+  <section class="section statband t-dark" data-screen-label="1.6c Proof">
+    <div class="wrap statband__grid">
+      <div class="stat" data-reveal>
+        <div class="stat__num"><span data-count="200">0</span><em>+</em></div>
+        <div class="stat__lbl">Projects delivered</div>
+      </div>
+      <div class="stat" data-reveal data-d="70">
+        <div class="stat__num"><span data-count="60">0</span><em>+</em></div>
+        <div class="stat__lbl">Customers served</div>
+      </div>
+      <div class="stat" data-reveal data-d="140">
+        <div class="stat__num"><span data-count="15">0</span><em>+</em></div>
+        <div class="stat__lbl">Years of experience</div>
+      </div>
+      <div class="stat stat--feature" data-reveal data-d="210">
+        <div class="stat__num">Top&nbsp;<span data-count="5">0</span></div>
+        <div class="stat__lbl">Certified Dynatrace bench globally</div>
+      </div>
+    </div>
   </section>
 
   <!-- ============ 1.7 CREDENTIALS ============ -->
@@ -3976,7 +4321,7 @@ a:hover { color: var(--sig2); }
 
       <div class="globe-head" data-globe-head>
         <div class="kicker" data-reveal>We come to you</div>
-        <h2 class="h2" data-footprint="f1" data-reveal>Five countries. One promise: <em>we show up.</em></h2>
+        <h2 class="h2" data-footprint="f1" data-reveal>Eight countries. One promise: <em>we show up.</em></h2>
         <h2 class="h2" data-footprint="f2" data-reveal hidden>Global reach. <em>In-person habits.</em></h2>
         <h2 class="h2" data-footprint="f3" data-reveal hidden>Not a one-city company. <em>Not a remote one either.</em></h2>
       </div>
@@ -3995,7 +4340,7 @@ a:hover { color: var(--sig2); }
       </div>
 
       <div class="globe-body" data-globe-body>
-        <p data-reveal>Some partners work your problem from a screen, three time zones away. We don't. With offices across five countries, our engineers come to you — sit in your control room, walk your data center, see the problem where it lives. Decades of enterprise delivery taught us that the real issue is never in the ticket. It's on site.</p>
+        <p data-reveal>Some partners work your problem from a screen, three time zones away. We don't. With presence across eight countries — Canada, USA, UAE, Saudi Arabia, Qatar, Oman, Egypt, and Armenia — our engineers come to you — sit in your control room, walk your data center, see the problem where it lives. Decades of enterprise delivery taught us that the real issue is never in the ticket. It's on site.</p>
       </div>
 
       <div class="globe-legend" data-globe-legend>
@@ -4048,66 +4393,93 @@ a:hover { color: var(--sig2); }
         <h2 class="h2" data-reveal>Our Growth <em>Journey</em></h2>
       </div>
 
-      <div class="tl">
-        <div class="tl__spine" aria-hidden="true"></div>
+      <div class="htl" data-reveal>
+        <button class="htl__nav htl__nav--prev" type="button" data-htl-prev aria-label="Earlier milestones">&larr;</button>
+        <button class="htl__nav htl__nav--next" type="button" data-htl-next aria-label="Later milestones">&rarr;</button>
+        <div class="htl__track" data-htl-track>
 
-        <div class="tl__item" data-reveal>
-          <div class="tl__card">
-            <div class="tl__year">2010</div>
-            <h3 class="tl__title">Founded in Ottawa, Canada</h3>
-            <p>Founded with a vision to provide enterprise technology consulting and engineering services built on technical excellence, customer trust, and long-term partnerships.</p>
+          <div class="htl__item">
+            <div class="htl__year">2010</div>
+            <div class="htl__node" aria-hidden="true"><i></i></div>
+            <div class="htl__stem" aria-hidden="true"></div>
+            <div class="htl__card">
+              <svg class="htl__sil" viewBox="0 0 150 100" aria-hidden="true"><path d="M75 4 L76 12 L83 12 L83 17 L86 27 L86 44 L82 44 L82 38 L68 38 L68 44 L64 44 L64 27 L67 17 L67 12 L74 12 Z"/><circle cx="75" cy="31" r="4.4" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M64 44 L86 44 L86 100 L64 100 Z"/><path d="M70 50 L72 50 L72 60 L70 60 Z M78 50 L80 50 L80 60 L78 60 Z M70 66 L72 66 L72 76 L70 76 Z M78 66 L80 66 L80 76 L78 76 Z" fill="#0A0A18" opacity=".55"/><path d="M8 64 L64 64 L64 100 L8 100 Z M86 64 L142 64 L142 100 L86 100 Z"/><path d="M14 56 L20 56 L20 64 L14 64 Z M17 51 L17 56 Z M130 56 L136 56 L136 64 L130 64 Z"/><path d="M12 70 L14 70 L14 78 L12 78 Z M22 70 L24 70 L24 78 L22 78 Z M32 70 L34 70 L34 78 L32 78 Z M42 70 L44 70 L44 78 L42 78 Z M52 70 L54 70 L54 78 L52 78 Z M96 70 L98 70 L98 78 L96 78 Z M106 70 L108 70 L108 78 L106 78 Z M116 70 L118 70 L118 78 L116 78 Z M126 70 L128 70 L128 78 L126 78 Z M136 70 L138 70 L138 78 L136 78 Z" fill="#0A0A18" opacity=".45"/><path d="M76 4 L84 6 L76 9 Z" opacity=".8"/></svg>
+              <h3>Founded in Ottawa, Canada</h3>
+              <p>Founded with a vision to provide enterprise technology consulting and engineering services built on technical excellence, customer trust, and long-term partnerships.</p>
+              <details class="htl__more"><summary>Details</summary><div class="htl__more-body"><span><b>Role</b> Global headquarters</span><span><b>Focus</b> Enterprise technology consulting &amp; engineering — the foundation of the delivery culture: technical excellence, customer trust, long-term partnerships.</span></div></details>
+            </div>
           </div>
-          <div class="tl__node" aria-hidden="true"><i></i></div>
-          <div class="tl__spacer"></div>
-        </div>
 
-        <div class="tl__item tl__item--r" data-reveal data-d="80">
-          <div class="tl__spacer"></div>
-          <div class="tl__node" aria-hidden="true"><i></i></div>
-          <div class="tl__card">
-            <div class="tl__year">2012</div>
-            <h3 class="tl__title">Expansion into the United States</h3>
-            <p>Expanded operations into the United States, strengthening access to global technology ecosystems and international partnerships.</p>
+          <div class="htl__item">
+            <div class="htl__year">2012</div>
+            <div class="htl__node" aria-hidden="true"><i></i></div>
+            <div class="htl__stem" aria-hidden="true"></div>
+            <div class="htl__card">
+              <svg class="htl__sil" viewBox="0 0 170 100" aria-hidden="true"><path d="M85 6 L86 13 L88 13 L88 17 L82 17 L82 13 L84 13 Z"/><path d="M78 17 L92 17 L92 23 L78 23 Z"/><path d="M85 23 A 20 20 0 0 1 105 45 L105 52 L65 52 L65 45 A 20 20 0 0 1 85 23 Z"/><path d="M70 40 L72 40 L72 52 L70 52 Z M77 37 L79 37 L79 52 L77 52 Z M84 36 L86 36 L86 52 L84 52 Z M91 37 L93 37 L93 52 L91 52 Z M98 40 L100 40 L100 52 L98 52 Z" fill="#0A0A18" opacity=".5"/><path d="M58 52 L112 52 L112 76 L58 76 Z"/><path d="M63 57 L65 57 L65 70 L63 70 Z M70 57 L72 57 L72 70 L70 70 Z M77 57 L79 57 L79 70 L77 70 Z M84 57 L86 57 L86 70 L84 70 Z M91 57 L93 57 L93 70 L91 70 Z M98 57 L100 57 L100 70 L98 70 Z M105 57 L107 57 L107 70 L105 70 Z" fill="#0A0A18" opacity=".5"/><path d="M10 60 L58 60 L58 76 L10 76 Z M112 60 L160 60 L160 76 L112 76 Z"/><path d="M16 64 L18 64 L18 72 L16 72 Z M26 64 L28 64 L28 72 L26 72 Z M36 64 L38 64 L38 72 L36 72 Z M46 64 L48 64 L48 72 L46 72 Z M122 64 L124 64 L124 72 L122 72 Z M132 64 L134 64 L134 72 L132 72 Z M142 64 L144 64 L144 72 L142 72 Z M152 64 L154 64 L154 72 L152 72 Z" fill="#0A0A18" opacity=".4"/><path d="M6 76 L164 76 L164 82 L6 82 Z M2 82 L168 82 L168 88 L2 88 Z M0 88 L170 88 L170 100 L0 100 Z"/></svg>
+              <h3>Expansion into the United States</h3>
+              <p>Expanded operations into the United States, strengthening access to global technology ecosystems and international partnerships.</p>
+              <details class="htl__more"><summary>Details</summary><div class="htl__more-body"><span><b>Role</b> North American operations</span><span><b>Focus</b> Access to global technology ecosystems and the vendor &amp; partner network behind our delivery stack.</span></div></details>
+            </div>
           </div>
-        </div>
 
-        <div class="tl__item" data-reveal data-d="80">
-          <div class="tl__card">
-            <div class="tl__year">2013</div>
-            <h3 class="tl__title">Abu Dhabi Regional Headquarters</h3>
-            <p>Established the Abu Dhabi Regional Headquarters, positioning YourCompass at the heart of one of the world's fastest-growing digital economies.</p>
+          <div class="htl__item">
+            <div class="htl__year">2013</div>
+            <div class="htl__node" aria-hidden="true"><i></i></div>
+            <div class="htl__stem" aria-hidden="true"></div>
+            <div class="htl__card">
+              <svg class="htl__sil" viewBox="0 0 170 100" aria-hidden="true"><path d="M85 24 A 24 19 0 0 1 109 48 L109 60 L61 60 L61 48 A 24 19 0 0 1 85 24 Z"/><path d="M85 17 L86.5 24 L83.5 24 Z M85 14 A 1.6 1.6 0 1 1 85 17.2 Z" opacity=".85"/><path d="M44 46 A 12 10 0 0 1 56 58 L56 66 L32 66 L32 58 A 12 10 0 0 1 44 46 Z M126 46 A 12 10 0 0 1 138 58 L138 66 L114 66 L114 58 A 12 10 0 0 1 126 46 Z"/><path d="M28 62 L142 62 L142 100 L28 100 Z"/><path d="M36 70 A 5 7 0 0 1 46 70 L46 84 L36 84 Z M54 70 A 5 7 0 0 1 64 70 L64 84 L54 84 Z M72 70 A 5 7 0 0 1 82 70 L82 84 L72 84 Z M88 70 A 5 7 0 0 1 98 70 L98 84 L88 84 Z M106 70 A 5 7 0 0 1 116 70 L116 84 L106 84 Z M124 70 A 5 7 0 0 1 134 70 L134 84 L124 84 Z" fill="#0A0A18" opacity=".5"/><path d="M10 26 L15 26 L16 100 L9 100 Z M12.5 18 L14 26 L11 26 Z M10 44 L15 44 L15 47 L10 47 Z M10 66 L15 66 L15 69 L10 69 Z"/><path d="M155 26 L160 26 L161 100 L154 100 Z M157.5 18 L159 26 L156 26 Z M155 44 L160 44 L160 47 L155 47 Z M155 66 L160 66 L160 69 L155 69 Z"/></svg>
+              <h3>Abu Dhabi Regional Headquarters</h3>
+              <p>Established the Abu Dhabi Regional Headquarters, positioning YourCompass at the heart of one of the world's fastest-growing digital economies.</p>
+              <details class="htl__more"><summary>Details</summary><div class="htl__more-body"><span><b>Role</b> Regional headquarters</span><span><b>Focus</b> Government and regulated-enterprise delivery — the base from which regional operations grew.</span></div></details>
+            </div>
           </div>
-          <div class="tl__node" aria-hidden="true"><i></i></div>
-          <div class="tl__spacer"></div>
-        </div>
 
-        <div class="tl__item tl__item--r" data-reveal data-d="80">
-          <div class="tl__spacer"></div>
-          <div class="tl__node" aria-hidden="true"><i></i></div>
-          <div class="tl__card">
-            <div class="tl__year">2019</div>
-            <h3 class="tl__title">UAE operations expand to Dubai</h3>
-            <p>Expanded UAE operations to Dubai, strengthening delivery capabilities across the Northern Emirates.</p>
+          <div class="htl__item">
+            <div class="htl__year">2019</div>
+            <div class="htl__node" aria-hidden="true"><i></i></div>
+            <div class="htl__stem" aria-hidden="true"></div>
+            <div class="htl__card">
+              <svg class="htl__sil" viewBox="0 0 100 100" aria-hidden="true"><path d="M49.3 2 L50.7 2 L50.9 12 L52 12 L52 18 L54.5 18 L55 30 L58 30 L58.6 46 L62 46 L62.7 66 L67 66 L67 100 L33 100 L33 66 L37.3 66 L38 46 L41.4 46 L42 30 L45 30 L45.5 18 L48 18 L48 12 L49.1 12 Z"/><path d="M46 22 L47 22 L47 100 L46 100 Z M53 22 L54 22 L54 100 L53 100 Z M40 48 L41 48 L41 100 L40 100 Z M59 48 L60 48 L60 100 L59 100 Z M35 68 L36 68 L36 100 L35 100 Z M64 68 L65 68 L65 100 L64 100 Z" fill="#0A0A18" opacity=".5"/><path d="M33 78 L28 82 L28 100 L33 100 Z M67 78 L72 82 L72 100 L67 100 Z"/><path d="M28 88 L22 92 L22 100 L28 100 Z M72 88 L78 92 L78 100 L72 100 Z"/></svg>
+              <h3>UAE operations expand to Dubai</h3>
+              <p>Expanded UAE operations to Dubai, strengthening delivery capabilities across the Northern Emirates.</p>
+              <details class="htl__more"><summary>Details</summary><div class="htl__more-body"><span><b>Role</b> UAE expansion</span><span><b>Focus</b> Delivery strength across the Northern Emirates — engineers closer to customer sites.</span></div></details>
+            </div>
           </div>
-        </div>
 
-        <div class="tl__item" data-reveal data-d="80">
-          <div class="tl__card">
-            <div class="tl__year">2022</div>
-            <h3 class="tl__title">Kingdom of Saudi Arabia</h3>
-            <p>Expanded into the Kingdom of Saudi Arabia, extending regional delivery capabilities and supporting ambitious national digital transformation programmes.</p>
+          <div class="htl__item">
+            <div class="htl__year">2022</div>
+            <div class="htl__node" aria-hidden="true"><i></i></div>
+            <div class="htl__stem" aria-hidden="true"></div>
+            <div class="htl__card">
+              <svg class="htl__sil" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 5 A 23 30 0 0 1 73 38 L73 100 L60 100 L60 52 A 11 18 0 0 0 50 38 A 11 18 0 0 0 40 52 L40 100 L27 100 L27 38 A 23 30 0 0 1 50 5 Z"/><path d="M38 28 L62 28 L62 32 L38 32 Z"/><path d="M44 12 L45 12 L45 26 L44 26 Z M50 10 L51 10 L51 26 L50 26 Z M56 12 L57 12 L57 26 L56 26 Z M32 44 L33 44 L33 96 L32 96 Z M36 42 L37 42 L37 96 L36 96 Z M63 42 L64 42 L64 96 L63 96 Z M67 44 L68 44 L68 96 L67 96 Z" fill="#0A0A18" opacity=".45"/><path d="M20 92 L80 92 L80 100 L20 100 Z"/></svg>
+              <h3>Kingdom of Saudi Arabia</h3>
+              <p>Expanded into the Kingdom of Saudi Arabia, extending regional delivery capabilities and supporting ambitious national digital transformation programmes.</p>
+              <details class="htl__more"><summary>Details</summary><div class="htl__more-body"><span><b>Role</b> In-Kingdom presence</span><span><b>Focus</b> National digital transformation programmes — local compliance, local teams.</span></div></details>
+            </div>
           </div>
-          <div class="tl__node" aria-hidden="true"><i></i></div>
-          <div class="tl__spacer"></div>
-        </div>
 
-        <div class="tl__item tl__item--r" data-reveal data-d="80">
-          <div class="tl__spacer"></div>
-          <div class="tl__node tl__node--now" aria-hidden="true"><i></i></div>
-          <div class="tl__card tl__card--now">
-            <div class="tl__year">2026</div>
-            <h3 class="tl__title">Egypt, Qatar &amp; Oman</h3>
-            <p>Further expanded regional footprint through operations in Egypt, Qatar, and Oman, enabling broader regional collaboration and enhanced engineering capacity.</p>
+          <div class="htl__item">
+            <div class="htl__year">2026</div>
+            <div class="htl__node" aria-hidden="true"><i></i></div>
+            <div class="htl__stem" aria-hidden="true"></div>
+            <div class="htl__card">
+              <svg class="htl__sil" viewBox="0 0 170 100" aria-hidden="true"><path d="M62 16 L120 100 L4 100 Z"/><path d="M62 16 L74 100 L50 100 Z" opacity=".4"/><path d="M62 16 L58 24 L61 23 L63 27 L66 24 Z" fill="#0A0A18" opacity=".35"/><path d="M118 38 L166 100 L70 100 Z"/><path d="M118 38 L126 100 L110 100 Z" opacity=".4"/><path d="M30 58 L62 100 L-2 100 Z"/><path d="M30 58 L36 100 L24 100 Z" opacity=".4"/><path d="M0 97 L170 97 L170 100 L0 100 Z" opacity=".6"/></svg>
+              <h3>Egypt, Qatar &amp; Oman</h3>
+              <p>Further expanded regional footprint through operations in Egypt, Qatar, and Oman, enabling broader regional collaboration and enhanced engineering capacity.</p>
+              <details class="htl__more"><summary>Details</summary><div class="htl__more-body"><span><b>Role</b> Regional delivery network</span><span><b>Focus</b> Broader regional collaboration and additional delivery capacity across three new markets.</span></div></details>
+            </div>
+          </div>
+
+          <div class="htl__item htl__item--now">
+            <div class="htl__year">2026</div>
+            <div class="htl__node" aria-hidden="true"><i></i></div>
+            <div class="htl__stem" aria-hidden="true"></div>
+            <div class="htl__card">
+              <svg class="htl__sil" viewBox="0 0 150 100" aria-hidden="true"><path d="M69 6 L72 6 L73 22 L68 22 Z M66 22 L75 22 L75 28 L66 28 Z"/><path d="M52 28 L98 28 L98 42 L52 42 Z M40 42 L110 42 L110 56 L40 56 Z M28 56 L122 56 L122 70 L28 70 Z M16 70 L134 70 L134 84 L16 84 Z M4 84 L146 84 L146 100 L4 100 Z"/><path d="M68 30 L82 30 L82 42 L68 42 Z M64 44 L86 44 L86 56 L64 56 Z M60 58 L90 58 L90 70 L60 70 Z M56 72 L94 72 L94 84 L56 84 Z M52 86 L98 86 L98 100 L52 100 Z" fill="#0A0A18" opacity=".45"/><path d="M56 34 L60 34 L60 42 L56 42 Z M90 34 L94 34 L94 42 L90 42 Z M46 46 L50 46 L50 56 L46 56 Z M100 46 L104 46 L104 56 L100 56 Z M34 60 L38 60 L38 70 L34 70 Z M112 60 L116 60 L116 70 L112 70 Z M22 74 L26 74 L26 84 L22 84 Z M124 74 L128 74 L128 84 L124 84 Z" fill="#0A0A18" opacity=".3"/></svg>
+              <h3>Yerevan Engineering Center</h3>
+              <p>Established the Yerevan Engineering Center in Armenia — deep engineering capacity and delivery that follows the sun.</p>
+              <details class="htl__more"><summary>Details</summary><div class="htl__more-body"><span><b>Role</b> Engineering center</span><span><b>Focus</b> Core engineering capacity, platform development, and round-the-clock delivery support.</span></div></details>
+            </div>
           </div>
         </div>
       </div>
@@ -4138,7 +4510,7 @@ a:hover { color: var(--sig2); }
         <a href="About.dc.html#contact">Contact</a>
         <a href="Homepage%20v3.dc.html">Version 03</a>
       </div>
-      <span class="footer__note">Abu Dhabi &middot; KSA &middot; Ottawa &middot; Yerevan — Mockup v4 &middot; copy provisional</span>
+      <span class="footer__note">Canada &middot; USA &middot; UAE &middot; KSA &middot; Qatar &middot; Oman &middot; Egypt &middot; Armenia</span>
     </div>
   </footer>
 
@@ -4162,16 +4534,21 @@ a:hover { color: var(--sig2); }
   /* ---------- data ---------- */
 
   var OFFICES = [
-    { flag: '🇦🇪', country: 'UAE', city: 'ABU DHABI', role: 'HQ & delivery hub — on-site in hours', lat: 24.45, lng: 54.38 },
-    { flag: '🇸🇦', country: 'Saudi Arabia', city: 'CITY TBD', role: 'In-Kingdom presence — local compliance, local teams', lat: 24.71, lng: 46.68 },
-    { flag: '🇨🇦', country: 'Canada', city: 'OTTAWA', role: 'North American coverage — one partner across regions', lat: 45.42, lng: -75.70 },
+    { flag: '🇨🇦', country: 'Canada', city: 'OTTAWA', role: 'Global headquarters — founded here in 2010', lat: 45.42, lng: -75.70 },
+    { flag: '🇺🇸', country: 'USA', city: 'UNITED STATES', role: 'North American operations & technology partnerships', lat: 38.90, lng: -77.04 },
+    { flag: '🇦🇪', country: 'UAE', city: 'ABU DHABI', role: 'Regional HQ & delivery hub — on-site in hours', lat: 24.45, lng: 54.38 },
+    { flag: '🇸🇦', country: 'Saudi Arabia', city: 'KSA', role: 'In-Kingdom presence — local compliance, local teams', lat: 24.71, lng: 46.68 },
+    { flag: '🇶🇦', country: 'Qatar', city: 'DOHA', role: 'Regional delivery & collaboration', lat: 25.29, lng: 51.53 },
+    { flag: '🇴🇲', country: 'Oman', city: 'MUSCAT', role: 'Regional delivery & collaboration', lat: 23.59, lng: 58.41 },
+    { flag: '🇪🇬', country: 'Egypt', city: 'CAIRO', role: 'Engineering capacity & regional collaboration', lat: 30.04, lng: 31.24 },
     { flag: '🇦🇲', country: 'Armenia', city: 'YEREVAN', role: 'Engineering center — delivery that never sleeps', lat: 40.18, lng: 44.51 }
   ];
 
   var BEARINGS = [
-    { tag: 'N · THE FOUNDRY', label: 'AI Business Solutions', x: '50%', y: '9%', desc: 'Agents delivered to production — platform, accelerators, and IP, built inside your walls, on your data.', href: 'Foundry_2.html', link: 'Explore the YC AI Foundry →' },
-    { tag: 'SW', label: 'Observability', x: '18.5%', y: '80%', desc: 'Full stack — including AI workloads. Observability feeds the intelligence, and now observes the AI itself.', href: 'AI%20Solutions.dc.html#architecture', link: 'Observability & Intelligent Operations →' },
-    { tag: 'SE', label: 'Enterprise Solutions', x: '81.5%', y: '80%', desc: 'AIOps-enabled managed services — intelligence built into every platform we design, integrate, and run.', href: 'AI%20Solutions.dc.html#build', link: 'Enterprise Solutions & Managed Services →' }
+    { tag: 'N · THE FOUNDRY', label: 'AI Business Solutions', x: '50%', y: '7%', deg: 0, desc: 'Agents delivered to production — platform, accelerators, and IP, built inside your walls, on your data.', href: 'Foundry_2.html', link: 'Explore the YC AI Foundry →' },
+    { tag: 'E', label: 'Enterprise Solutions', x: '88%', y: '53.2%', deg: 90, desc: 'Full-stack enterprise platforms, infrastructure, and cybersecurity — delivered with engineering rigor and single-point accountability.', href: 'AI%20Solutions.dc.html#build', link: 'Enterprise Solutions →' },
+    { tag: 'S', label: 'Managed Services', x: '50%', y: '96%', deg: 180, desc: 'AIOps-enabled operations — end-to-end managed services with intelligence built into every service we run.', href: 'AI%20Solutions.dc.html#build', link: 'Managed Services →' },
+    { tag: 'W', label: 'Observability', x: '12%', y: '53.2%', deg: 270, desc: 'Full stack — including AI workloads. Observability feeds the intelligence, and now observes the AI itself.', href: 'AI%20Solutions.dc.html#architecture', link: 'Observability & Intelligent Operations →' }
   ];
 
   var METHOD_STEPS = [
@@ -4319,6 +4696,10 @@ a:hover { color: var(--sig2); }
     var link = $('[data-bearing-link]');
     if (!host) return;
 
+    var needle = $('[data-rose-needle]');
+    var rose = host.closest('.rose');
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     var buttons = BEARINGS.map(function (b, i) {
       var btn = document.createElement('button');
       btn.type = 'button';
@@ -4332,19 +4713,50 @@ a:hover { color: var(--sig2); }
       $('.bearing__tag', btn).textContent = b.tag;
       $('.bearing__label', btn).textContent = b.label;
 
-      var select = function () { setBearing(i); };
+      var select = function () { setBearing(i); hold = true; };
       btn.addEventListener('click', select);
       btn.addEventListener('mouseenter', select);
       host.appendChild(btn);
       return btn;
     });
 
+    var current = 0, hold = false;
+
+    /* the needle swings to whichever bearing is live — shortest path, eased */
+    var angle = 0, target = 0;
+    function spin() {
+      var d = ((target - angle) % 360 + 540) % 360 - 180;
+      angle += d * 0.07;
+      if (needle) needle.style.transform = 'rotate(' + angle.toFixed(2) + 'deg)';
+      requestAnimationFrame(spin);
+    }
+    if (needle) {
+      needle.style.transformOrigin = '440px 330px';
+      needle.style.transformBox = 'view-box';
+      if (!reduce) spin();
+    }
+
     function setBearing(i) {
+      current = i;
       buttons.forEach(function (btn, j) { btn.setAttribute('aria-pressed', String(i === j)); });
       var b = BEARINGS[i];
+      target = b.deg;
+      if (reduce && needle) needle.style.transform = 'rotate(' + b.deg + 'deg)';
       if (kicker) kicker.textContent = b.tag;
       if (desc) desc.textContent = b.desc;
       if (link) { link.textContent = b.link; link.href = b.href; }
+    }
+
+    /* auto-sweep: the compass keeps finding its next bearing until touched */
+    if (!reduce) {
+      setInterval(function () {
+        if (hold) return;
+        setBearing((current + 1) % BEARINGS.length);
+      }, 3600);
+      if (rose) {
+        rose.addEventListener('mouseenter', function () { hold = true; });
+        rose.addEventListener('mouseleave', function () { hold = false; });
+      }
     }
 
     setBearing(0);
@@ -4636,57 +5048,18 @@ a:hover { color: var(--sig2); }
     var bgDots = fib(900);
     var redrawStatic = function () {};
 
+    // land dots embedded (delta-encoded fib(9000) indices from world-atlas
+    // land-110m) — no fetch, so continents render on file://, previews, and
+    // offline alike.
+    var LAND_DELTAS = [35,13,3,5,5,3,4,1,3,5,5,3,5,3,5,5,3,5,5,8,3,5,3,1,1,3,1,4,12,1,3,5,5,7,1,11,1,1,2,1,4,1,4,7,1,1,7,4,1,1,3,1,3,1,4,1,4,3,1,3,1,3,1,2,1,1,2,2,1,3,1,3,1,2,1,3,1,1,1,4,2,1,1,6,1,3,4,1,3,3,3,2,2,1,2,5,3,3,5,1,4,8,5,8,3,5,1,2,2,11,5,5,3,8,2,8,3,2,1,1,3,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,1,1,2,1,2,1,1,1,3,2,2,1,1,1,1,1,1,2,1,1,1,1,1,1,3,2,2,1,2,1,1,1,2,1,2,1,1,1,3,1,1,2,1,2,1,1,1,3,2,2,1,1,1,1,1,1,2,1,2,1,1,1,3,2,2,1,2,1,1,1,2,1,1,1,1,1,1,1,2,1,1,2,1,4,1,3,2,2,1,2,1,1,1,2,1,1,1,1,1,1,3,2,2,1,2,2,1,3,2,2,1,3,1,1,3,3,1,1,3,2,3,3,1,1,2,1,1,3,1,3,1,1,3,2,2,1,3,2,2,1,3,1,1,2,1,1,2,1,1,3,2,1,2,3,1,1,3,4,1,3,1,1,3,1,1,2,1,3,2,3,3,1,1,2,1,1,3,1,3,1,1,3,2,1,1,1,3,5,3,1,1,3,1,3,1,3,1,1,1,2,3,1,1,2,1,1,2,1,1,3,1,1,3,1,1,1,1,1,3,1,4,3,1,1,3,1,3,1,3,1,1,1,2,1,2,1,1,3,1,4,3,1,1,3,1,1,1,1,1,3,1,1,1,2,3,1,1,3,1,2,1,1,3,1,1,1,2,1,2,1,1,3,2,3,3,1,1,3,1,2,1,1,3,1,1,1,2,1,2,1,1,3,1,2,2,3,1,1,3,1,1,1,1,1,3,1,1,1,2,3,1,1,3,1,2,1,1,3,1,1,3,1,2,1,1,3,2,1,2,3,1,1,3,1,2,1,1,3,1,1,1,2,3,1,1,3,1,2,1,1,3,1,1,3,1,2,1,1,3,1,1,1,2,3,1,1,3,1,2,1,1,3,1,1,3,3,1,1,3,1,1,1,2,3,1,1,3,3,1,1,3,1,1,1,2,3,1,1,3,1,2,2,3,1,1,3,3,1,1,3,1,2,2,3,1,1,3,3,1,1,3,1,1,1,2,1,2,1,1,3,1,2,2,3,1,1,3,3,1,1,3,1,1,1,2,3,1,1,3,1,2,2,3,1,1,3,3,1,1,3,1,1,1,2,4,1,3,1,2,1,1,4,1,3,3,1,1,3,1,2,2,3,1,1,3,3,1,1,3,1,2,2,4,1,3,1,2,1,1,3,1,1,3,3,1,1,3,1,2,2,3,1,1,3,3,1,1,3,1,2,2,4,1,3,1,2,2,3,1,1,3,3,1,1,3,1,1,1,2,4,1,3,3,1,1,4,1,3,4,1,3,1,4,3,1,1,3,3,1,1,3,1,2,2,4,1,3,1,3,1,3,1,1,1,2,3,1,1,3,1,1,3,4,1,3,3,1,1,4,2,2,4,1,3,1,4,3,1,1,3,3,1,1,3,1,1,3,3,1,1,3,3,1,1,3,1,2,2,3,1,1,3,1,4,3,1,1,3,3,1,1,3,1,2,2,3,1,1,3,5,3,1,2,2,4,1,3,1,4,3,1,1,3,4,1,4,2,2,3,1,1,3,1,4,3,1,1,3,3,1,1,3,1,4,3,1,4,4,1,3,1,2,2,3,1,1,3,1,4,3,1,4,4,1,4,2,2,3,1,1,3,5,3,1,2,2,4,1,3,1,4,3,1,4,4,1,3,1,2,2,3,1,1,3,5,3,1,4,4,1,4,1,3,3,1,1,3,5,3,1,4,4,1,3,1,2,2,3,1,4,4,1,3,1,4,4,1,3,3,2,3,1,1,3,4,1,3,1,1,1,2,4,4,5,3,1,1,1,2,4,1,3,1,2,2,3,1,4,4,1,3,1,1,1,2,4,1,3,5,3,1,4,4,1,3,1,2,2,3,1,4,5,3,1,1,1,2,4,1,3,3,2,3,1,4,4,1,3,1,2,2,4,1,3,5,3,1,1,1,2,4,1,3,3,2,3,1,4,5,3,1,2,2,4,1,3,3,2,3,1,2,2,3,1,1,3,1,2,2,3,1,1,3,5,3,1,2,2,4,1,3,3,2,3,1,4,3,2,3,1,2,2,4,1,3,3,2,3,1,2,2,3,1,1,3,3,2,3,1,4,3,2,3,1,2,2,3,1,1,3,3,2,3,1,4,3,1,1,3,1,2,2,3,1,1,3,3,2,3,1,2,2,3,1,1,3,3,2,3,1,4,3,2,3,3,2,3,1,1,3,3,2,3,3,2,3,2,3,1,2,2,3,1,1,3,3,2,6,2,3,1,1,3,3,2,3,3,2,3,2,3,3,2,4,1,3,3,2,3,3,2,3,2,3,3,2,3,1,4,3,2,6,2,3,1,1,3,3,2,3,3,2,3,2,4,2,2,4,4,3,2,3,3,2,3,2,3,3,2,3,3,2,3,2,6,2,3,1,1,3,3,2,3,3,2,3,2,6,2,3,1,4,3,2,3,3,2,3,1,1,6,2,3,3,2,3,2,3,3,2,3,1,7,2,3,3,2,3,1,1,6,2,3,1,2,2,3,2,3,3,2,3,1,1,6,2,3,3,2,3,2,3,3,2,4,1,1,5,2,3,3,2,3,2,6,2,3,3,2,3,2,3,1,2,2,3,1,7,2,3,3,2,3,2,3,1,2,6,2,2,3,2,3,3,2,3,8,2,3,3,2,3,5,3,5,1,7,2,3,1,2,2,3,6,2,2,3,1,2,5,2,3,3,2,3,1,7,2,3,3,2,3,5,3,5,1,2,5,2,3,1,2,2,3,8,2,3,3,2,3,5,3,5,1,5,2,2,3,1,2,2,3,8,6,2,5,2,3,3,2,3,6,2,2,3,1,2,2,3,5,3,5,1,1,6,2,3,1,2,2,3,8,6,2,5,2,3,3,5,8,2,3,1,2,2,3,8,5,1,2,5,2,3,3,5,8,2,4,2,2,3,2,6,5,8,2,3,1,2,2,3,8,5,3,5,2,4,2,5,8,5,3,2,3,8,5,2,1,5,2,3,1,2,5,8,8,5,2,4,2,5,8,2,3,3,2,3,8,5,2,1,5,2,4,2,5,8,8,2,3,2,6,5,8,8,5,8,5,3,5,2,4,2,5,8,8,2,3,8,5,3,5,8,5,8,5,3,5,2,6,5,6,2,2,6,2,3,8,5,3,5,2,6,5,6,2,5,3,2,1,2,8,5,6,2,5,3,5,8,5,3,3,2,2,6,5,2,4,2,5,3,2,3,6,2,5,6,2,8,5,6,2,5,3,3,2,8,5,6,2,2,3,3,2,3,6,2,5,2,1,3,2,8,5,6,2,5,3,3,2,8,5,6,2,5,3,5,6,2,5,3,3,2,8,5,6,2,5,3,3,2,8,5,6,2,8,3,2,2,4,2,5,3,3,2,13,6,2,2,3,6,2,6,2,5,6,2,11,2,2,4,2,2,3,6,2,13,6,2,2,9,2,2,4,2,5,6,2,13,6,2,2,9,2,13,6,2,11,2,2,4,2,5,6,2,13,6,2,2,9,2,2,4,7,6,2,11,2,6,2,11,2,2,4,7,6,2,11,2,2,4,2,5,2,4,2,13,2,4,2,2,9,2,2,4,7,6,2,11,2,2,4,2,11,2,2,4,5,2,6,2,2,9,2,2,4,2,5,6,2,11,2,6,2,11,2,2,4,5,2,6,2,2,9,2,2,4,2,11,2,11,2,6,2,7,4,2,2,4,5,8,2,2,5,4,2,6,2,3,4,4,2,6,1,4,2,6,2,2,5,4,2,6,5,8,2,7,4,2,2,4,1,1,3,8,2,6,1,4,8,2,2,9,2,6,5,8,2,6,1,4,2,6,2,3,8,2,6,1,4,8,2,2,5,4,2,6,2,3,8,2,2,4,1,4,2,6,2,11,2,6,5,8,2,2,5,4,2,6,2,3,8,2,2,4,1,4,8,2,11,2,6,5,8,2,7,4,2,2,4,2,3,8,2,6,1,4,8,2,11,2,6,2,3,8,2,6,5,2,2,4,2,11,2,6,1,4,8,2,11,2,6,2,11,2,6,5,8,2,11,2,6,5,8,2,11,2,6,2,11,2,6,5,8,2,11,2,6,2,7,4,2,11,2,6,2,11,2,6,5,8,2,7,4,2,6,2,5,2,4,2,6,5,4,4,2,11,2,6,2,7,4,2,7,4,2,6,2,11,2,6,5,4,4,2,11,2,6,2,5,2,4,2,11,4,4,2,11,2,4,4,1,3,2,1,1,1,1,4,1,1,1,1,1,2,1,1,2,2,1,1,2,2,3,9,2,11,4,4,2,11,2,6,2,5,2,4,2,7,4,4,4,2,7,4,2,11,2,2,4,2,7,4,8,2,5,2,4,2,7,4,4,4,2,7,4,2,8,5,2,4,2,7,4,4,4,2,7,4,2,7,4,4,4,2,7,4,4,4,2,5,2,4,1,1,7,4,4,4,2,7,4,2,2,11,2,4,2,7,4,4,4,2,7,4,2,7,4,4,4,2,7,4,2,2,11,2,4,2,7,4,4,4,2,7,4,2,2,5,6,2,4,2,7,4,4,4,2,7,4,2,7,8,4,2,7,4,2,2,5,6,2,4,2,7,8,4,2,7,4,2,2,5,8,4,2,7,4,4,4,1,1,7,4,2,7,8,4,2,7,4,2,2,5,8,4,2,7,8,4,2,7,4,2,2,5,8,4,2,7,4,4,5,8,4,2,7,8,4,2,7,4,2,2,5,8,4,2,7,4,4,4,1,8,4,2,7,8,4,2,7,4,4,5,8,4,2,7,8,4,2,7,4,2,7,8,4,2,7,8,4,1,8,4,2,7,8,4,2,7,4,4,5,12,2,7,8,4,13,9,12,2,7,8,4,1,12,2,7,8,4,9,4,4,5,12,9,5,7,22,12,22,12,9,5,7,22,12,21,13,9,12,34,21,34,21,27,7,34,21,34,21,34,22,26,7,34,21,34,48,7,34,55,55,34,55,55,34,55,34,470,5,21,8,3,2,3,5,8,3,2,8,3,2,3,5,4,4,3,2,3,5,3,2,3,3,2,3,5,3,2,3,3,2,4,1,1,2,3,2,3,2,1,2,3,2,1,2,3,2,1,2,1,1,1,2,3,2,1,2,3,1,1,3,2,1,2,3,1,1,1,2,2,1,2,3,1,1,1,2,3,1,1,1,2,1,1,1,1,1,3,1,1,1,1,1,3,1,1,3,1,1,1,1,1,3,1,1,1,2,2,1,1,1,3,1,1,1,1,1,3,1,1,1,1,1,2,1,1,1,3,1,1,1,1,1,2,1,1,1,1,1,1,2,1,1,1,1,2,1,1,1,2,2,1,1,1,3,1,1,1,1,1,1,2,1,1,1,2,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,2,1,1,1];
     function loadLand() {
-      fetch('assets/land-110m.json')
-        .then(function (r) { return r.json(); })
-        .then(function (topo) {
-          var sc = topo.transform.scale, tl = topo.transform.translate;
-          var arcs = topo.arcs.map(function (arc) {
-            var ax = 0, ay = 0;
-            return arc.map(function (d) { ax += d[0]; ay += d[1]; return [ax * sc[0] + tl[0], ay * sc[1] + tl[1]]; });
-          });
-          var ring = function (idxs) {
-            var pts = [];
-            idxs.forEach(function (ai) {
-              var a = ai >= 0 ? arcs[ai] : arcs[~ai].slice().reverse();
-              pts = pts.concat(pts.length ? a.slice(1) : a);
-            });
-            return pts;
-          };
-          var MW = 720, MH = 360;
-          var mc = document.createElement('canvas');
-          mc.width = MW; mc.height = MH;
-          var mx = mc.getContext('2d');
-          mx.fillStyle = '#fff';
-          mx.beginPath();
-          var geoms = topo.objects.land.geometries || [topo.objects.land];
-          geoms.forEach(function (gm) {
-            var polys = gm.type === 'Polygon' ? [gm.arcs] : gm.arcs;
-            polys.forEach(function (poly) {
-              poly.forEach(function (idxs) {
-                ring(idxs).forEach(function (p, i) {
-                  var px = (p[0] + 180) * 2, py = (90 - p[1]) * 2;
-                  if (i === 0) mx.moveTo(px, py); else mx.lineTo(px, py);
-                });
-                mx.closePath();
-              });
-            });
-          });
-          mx.fill('evenodd');
-          var img = mx.getImageData(0, 0, MW, MH).data;
-          var R2D = 180 / Math.PI;
-          var land = fib(9000).filter(function (p) {
-            var lat = Math.asin(p[1]) * R2D;
-            var lonp = Math.atan2(p[0], p[2]) * R2D;
-            var xi = Math.min(MW - 1, Math.max(0, Math.round((lonp + 180) * 2)));
-            var yi = Math.min(MH - 1, Math.max(0, Math.round((90 - lat) * 2)));
-            return img[(yi * MW + xi) * 4 + 3] > 128;
-          });
-          if (land.length > 200) { dots = land; N = dots.length; isLand = true; redrawStatic(); }
-        })
-        .catch(function () { /* offline — keep the plain dotted sphere */ });
+      var idx = [], acc = 0, i;
+      for (i = 0; i < LAND_DELTAS.length; i++) { acc += LAND_DELTAS[i]; idx.push(acc); }
+      var all = fib(9000), land = [], k = 0;
+      for (i = 0; i < idx.length; i++) land.push(all[idx[i]]);
+      dots = land; N = dots.length; isLand = true;
+      redrawStatic();
     }
-
     var mk = OFFICES.map(function (o) {
       return { sy: Math.sin(o.lat * D2R), cl: Math.cos(o.lat * D2R), lon: o.lng * D2R };
     });
@@ -4743,7 +5116,7 @@ a:hover { color: var(--sig2); }
         var z1 = p[2] * cR - p[0] * sR;
         var y2 = p[1] * cT - z1 * sT, z2 = p[1] * sT + z1 * cT;
         if (z2 < -0.1) return;
-        var a = dim ? 0.06 + 0.17 * Math.max(0, z2) : (isLand ? 0.22 + 0.62 * Math.max(0, z2) : 0.10 + 0.46 * Math.max(0, z2));
+        var a = dim ? 0.09 + 0.2 * Math.max(0, z2) : (isLand ? 0.4 + 0.6 * Math.max(0, z2) : 0.10 + 0.46 * Math.max(0, z2));
         ctx.fillStyle = 'rgba(' + dotRgb + ',' + a.toFixed(3) + ')';
         var s2 = (isLand && !dim) ? 1.8 : 1.5;
         ctx.fillRect(c + x1 * R, c - y2 * R, s2, s2);
@@ -5159,10 +5532,10 @@ a:hover { color: var(--sig2); }
       if (ci >= word.length) {
         lockOn(word);                       /* word complete: needle locks on */
         deleting = true;
-        setTimeout(tick, 2100);
+        setTimeout(tick, 2415);   /* hold 15% longer */
         return;
       }
-      setTimeout(tick, 70 + Math.random() * 60);
+      setTimeout(tick, 21 + Math.random() * 17);
     } else {
       if (ci === word.length) startWander(); /* word starts disappearing: needle drifts */
       ci--;
@@ -5171,10 +5544,10 @@ a:hover { color: var(--sig2); }
         deleting = false;
         wi = (wi + 1) % words.length;
         setLive(words[wi]);
-        setTimeout(tick, 320);
+        setTimeout(tick, 620);  /* breather before the next word types in */
         return;
       }
-      setTimeout(tick, 38);
+      setTimeout(tick, 10);
     }
   }
   setTimeout(tick, 700);
@@ -5205,6 +5578,51 @@ a:hover { color: var(--sig2); }
     });
   }, { threshold: .6 });
   nums.forEach(function (n) { io.observe(n); });
+})();
+
+/* ---------- journey rail: slideshow controls ---------- */
+(function () {
+  var track = document.querySelector('[data-htl-track]');
+  if (!track) return;
+  var prev = document.querySelector('[data-htl-prev]');
+  var next = document.querySelector('[data-htl-next]');
+
+  function step() {
+    var item = track.querySelector('.htl__item');
+    return item ? item.getBoundingClientRect().width + 20 : 340;
+  }
+  function update() {
+    var max = track.scrollWidth - track.clientWidth - 2;
+    if (prev) prev.disabled = track.scrollLeft <= 2;
+    if (next) next.disabled = track.scrollLeft >= max;
+  }
+  if (prev) prev.addEventListener('click', function () { track.scrollBy({ left: -step(), behavior: 'smooth' }); });
+  if (next) next.addEventListener('click', function () { track.scrollBy({ left: step(), behavior: 'smooth' }); });
+  track.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+
+  /* pointer drag — the slideshow feel on desktop */
+  var down = false, startX = 0, startScroll = 0, moved = false;
+  track.addEventListener('pointerdown', function (e) {
+    if (e.pointerType !== 'mouse') return;      /* touch scrolls natively */
+    down = true; moved = false;
+    startX = e.clientX; startScroll = track.scrollLeft;
+    track.classList.add('is-dragging');
+  });
+  window.addEventListener('pointermove', function (e) {
+    if (!down) return;
+    var dx = e.clientX - startX;
+    if (Math.abs(dx) > 4) moved = true;
+    track.scrollLeft = startScroll - dx;
+  });
+  window.addEventListener('pointerup', function () {
+    if (!down) return;
+    down = false;
+    track.classList.remove('is-dragging');
+  });
+  /* swallow accidental clicks after a drag */
+  track.addEventListener('click', function (e) { if (moved) { e.preventDefault(); e.stopPropagation(); } }, true);
 })();
 
 </script>
