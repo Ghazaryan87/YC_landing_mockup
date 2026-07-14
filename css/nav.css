@@ -1,0 +1,198 @@
+/* ============================================================
+   THE NAVBAR — one definition, every page.
+
+   This file is deliberately self-contained: it carries its own
+   palette instead of reading the page's design tokens. That is what
+   lets the AI Foundry page — which ships its own stylesheet and its
+   own token names — render a navbar identical to the pages built on
+   styles.css. Nothing here may reference a page-level variable.
+
+   Two implementations of this bar is what caused it to drift: the
+   nav jumped 249px sideways between pages and rendered at two
+   different heights and font sizes. Keep it here, keep it alone.
+   ============================================================ */
+
+:root { --nav-h: 96px; }
+@media (max-width: 560px) { :root { --nav-h: 84px; } }
+
+/* fixed lifts the bar out of flow, so the body carries its height and
+   anchor targets get scroll-padding — otherwise every #section lands under it */
+body { padding-top: var(--nav-h); }
+html { scroll-padding-top: calc(var(--nav-h) + 16px); }
+
+.nav {
+  /* the bar's own palette — the dark theme, on every page */
+  --nav-surface: #0A0A18;
+  --nav-card: #13142C;
+  --nav-line: rgba(155, 160, 255, .13);
+  --nav-chip-line: rgba(155, 160, 255, .26);
+  --nav-fg: #F5F6FC;
+  --nav-body: #B9BDDB;
+  --nav-dim: #8388B2;
+  --nav-sig: #5E63F2;
+  --nav-sig2: #7479FF;
+  --nav-soft: #9BA0FF;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 60;
+  background: color-mix(in srgb, var(--nav-surface) 84%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid transparent;
+  transition: background .3s, border-color .3s;
+}
+/* quiet at the top, solid with a hairline once scrolled */
+.nav.scrolled {
+  background: color-mix(in srgb, var(--nav-surface) 92%, transparent);
+  border-bottom-color: var(--nav-line);
+}
+
+.nav__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.nav__brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  color: var(--nav-fg);
+}
+.nav__brand:hover { color: var(--nav-fg); }
+
+.nav__logo { height: 59px; width: auto; display: block; }
+@media (max-width: 560px) { .nav__logo { height: 51px; } }
+
+.nav__wordmark {
+  font-family: 'Sora', sans-serif;
+  font-weight: 600;
+  font-size: 19px;
+  letter-spacing: -.01em;
+}
+
+.nav__spacer { flex: 1; min-width: 8px; }
+
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: 19px;
+  flex-wrap: wrap;
+}
+
+/* fixed px, never a token: styles.css re-declares its type scale as fluid
+   clamps above 1500px, which silently inflated this to 19px */
+.nav__link {
+  position: relative;
+  color: var(--nav-body);
+  font-size: 14px;
+  white-space: nowrap;
+}
+.nav__link:hover { color: var(--nav-fg); }
+.nav__link--on { color: var(--nav-fg); }
+
+.nav__link::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 100%; bottom: -4px;
+  height: 1.5px;
+  background: var(--nav-soft);
+  transition: right .25s;
+}
+.nav__link:hover::after,
+.nav__link--on::after { right: 0; }
+
+.nav__cta {
+  background: var(--nav-sig);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 10px;
+  white-space: nowrap;
+}
+.nav__cta:hover { background: var(--nav-sig2); color: #fff; }
+
+.nav__burger {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid var(--nav-chip-line);
+  background: var(--nav-card);
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  flex-shrink: 0;
+}
+.nav__burger svg path { stroke: var(--nav-fg); }
+
+.nav__panel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: color-mix(in srgb, var(--nav-surface) 97%, transparent);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--nav-line);
+  box-shadow: 0 28px 56px rgba(0, 0, 0, .3);
+  max-height: calc(100vh - var(--nav-h));
+  overflow: auto;
+}
+.nav__panel[hidden] { display: none; }
+
+.nav__panel-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 6px 24px 22px;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav__panel-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 15px 2px;
+  border-bottom: 1px solid var(--nav-line);
+  color: var(--nav-fg);
+  font-size: 16px;
+  font-weight: 500;
+}
+.nav__panel-link span:last-child { color: var(--nav-dim); }
+
+.nav__panel-cta {
+  margin-top: 16px;
+  background: var(--nav-sig);
+  color: #fff;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 14px;
+  border-radius: 999px;
+  text-align: center;
+}
+.nav__panel-cta:hover { background: var(--nav-sig2); color: #fff; }
+
+/* the links collapse into the burger panel */
+@media (max-width: 1180px) {
+  .nav__links { display: none; }
+  .nav__burger { display: inline-flex; }
+}
+
+/* On wide screens styles.css widens its containers to 80vw. The bar has to
+   track that, or it lines up with the page on four pages and floats inboard
+   on the AI Foundry page, which doesn't load styles.css. */
+@media (min-width: 1500px) {
+  .nav__inner,
+  .nav__panel-inner { max-width: 80vw; }
+}

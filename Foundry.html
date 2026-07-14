@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <title>YourCompass · AI Foundry — Where business problems become production AI</title>
+<link rel="stylesheet" href="css/nav.css">
 <meta name="description" content="The AI Foundry is YourCompass's build studio. We design, build, and operate AI products inside your real environment — so they survive the jump to production.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,9 +26,8 @@
   --maxw:1180px; --ok:#5BE8A8; --warnc:#F2B95C; --alert:#F0716B;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:86px}
-/* nav is fixed, so body carries its height — otherwise the hero starts under it */
-body{background:var(--base);color:var(--text);font-family:var(--body);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-top:70px}
+html{scroll-behavior:smooth}
+body{background:var(--base);color:var(--text);font-family:var(--body);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 ::selection{background:var(--indigo);color:#fff}
 a{color:inherit;text-decoration:none}
 img,svg{display:block;max-width:100%}
@@ -71,31 +71,11 @@ ul,ol{list-style:none}
 @keyframes spinslow{to{transform:rotate(360deg)}}
 @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
 
-/* ---------- NAV ---------- */
-nav.top{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(18px);background:rgba(10,10,24,.6);border-bottom:1px solid transparent;transition:background .3s,border-color .3s}
-nav.top.scrolled{background:rgba(10,10,24,.85);border-color:var(--line)}
-.nav__in{display:flex;align-items:center;justify-content:space-between;height:70px;gap:20px;transition:height .3s}
-nav.top.scrolled .nav__in{height:60px}
-.brand{display:flex;align-items:center;gap:10px;flex:none}
-.brand img{height:25px;width:auto}
-nav.top .brand img{height:38px}
-.brand__name{font-family:var(--disp);font-weight:600;font-size:17px;letter-spacing:-.01em}
-.brand__sub{font-family:var(--disp);font-weight:500;font-size:var(--fs-xs);color:var(--indigo-soft);letter-spacing:.02em;padding:3px 10px;border:1px solid var(--line-2);border-radius:20px;white-space:nowrap}
-.nav__links{display:flex;align-items:center;gap:28px;font-size:14px;font-weight:500}
-.nav__links a{color:var(--muted);transition:color .2s;white-space:nowrap;position:relative}
-.nav__links a::after{content:"";position:absolute;left:0;right:100%;bottom:-4px;height:1.5px;background:var(--indigo-soft);transition:right .25s}
-.nav__links a:hover{color:var(--text)}
-.nav__links a:hover::after{right:0}
-.nav__links a.on{color:var(--text)}
-.nav__links a.on::after{right:0}
-.nav__cta-m{display:none}
-.nav__cta{font-size:14px;font-weight:600;color:#fff;background:var(--indigo);padding:10px 18px;border-radius:10px;transition:background .2s,box-shadow .2s;white-space:nowrap}
-.nav__cta:hover{background:#7479FF;box-shadow:0 8px 24px -8px rgba(94,99,242,.7)}
-.burger{display:none;flex-direction:column;gap:5px;padding:8px;z-index:110}
-.burger span{width:22px;height:2px;background:var(--text);border-radius:2px;transition:transform .25s,opacity .25s}
-.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-.burger.open span:nth-child(2){opacity:0}
-.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+/* footer brand (the navbar lives in css/nav.css now) */
+footer .brand{display:flex;align-items:center;gap:10px;flex:none}
+footer .brand img{height:25px;width:auto}
+footer .brand__name{font-family:var(--disp);font-weight:600;font-size:17px;letter-spacing:-.01em}
+footer .brand__sub{font-family:var(--mono);font-size:var(--fs-2xs);letter-spacing:.06em;color:var(--indigo-soft)}
 
 /* ---------- HERO ---------- */
 .hero{padding:48px 0 0;position:relative;text-align:center;overflow:hidden}
@@ -638,13 +618,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--base-2)}
   .pillar__body .pillar__num{margin-bottom:14px}
 }
 @media(max-width:880px){
-  .nav__links,.nav__cta{display:none}
-  .burger{display:flex}
-  .nav__links.open{display:flex;position:absolute;top:70px;left:0;right:0;flex-direction:column;gap:0;background:var(--base-2);border-bottom:1px solid var(--line);padding:10px 0}
-  .nav__links.open a{padding:14px 30px}
-  /* the desktop CTA is hidden on mobile — carry it into the burger menu */
-  .nav__links.open .nav__cta-m{display:block;color:var(--indigo-soft);font-weight:600}
-  .fline__stage{grid-template-columns:1fr;gap:26px}
+  .nav__links,
   .fline__beam,.fbus,.fpulse,.ftrunk{display:none}
   .fline__col--in .fchip::after,.fline__col--out .fchip::before,.fline__col--out .fchip::after{display:none}
   .fline__col--out .fchip{animation:none}
@@ -680,7 +654,6 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--base-2)}
 .mockbadge,.agent__stats,.chat__side h4,.rag__col h4,.pipe__s,.quote__chip,.rdoc b em{font-family:var(--mono)}
 .hero__chip,.foot__dis{font-family:var(--body)}
 .bcard__num{font-size:54px;-webkit-text-stroke-width:1px;top:22px}
-.brand__sub{font-family:var(--mono);font-size:var(--fs-2xs);letter-spacing:.06em}
 </style>
 </head>
 <body>
@@ -688,26 +661,42 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--base-2)}
 <div id="prog" aria-hidden="true"></div>
 
 <!-- ===================== NAV ===================== -->
-<nav class="top" id="topnav">
-  <div class="wrap nav__in">
-    <a class="brand" href="index.html">
-      <img src="assets/logo.png" alt="YourCompass" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
-      <span class="brand__name" style="display:none">YourCompass</span>
-      <span class="brand__sub">AI Foundry</span>
+<header class="nav t-dark">
+  <nav class="nav__inner">
+    <a class="nav__brand" href="index.html">
+      <img class="nav__logo" src="assets/logo.png" alt="YourCompass">
     </a>
-    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
-    <div class="nav__links" id="navlinks">
-      <a href="index.html">Home</a>
-      <a href="enterprise.html">Enterprise Solutions</a>
-      <a href="managed.html">Managed Services</a>
-      <a class="on" href="Foundry.html">AI Business Solutions</a>
-      <a href="Observability.html">Observability</a>
-      <a href="index.html#team">About</a>
-      <a class="nav__cta-m" href="#contact">Get In Touch</a>
+    <div class="nav__spacer"></div>
+    <div class="nav__links">
+      <a class="nav__link" href="index.html">Home</a>
+      <a class="nav__link" href="enterprise.html">Enterprise Solutions</a>
+      <a class="nav__link" href="managed.html">Managed Services</a>
+      <a class="nav__link nav__link--on" href="Foundry.html">AI Business Solutions</a>
+      <a class="nav__link" href="Observability.html">Observability</a>
+      <a class="nav__link" href="index.html#team">About</a>
+      <a class="nav__cta" href="#contact">Get In Touch</a>
     </div>
-    <a class="nav__cta" href="#contact">Get In Touch</a>
+    <button class="nav__burger" type="button" data-burger aria-expanded="false" aria-controls="mnav" aria-label="Menu">
+      <svg data-burger-open width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+        <path d="M3 5.5 H17 M3 10 H17 M3 14.5 H17" stroke-width="1.7" stroke-linecap="round" fill="none"></path>
+      </svg>
+      <svg data-burger-close width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" hidden>
+        <path d="M5 5 L15 15 M15 5 L5 15" stroke-width="1.7" stroke-linecap="round" fill="none"></path>
+      </svg>
+    </button>
+  </nav>
+  <div class="nav__panel" id="mnav" data-mpanel hidden>
+    <div class="nav__panel-inner">
+      <a class="nav__panel-link" href="index.html"><span>Home</span><span>&rarr;</span></a>
+      <a class="nav__panel-link" href="enterprise.html"><span>Enterprise Solutions</span><span>&rarr;</span></a>
+      <a class="nav__panel-link" href="managed.html"><span>Managed Services</span><span>&rarr;</span></a>
+      <a class="nav__panel-link" href="Foundry.html"><span>AI Business Solutions</span><span>&rarr;</span></a>
+      <a class="nav__panel-link" href="Observability.html"><span>Observability</span><span>&rarr;</span></a>
+      <a class="nav__panel-link" href="index.html#team"><span>About</span><span>&rarr;</span></a>
+      <a class="nav__panel-cta" href="#contact">Get In Touch</a>
+    </div>
   </div>
-</nav>
+</header>
 
 <main id="top">
 
@@ -1426,12 +1415,6 @@ const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const finePointer=matchMedia('(hover:hover) and (pointer:fine)').matches;
 $('yr').textContent=new Date().getFullYear();
 
-/* nav */
-$('burger').addEventListener('click',()=>{
-  const b=$('burger'),l=$('navlinks');b.classList.toggle('open');l.classList.toggle('open');
-  b.setAttribute('aria-expanded',b.classList.contains('open'));
-});
-qa('#navlinks a').forEach(a=>a.addEventListener('click',()=>{$('burger').classList.remove('open');$('navlinks').classList.remove('open')}));
 
 /* scroll systems: progress bar, nav shrink, parallax */
 const paraEls=qa('[data-para]');
@@ -1442,7 +1425,6 @@ function onScroll(){
   requestAnimationFrame(()=>{
     const y=scrollY,h=document.documentElement.scrollHeight-innerHeight;
     $('prog').style.width=(y/h*100)+'%';
-    $('topnav').classList.toggle('scrolled',y>30);
     if(stWords.length){
       const r=$('statement').getBoundingClientRect();
       const p=Math.min(Math.max((innerHeight*0.86-r.top)/(r.height+innerHeight*0.30),0),1);
@@ -1795,10 +1777,9 @@ html,body{overflow-x:clip}
   .fnd__chips-lbl{padding-top:0}
 }
 @media(pointer:coarse){
-  .nav__links.open a{min-height:44px}
-  .faq q,.faq summary,.burger{min-height:44px}
-}
+  .faq q,.faq summary,}
 </style>
 
+<script src="js/nav.js"></script>
 </body>
 </html>

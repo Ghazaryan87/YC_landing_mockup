@@ -273,38 +273,6 @@
 
   /* ---------- nav ---------- */
 
-  function initNav() {
-    var burger = $('[data-burger]');
-    var panel = $('[data-mpanel]');
-    if (!burger || !panel) return;
-
-    var iconOpen = $('[data-burger-open]', burger);
-    var iconClose = $('[data-burger-close]', burger);
-
-    function set(open) {
-      panel.hidden = !open;
-      burger.setAttribute('aria-expanded', String(open));
-      iconOpen.hidden = open;
-      iconClose.hidden = !open;
-    }
-
-    burger.addEventListener('click', function () {
-      set(burger.getAttribute('aria-expanded') !== 'true');
-    });
-
-    $$('a', panel).forEach(function (a) {
-      a.addEventListener('click', function () { set(false); });
-    });
-
-    // widening past the breakpoint leaves the panel orphaned; close it
-    var mq = window.matchMedia('(min-width: 980px)');
-    var onChange = function (e) { if (e.matches) set(false); };
-    if (mq.addEventListener) mq.addEventListener('change', onChange);
-    else mq.addListener(onChange);
-  }
-
-  /* ---------- hero draft switcher ---------- */
-
   function initHeroDrafts() {
     var chips = $$('[data-draft]');
     var heads = $$('[data-hero]');
@@ -1113,7 +1081,6 @@
 
   function boot() {
     buildOrnCells();
-    initNav();
     initHeroDrafts();
     initBearings();
     initMethod();
@@ -1137,13 +1104,11 @@
 /* ---------- Atelier layer: scroll progress + glass nav ---------- */
 (function () {
   var prog = document.getElementById('prog');
-  var nav = document.querySelector('.nav');
   function onScroll() {
     var doc = document.documentElement;
     var max = (doc.scrollHeight - window.innerHeight) || 1;
     var y = window.scrollY || 0;
     if (prog) prog.style.width = Math.min(100, (y / max) * 100) + '%';
-    if (nav) nav.classList.toggle('scrolled', y > 8);
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();

@@ -281,131 +281,6 @@ a:hover { color: var(--sig2); }
    NAV
    ============================================================ */
 
-.nav {
-  position: sticky;
-  top: 0;
-  z-index: 60;
-  background: color-mix(in srgb, var(--surface) 84%, transparent);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--line);
-}
-
-.nav__inner {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 14px 24px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.nav__brand {
-  display: flex;
-  align-items: center;
-  gap: 11px;
-  color: var(--fg);
-}
-.nav__brand:hover { color: var(--fg); }
-
-.nav__wordmark {
-  font-family: 'Sora', sans-serif;
-  font-weight: 600;
-  font-size: 19px;
-  letter-spacing: -.01em;
-}
-
-.nav__spacer { flex: 1; min-width: 8px; }
-
-.nav__links {
-  display: flex;
-  align-items: center;
-  gap: 19px;
-  flex-wrap: wrap;
-}
-
-/* Fixed px, not a token: the min-width:1500px fluid scale re-sizes every token,
-   which was inflating the nav to 19px. Nav is chrome — it stays put, and it
-   matches the AI Foundry page, which has no fluid scale. */
-.nav__link { color: var(--body); font-size: 14px; }
-.nav__link:hover { color: var(--fg); }
-
-.nav__cta {
-  background: var(--sig);
-  color: #fff;
-  font-size: 14px;
-  font-weight: 600;
-  padding: 10px 18px;
-  border-radius: 999px;
-  white-space: nowrap;
-}
-.nav__cta:hover { background: var(--sig2); color: #fff; }
-
-.nav__burger {
-  display: none;
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  border: 1px solid var(--chip-line);
-  background: var(--card);
-  cursor: pointer;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  flex-shrink: 0;
-}
-.nav__burger svg path { stroke: var(--fg); }
-
-.nav__panel {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background: color-mix(in srgb, var(--surface) 97%, transparent);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border-bottom: 1px solid var(--line);
-  box-shadow: 0 28px 56px rgba(0, 0, 0, .3);
-  max-height: calc(100vh - 76px);
-  overflow: auto;
-}
-
-.nav__panel[hidden] { display: none; }
-
-.nav__panel-inner {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 6px 24px 22px;
-  display: flex;
-  flex-direction: column;
-}
-
-.nav__panel-link {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 15px 2px;
-  border-bottom: 1px solid var(--line);
-  color: var(--fg);
-  font-size: 16px;
-  font-weight: 500;
-}
-.nav__panel-link span:last-child { color: var(--dim); }
-
-.nav__panel-cta {
-  margin-top: 16px;
-  background: var(--sig);
-  color: #fff;
-  font-weight: 600;
-  font-size: var(--fs-base);
-  padding: 14px;
-  border-radius: 999px;
-  text-align: center;
-}
-.nav__panel-cta:hover { background: var(--sig2); color: #fff; }
-
 /* ============================================================
    1.1 HERO
    ============================================================ */
@@ -2404,26 +2279,6 @@ a:hover { color: var(--sig2); }
   box-shadow: 0 0 12px rgba(94, 99, 242, .8);
 }
 
-/* glass nav: quiet at top, solid + hairline once scrolled */
-.nav {
-  border-bottom-color: transparent;
-  transition: background .3s, border-color .3s;
-}
-.nav.scrolled {
-  background: color-mix(in srgb, var(--surface) 92%, transparent);
-  border-bottom-color: var(--line);
-}
-.nav__link { position: relative; }
-.nav__link::after {
-  content: "";
-  position: absolute;
-  left: 0; right: 100%; bottom: -4px;
-  height: 1.5px;
-  background: var(--soft);
-  transition: right .25s;
-}
-.nav__link:hover::after { right: 0; }
-.nav__cta { border-radius: 10px; }
 
 /* gradient signal accent on display headings (dark surfaces) */
 .t-dark .hero__h1 em,
@@ -3542,7 +3397,6 @@ a:hover { color: var(--sig2); }
 
   /* primary containers widen to 80vw */
   .wrap,
-  .nav__inner,
   .hero__inner,
   .demos__grid,
   .demos__head,
@@ -3940,16 +3794,6 @@ html, body { overflow-x: clip; }
 @media (max-width: 560px) { .recog { flex-direction: column; } }
 
 /* ---------- brand assets ---------- */
-/* ---------- fixed navbar ----------
-   Fixed lifts the bar out of flow, so body carries its height as padding and
-   anchor targets get scroll-padding — otherwise every #section lands under it. */
-:root { --nav-h: 78px; }
-.nav { position: fixed; top: 0; left: 0; right: 0; }
-body { padding-top: var(--nav-h); }
-html { scroll-padding-top: calc(var(--nav-h) + 16px); }
-@media (max-width: 560px) { :root { --nav-h: 68px; } }
-
-.nav__logo { height: 45px; width: auto; display: block; }
 .footer__logo { height: 26px; width: auto; display: block; }
 @media (max-width: 560px) { .nav__logo { height: 39px; } }
 
@@ -5002,8 +4846,6 @@ body::before {
 }
 
 /* current-page nav state */
-.nav__link--on { color: var(--fg); }
-.nav__link--on::after { right: 0; background: var(--ice); }
 
 /* footer: gradient hairline, sweeping links */
 .footer { position: relative; padding-top: 54px; padding-bottom: 54px; }
