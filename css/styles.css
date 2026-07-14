@@ -325,13 +325,16 @@ a:hover { color: var(--sig2); }
   flex-wrap: wrap;
 }
 
-.nav__link { color: var(--body); font-size: var(--fs-sm2); }
+/* Fixed px, not a token: the min-width:1500px fluid scale re-sizes every token,
+   which was inflating the nav to 19px. Nav is chrome — it stays put, and it
+   matches the AI Foundry page, which has no fluid scale. */
+.nav__link { color: var(--body); font-size: 14px; }
 .nav__link:hover { color: var(--fg); }
 
 .nav__cta {
   background: var(--sig);
   color: #fff;
-  font-size: var(--fs-sm2);
+  font-size: 14px;
   font-weight: 600;
   padding: 10px 18px;
   border-radius: 999px;
@@ -423,7 +426,7 @@ a:hover { color: var(--sig2); }
 
 .hero__eyebrow {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: var(--fs-xs);
+  font-size: 13px;
   letter-spacing: .2em;
   text-transform: uppercase;
   color: var(--muted);

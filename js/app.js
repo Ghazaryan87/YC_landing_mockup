@@ -1281,25 +1281,71 @@
   var prev = document.querySelector('[data-htl-prev]');
   var next = document.querySelector('[data-htl-next]');
 
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   function step() {
     var item = track.querySelector('.htl__item');
     return item ? item.getBoundingClientRect().width + 20 : 340;
   }
+  function maxScroll() { return track.scrollWidth - track.clientWidth - 2; }
   function update() {
-    var max = track.scrollWidth - track.clientWidth - 2;
-    if (prev) prev.disabled = track.scrollLeft <= 2;
-    if (next) next.disabled = track.scrollLeft >= max;
+    /* the rail loops, so the arrows never dead-end — they wrap instead */
+    if (prev) prev.disabled = false;
+    if (next) next.disabled = false;
   }
-  if (prev) prev.addEventListener('click', function () { track.scrollBy({ left: -step(), behavior: 'smooth' }); });
-  if (next) next.addEventListener('click', function () { track.scrollBy({ left: step(), behavior: 'smooth' }); });
+
+  /* one milestone in `dir`, wrapping around the ends */
+  function go(dir, smooth) {
+    var max = maxScroll();
+    var to = track.scrollLeft + dir * step();
+    if (dir > 0 && track.scrollLeft >= max) to = 0;            // past the last -> back to 2010
+    else if (dir < 0 && track.scrollLeft <= 2) to = max;       // before the first -> jump to the end
+    track.scrollTo({ left: Math.max(0, Math.min(to, max)), behavior: (smooth && !reduce) ? 'smooth' : 'auto' });
+  }
+
+  if (prev) prev.addEventListener('click', function () { hold(); go(-1, true); });
+  if (next) next.addEventListener('click', function () { hold(); go(1, true); });
   track.addEventListener('scroll', update, { passive: true });
   window.addEventListener('resize', update);
   update();
+
+  /* ---- the rail plays itself ---- */
+  var DWELL = 3800;
+  var timer = 0, hovering = false, held = 0, onScreen = false;
+
+  function hold() { held = Date.now() + 9000; }   /* a touch of the controls buys quiet time */
+
+  function tick() {
+    if (!onScreen || hovering || down || Date.now() < held) return;
+    go(1, true);
+  }
+  function start() {
+    if (timer || reduce) return;
+    timer = setInterval(tick, DWELL);
+  }
+  function stop() {
+    if (timer) { clearInterval(timer); timer = 0; }
+  }
+
+  track.addEventListener('mouseenter', function () { hovering = true; });
+  track.addEventListener('mouseleave', function () { hovering = false; });
+  track.addEventListener('touchstart', hold, { passive: true });
+
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      onScreen = entries[0].isIntersecting;
+      if (onScreen) start(); else stop();
+    }, { rootMargin: '0px 0px -15% 0px', threshold: 0.25 }).observe(track);
+  } else {
+    onScreen = true;
+    start();
+  }
 
   /* pointer drag — the slideshow feel on desktop */
   var down = false, startX = 0, startScroll = 0, moved = false;
   track.addEventListener('pointerdown', function (e) {
     if (e.pointerType !== 'mouse') return;      /* touch scrolls natively */
+    hold();                                     /* dragging pauses the autoplay */
     down = true; moved = false;
     startX = e.clientX; startScroll = track.scrollLeft;
     track.classList.add('is-dragging');
