@@ -4957,3 +4957,12 @@ body::before {
   transition: right .25s;
 }
 .footer__links a:hover::after { right: 0; }
+
+/* ---------- FIX: hidden modal must actually be hidden ----------
+   .vmodal sets display:flex, which overrides the browser's [hidden]
+   rule — leaving an invisible full-screen backdrop over the page,
+   swallowing every click. Explicit beats implicit: */
+.vmodal[hidden] { display: none !important; }
+
+/* belt-and-braces: decorative layers can never intercept input */
+#prog, .statband__sheen, .hero__atmo, .hero__ring, .hero-orn--bg { pointer-events: none; }
