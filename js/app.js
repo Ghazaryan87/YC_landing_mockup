@@ -15,27 +15,32 @@
   /* ---------- data ---------- */
 
   var OFFICES = [
-    { flag: '🇦🇪', country: 'UAE', city: 'ABU DHABI', role: 'HQ & delivery hub — on-site in hours', lat: 24.45, lng: 54.38 },
-    { flag: '🇸🇦', country: 'Saudi Arabia', city: 'CITY TBD', role: 'In-Kingdom presence — local compliance, local teams', lat: 24.71, lng: 46.68 },
-    { flag: '🇨🇦', country: 'Canada', city: 'OTTAWA', role: 'North American coverage — one partner across regions', lat: 45.42, lng: -75.70 },
+    { flag: '🇨🇦', country: 'Canada', city: 'OTTAWA', role: 'Global headquarters — founded here in 2010', lat: 45.42, lng: -75.70 },
+    { flag: '🇺🇸', country: 'USA', city: 'UNITED STATES', role: 'North American operations & technology partnerships', lat: 38.90, lng: -77.04 },
+    { flag: '🇦🇪', country: 'UAE', city: 'ABU DHABI', role: 'Regional HQ & delivery hub — on-site in hours', lat: 24.45, lng: 54.38 },
+    { flag: '🇸🇦', country: 'Saudi Arabia', city: 'KSA', role: 'In-Kingdom presence — local compliance, local teams', lat: 24.71, lng: 46.68 },
+    { flag: '🇶🇦', country: 'Qatar', city: 'DOHA', role: 'Regional delivery & collaboration', lat: 25.29, lng: 51.53 },
+    { flag: '🇴🇲', country: 'Oman', city: 'MUSCAT', role: 'Regional delivery & collaboration', lat: 23.59, lng: 58.41 },
+    { flag: '🇪🇬', country: 'Egypt', city: 'CAIRO', role: 'Engineering capacity & regional collaboration', lat: 30.04, lng: 31.24 },
     { flag: '🇦🇲', country: 'Armenia', city: 'YEREVAN', role: 'Engineering center — delivery that never sleeps', lat: 40.18, lng: 44.51 }
   ];
 
   var BEARINGS = [
-    { tag: 'N · FLAGSHIP', label: 'AI Business Solutions', x: '50%', y: '9%', desc: 'Agentic AI systems built for your operations — on-prem, sovereign, yours.', href: 'AI%20Solutions.dc.html', link: 'AI Business Solutions →' },
-    { tag: 'SW', label: 'Advanced Observability', x: '18.5%', y: '80%', desc: 'AI that watches, diagnoses, and heals your systems before your team is paged.', href: 'AI%20Solutions.dc.html#architecture', link: 'Advanced Observability →' },
-    { tag: 'SE', label: 'Enterprise Solutions', x: '81.5%', y: '80%', desc: 'Enterprise platforms designed, integrated, and run with AI in the loop.', href: 'AI%20Solutions.dc.html#build', link: 'Enterprise Solutions →' }
+    { tag: 'N · THE FOUNDRY', label: 'AI Business Solutions', x: '50%', y: '7%', deg: 0, desc: 'Agents delivered to production — platform, accelerators, and IP, built inside your walls, on your data.', href: 'Foundry_2.html', link: 'Explore the YC AI Foundry →' },
+    { tag: 'E', label: 'Enterprise Solutions', x: '88%', y: '53.2%', deg: 90, desc: 'Full-stack enterprise platforms, infrastructure, and cybersecurity — delivered with engineering rigor and single-point accountability.', href: 'AI%20Solutions.dc.html#build', link: 'Enterprise Solutions →' },
+    { tag: 'S', label: 'Managed Services', x: '50%', y: '96%', deg: 180, desc: 'AIOps-enabled operations — end-to-end managed services with intelligence built into every service we run.', href: 'AI%20Solutions.dc.html#build', link: 'Managed Services →' },
+    { tag: 'W', label: 'Observability', x: '12%', y: '53.2%', deg: 270, desc: 'Full stack — including AI workloads. Observability feeds the intelligence, and now observes the AI itself.', href: 'Observability.html', link: 'Observability & Intelligent Operations →' }
   ];
 
   var METHOD_STEPS = [
-    { t: 'Discover', d: 'Map the estate — systems, data, owners, and the problems worth solving.' },
-    { t: 'Assess', d: 'Score candidate use-cases by value, risk, and readiness. Pick the provable one.' },
-    { t: 'Instrument', d: 'Wire in observability first — you can\'t automate what you can\'t see.' },
-    { t: 'Design', d: 'Architect the agentic workflow — sovereign and on-prem by default.' },
-    { t: 'Build', d: 'A working system against your real data. Not slides.' },
-    { t: 'Deploy', d: 'Inside your perimeter, through your security and compliance gates.' },
-    { t: 'Operate', d: 'Production duty with humans in the approval loop from day one.' },
-    { t: 'Optimize', d: 'Tuned continuously from the Intelligent Observability Center.', meta: 'IOC' }
+    { t: 'Discovery', d: "We start by understanding the business, not just the ticket. Objectives, constraints, stakeholders, and success criteria are captured up front — so every decision that follows is anchored to what actually matters to your organisation.", full: 'Discovery & Context Alignment' },
+    { t: 'Assessment', d: "A structured audit of existing systems, infrastructure, and operations — evidence over assumption. We map what's actually running, where the gaps are, and what's already working well enough to build on.", full: 'Current State Assessment' },
+    { t: 'Scope', d: "Discovery and assessment findings become a defined, agreed scope — services, boundaries, and responsibilities set out clearly, so there's no ambiguity about what's in, what's out, and who owns what.", full: 'Scope Definition & Service Alignment' },
+    { t: 'Governance', d: "Escalation paths, decision rights, reporting cadence, and approval gates are agreed before delivery starts — not improvised once it's underway. Governance is infrastructure, not paperwork.", full: 'Governance & Delivery Model Setup' },
+    { t: 'Design', d: "Technical architecture, delivery milestones, and resourcing are planned in detail, validated against the real environment uncovered in discovery — so the plan holds up under execution, not just on paper.", full: 'Solution Design & Delivery Planning' },
+    { t: 'Mobilisation', d: "Access, environments, tooling, and integration points are provisioned and verified ahead of kick-off — the unglamorous work that prevents week-one delays from becoming month-one delays.", full: 'Mobilisation & Environment Readiness' },
+    { t: 'Kick-off', d: "Teams, tools, and timelines are confirmed operational. Delivery begins from a verified starting line, not a hopeful one.", full: 'Kick-off & Execution Readiness' },
+    { t: 'Alignment', d: "Delivery doesn't go dark after kick-off. Progress, outcomes, and value are tracked against agreed metrics throughout the engagement — the same evidence-first discipline that runs through everything else we do, applied to the relationship itself.", full: 'Continuous Alignment & Value Tracking' }
   ];
 
   var DEMO_FRAMES = {
@@ -52,12 +57,36 @@
   };
 
   var REEL_CARDS = [
-    { tag: 'OBSERVABILITY', len: '02:14', title: 'A P1 caught, diagnosed, and closed — nobody paged', sub: 'Government entity · UAE · identity stripped' },
-    { tag: 'SERVICE OPS', len: '01:48', title: 'A service request handled end-to-end', sub: 'Banking client · GCC · identity stripped' },
-    { tag: 'IOC', len: '03:02', title: 'Inside the Intelligent Observability Center', sub: 'Live operations wall · Abu Dhabi HQ' },
-    { tag: 'AGENTIC WORKFLOW', len: '02:31', title: 'Humans approve. Agents execute.', sub: 'Approval-loop pattern · in production' },
-    { tag: 'SOVEREIGN AI', len: '01:56', title: 'On-prem agentic AI, end to end', sub: 'Air-gapped deployment walkthrough' },
-    { tag: 'ONBOARDING', len: '02:20', title: 'The 8-step onboarding in two minutes', sub: 'Discovery to IOC operations' }
+    { tag: 'OBSERVABILITY', len: '02:14', chip: 'Autonomous', title: 'A P1 caught, diagnosed, and closed — nobody paged', sub: 'Government entity · UAE · identity stripped',
+      problem: "Critical incidents surface through threshold alerts long after users feel them — then triage crawls across dashboards, logs, and war rooms while the clock runs.",
+      solution: "The agent flags the anomaly in live telemetry, correlates across services, isolates the failing dependency, drafts the diagnosis, and executes the approved remediation — with a replayable decision trace.",
+      outcome: "\u2197 Detection-to-resolution collapses from hours to minutes — a 60% reduction in MTTR across delivered use cases.",
+      caps: ['Observability Integration', 'Agentic Workflow Engine', 'Replayable Traces', 'Auto-Remediation'] },
+    { tag: 'SERVICE OPS', len: '01:48', chip: 'Act-with-Approval', title: 'A service request handled end-to-end', sub: 'Banking client · GCC · identity stripped',
+      problem: "Routine requests queue for days: forms, approvals, handoffs between teams — each step waiting on a human to push it forward.",
+      solution: "The agent intakes the request in natural language, validates entitlements, executes fulfilment across ITSM and identity systems, and routes high-risk actions for one-tap human approval.",
+      outcome: "\u2197 Requests that took days close in minutes — with every action logged and approved.",
+      caps: ['Conversational AI', 'Act-with-Approval', 'ITSM Connectors', 'Audit Trail'] },
+    { tag: 'IOC', len: '03:02', chip: 'Operations', title: 'Inside the Intelligent Observability Center', sub: 'Live operations wall · Abu Dhabi HQ',
+      problem: "Enterprise estates emit millions of signals — without a nerve centre, teams see fragments, not the system.",
+      solution: "The IOC fuses full-stack telemetry into one operations wall: watched, diagnosed, and remediated 24/7 by engineers working with the intelligent core.",
+      outcome: "\u2197 One pane, full estate — operations that never go dark.",
+      caps: ['Full-Stack Observability', '24/7 Operations', 'AIOps', 'Dynatrace'] },
+    { tag: 'AGENTIC WORKFLOW', len: '02:31', chip: 'Act-with-Approval', title: 'Humans approve. Agents execute.', sub: 'Approval-loop pattern · in production',
+      problem: "Automation either stops at suggestions — or runs unchecked. Neither survives enterprise governance.",
+      solution: "Multi-step workflows execute end-to-end, with policy guardrails deciding what runs autonomously and what pauses for human approval — enforced by the platform, not by convention.",
+      outcome: "\u2197 Zero unapproved high-risk actions — autonomy with governance built in.",
+      caps: ['Agentic Workflow Engine', 'Policy Guardrails', 'RBAC', 'Kill-Switch'] },
+    { tag: 'SOVEREIGN AI', len: '01:56', chip: 'Strategic', title: 'On-prem agentic AI, end to end', sub: 'Air-gapped deployment walkthrough',
+      problem: "Cloud AI means your documents, queries, and embeddings leave the building — a non-starter for government and regulated enterprise.",
+      solution: "The full stack — models, vectors, agents — runs inside your perimeter on a zero-egress boundary: air-gapped where required, with a PII-redaction gate at the door.",
+      outcome: "\u2197 No document, embedding, or query ever leaves your network.",
+      caps: ['On-Prem Deployment', 'Zero Egress', 'PII Redaction', 'Air-Gap Ready'] },
+    { tag: 'ONBOARDING', len: '02:20', chip: 'Method', title: 'The 8-step onboarding in two minutes', sub: 'Discovery to IOC operations',
+      problem: "AI initiatives die between the idea and the plan — undefined scope, improvised governance, hopeful kick-offs.",
+      solution: "Eight steps from discovery to continuous value tracking — scope agreed, governance set, environments verified before delivery begins.",
+      outcome: "\u2197 Delivery starts from a verified line — not a hopeful one.",
+      caps: ['Discovery', 'Governance Setup', 'Mobilisation', 'Value Tracking'] }
   ];
 
   /* ---------- accent ---------- */
@@ -172,6 +201,10 @@
     var link = $('[data-bearing-link]');
     if (!host) return;
 
+    var needle = $('[data-rose-needle]');
+    var rose = host.closest('.rose');
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     var buttons = BEARINGS.map(function (b, i) {
       var btn = document.createElement('button');
       btn.type = 'button';
@@ -185,19 +218,50 @@
       $('.bearing__tag', btn).textContent = b.tag;
       $('.bearing__label', btn).textContent = b.label;
 
-      var select = function () { setBearing(i); };
+      var select = function () { setBearing(i); hold = true; };
       btn.addEventListener('click', select);
       btn.addEventListener('mouseenter', select);
       host.appendChild(btn);
       return btn;
     });
 
+    var current = 0, hold = false;
+
+    /* the needle swings to whichever bearing is live — shortest path, eased */
+    var angle = 0, target = 0;
+    function spin() {
+      var d = ((target - angle) % 360 + 540) % 360 - 180;
+      angle += d * 0.07;
+      if (needle) needle.style.transform = 'rotate(' + angle.toFixed(2) + 'deg)';
+      requestAnimationFrame(spin);
+    }
+    if (needle) {
+      needle.style.transformOrigin = '440px 330px';
+      needle.style.transformBox = 'view-box';
+      if (!reduce) spin();
+    }
+
     function setBearing(i) {
+      current = i;
       buttons.forEach(function (btn, j) { btn.setAttribute('aria-pressed', String(i === j)); });
       var b = BEARINGS[i];
+      target = b.deg;
+      if (reduce && needle) needle.style.transform = 'rotate(' + b.deg + 'deg)';
       if (kicker) kicker.textContent = b.tag;
       if (desc) desc.textContent = b.desc;
       if (link) { link.textContent = b.link; link.href = b.href; }
+    }
+
+    /* auto-sweep: the compass keeps finding its next bearing until touched */
+    if (!reduce) {
+      setInterval(function () {
+        if (hold) return;
+        setBearing((current + 1) % BEARINGS.length);
+      }, 3600);
+      if (rose) {
+        rose.addEventListener('mouseenter', function () { hold = true; });
+        rose.addEventListener('mouseleave', function () { hold = false; });
+      }
     }
 
     setBearing(0);
@@ -208,6 +272,7 @@
   function initMethod() {
     var list = $('[data-msteps]');
     var num = $('[data-method-num]');
+    var panel = $('[data-method-desc]');
     if (!list) return;
 
     var hold = 0;
@@ -240,11 +305,27 @@
       return btn;
     });
 
+    var detail = $('[data-method-detail]');
+    var title = $('[data-method-title]');
+    var badge = $('[data-method-badge]');
+    var arts = $$('[data-step-art]');
+
     function setStep(i) {
       current = i;
       buttons.forEach(function (b, j) { b.setAttribute('aria-selected', String(i === j)); });
       if (num) num.textContent = String(i + 1).padStart(2, '0');
+      if (badge) badge.textContent = String(i + 1).padStart(2, '0');
+      if (title) title.textContent = METHOD_STEPS[i].full || METHOD_STEPS[i].t;
+      if (panel) panel.textContent = METHOD_STEPS[i].d;
+      arts.forEach(function (a) { a.classList.toggle('is-art-live', a.dataset.stepArt == String(i)); });
+      if (detail) {
+        detail.classList.remove('swap');
+        void detail.offsetWidth;      /* restart the reveal */
+        detail.classList.add('swap');
+      }
     }
+
+    setStep(0);
 
     if (reduce) return;
 
@@ -342,10 +423,14 @@
       return btn;
     });
 
+    window.__reelCards = REEL_CARDS;
     function render() {
+      window.__reelIdx = idx;
       var c = REEL_CARDS[idx];
       if (tag) tag.textContent = c.tag;
-      if (len) len.textContent = c.len;
+      if (len) len.textContent = c.chip || c.len;
+      var cnt = $('[data-stage-count]');
+      if (cnt) cnt.textContent = String(idx + 1).padStart(2, '0');
       if (title) title.textContent = c.title;
       if (sub) sub.textContent = c.sub;
       if (numEl) numEl.textContent = String(idx + 1).padStart(2, '0');
@@ -485,57 +570,18 @@
     var bgDots = fib(900);
     var redrawStatic = function () {};
 
+    // land dots embedded (delta-encoded fib(9000) indices from world-atlas
+    // land-110m) — no fetch, so continents render on file://, previews, and
+    // offline alike.
+    var LAND_DELTAS = [35,13,3,5,5,3,4,1,3,5,5,3,5,3,5,5,3,5,5,8,3,5,3,1,1,3,1,4,12,1,3,5,5,7,1,11,1,1,2,1,4,1,4,7,1,1,7,4,1,1,3,1,3,1,4,1,4,3,1,3,1,3,1,2,1,1,2,2,1,3,1,3,1,2,1,3,1,1,1,4,2,1,1,6,1,3,4,1,3,3,3,2,2,1,2,5,3,3,5,1,4,8,5,8,3,5,1,2,2,11,5,5,3,8,2,8,3,2,1,1,3,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,1,1,2,1,2,1,1,1,3,2,2,1,1,1,1,1,1,2,1,1,1,1,1,1,3,2,2,1,2,1,1,1,2,1,2,1,1,1,3,1,1,2,1,2,1,1,1,3,2,2,1,1,1,1,1,1,2,1,2,1,1,1,3,2,2,1,2,1,1,1,2,1,1,1,1,1,1,1,2,1,1,2,1,4,1,3,2,2,1,2,1,1,1,2,1,1,1,1,1,1,3,2,2,1,2,2,1,3,2,2,1,3,1,1,3,3,1,1,3,2,3,3,1,1,2,1,1,3,1,3,1,1,3,2,2,1,3,2,2,1,3,1,1,2,1,1,2,1,1,3,2,1,2,3,1,1,3,4,1,3,1,1,3,1,1,2,1,3,2,3,3,1,1,2,1,1,3,1,3,1,1,3,2,1,1,1,3,5,3,1,1,3,1,3,1,3,1,1,1,2,3,1,1,2,1,1,2,1,1,3,1,1,3,1,1,1,1,1,3,1,4,3,1,1,3,1,3,1,3,1,1,1,2,1,2,1,1,3,1,4,3,1,1,3,1,1,1,1,1,3,1,1,1,2,3,1,1,3,1,2,1,1,3,1,1,1,2,1,2,1,1,3,2,3,3,1,1,3,1,2,1,1,3,1,1,1,2,1,2,1,1,3,1,2,2,3,1,1,3,1,1,1,1,1,3,1,1,1,2,3,1,1,3,1,2,1,1,3,1,1,3,1,2,1,1,3,2,1,2,3,1,1,3,1,2,1,1,3,1,1,1,2,3,1,1,3,1,2,1,1,3,1,1,3,1,2,1,1,3,1,1,1,2,3,1,1,3,1,2,1,1,3,1,1,3,3,1,1,3,1,1,1,2,3,1,1,3,3,1,1,3,1,1,1,2,3,1,1,3,1,2,2,3,1,1,3,3,1,1,3,1,2,2,3,1,1,3,3,1,1,3,1,1,1,2,1,2,1,1,3,1,2,2,3,1,1,3,3,1,1,3,1,1,1,2,3,1,1,3,1,2,2,3,1,1,3,3,1,1,3,1,1,1,2,4,1,3,1,2,1,1,4,1,3,3,1,1,3,1,2,2,3,1,1,3,3,1,1,3,1,2,2,4,1,3,1,2,1,1,3,1,1,3,3,1,1,3,1,2,2,3,1,1,3,3,1,1,3,1,2,2,4,1,3,1,2,2,3,1,1,3,3,1,1,3,1,1,1,2,4,1,3,3,1,1,4,1,3,4,1,3,1,4,3,1,1,3,3,1,1,3,1,2,2,4,1,3,1,3,1,3,1,1,1,2,3,1,1,3,1,1,3,4,1,3,3,1,1,4,2,2,4,1,3,1,4,3,1,1,3,3,1,1,3,1,1,3,3,1,1,3,3,1,1,3,1,2,2,3,1,1,3,1,4,3,1,1,3,3,1,1,3,1,2,2,3,1,1,3,5,3,1,2,2,4,1,3,1,4,3,1,1,3,4,1,4,2,2,3,1,1,3,1,4,3,1,1,3,3,1,1,3,1,4,3,1,4,4,1,3,1,2,2,3,1,1,3,1,4,3,1,4,4,1,4,2,2,3,1,1,3,5,3,1,2,2,4,1,3,1,4,3,1,4,4,1,3,1,2,2,3,1,1,3,5,3,1,4,4,1,4,1,3,3,1,1,3,5,3,1,4,4,1,3,1,2,2,3,1,4,4,1,3,1,4,4,1,3,3,2,3,1,1,3,4,1,3,1,1,1,2,4,4,5,3,1,1,1,2,4,1,3,1,2,2,3,1,4,4,1,3,1,1,1,2,4,1,3,5,3,1,4,4,1,3,1,2,2,3,1,4,5,3,1,1,1,2,4,1,3,3,2,3,1,4,4,1,3,1,2,2,4,1,3,5,3,1,1,1,2,4,1,3,3,2,3,1,4,5,3,1,2,2,4,1,3,3,2,3,1,2,2,3,1,1,3,1,2,2,3,1,1,3,5,3,1,2,2,4,1,3,3,2,3,1,4,3,2,3,1,2,2,4,1,3,3,2,3,1,2,2,3,1,1,3,3,2,3,1,4,3,2,3,1,2,2,3,1,1,3,3,2,3,1,4,3,1,1,3,1,2,2,3,1,1,3,3,2,3,1,2,2,3,1,1,3,3,2,3,1,4,3,2,3,3,2,3,1,1,3,3,2,3,3,2,3,2,3,1,2,2,3,1,1,3,3,2,6,2,3,1,1,3,3,2,3,3,2,3,2,3,3,2,4,1,3,3,2,3,3,2,3,2,3,3,2,3,1,4,3,2,6,2,3,1,1,3,3,2,3,3,2,3,2,4,2,2,4,4,3,2,3,3,2,3,2,3,3,2,3,3,2,3,2,6,2,3,1,1,3,3,2,3,3,2,3,2,6,2,3,1,4,3,2,3,3,2,3,1,1,6,2,3,3,2,3,2,3,3,2,3,1,7,2,3,3,2,3,1,1,6,2,3,1,2,2,3,2,3,3,2,3,1,1,6,2,3,3,2,3,2,3,3,2,4,1,1,5,2,3,3,2,3,2,6,2,3,3,2,3,2,3,1,2,2,3,1,7,2,3,3,2,3,2,3,1,2,6,2,2,3,2,3,3,2,3,8,2,3,3,2,3,5,3,5,1,7,2,3,1,2,2,3,6,2,2,3,1,2,5,2,3,3,2,3,1,7,2,3,3,2,3,5,3,5,1,2,5,2,3,1,2,2,3,8,2,3,3,2,3,5,3,5,1,5,2,2,3,1,2,2,3,8,6,2,5,2,3,3,2,3,6,2,2,3,1,2,2,3,5,3,5,1,1,6,2,3,1,2,2,3,8,6,2,5,2,3,3,5,8,2,3,1,2,2,3,8,5,1,2,5,2,3,3,5,8,2,4,2,2,3,2,6,5,8,2,3,1,2,2,3,8,5,3,5,2,4,2,5,8,5,3,2,3,8,5,2,1,5,2,3,1,2,5,8,8,5,2,4,2,5,8,2,3,3,2,3,8,5,2,1,5,2,4,2,5,8,8,2,3,2,6,5,8,8,5,8,5,3,5,2,4,2,5,8,8,2,3,8,5,3,5,8,5,8,5,3,5,2,6,5,6,2,2,6,2,3,8,5,3,5,2,6,5,6,2,5,3,2,1,2,8,5,6,2,5,3,5,8,5,3,3,2,2,6,5,2,4,2,5,3,2,3,6,2,5,6,2,8,5,6,2,5,3,3,2,8,5,6,2,2,3,3,2,3,6,2,5,2,1,3,2,8,5,6,2,5,3,3,2,8,5,6,2,5,3,5,6,2,5,3,3,2,8,5,6,2,5,3,3,2,8,5,6,2,8,3,2,2,4,2,5,3,3,2,13,6,2,2,3,6,2,6,2,5,6,2,11,2,2,4,2,2,3,6,2,13,6,2,2,9,2,2,4,2,5,6,2,13,6,2,2,9,2,13,6,2,11,2,2,4,2,5,6,2,13,6,2,2,9,2,2,4,7,6,2,11,2,6,2,11,2,2,4,7,6,2,11,2,2,4,2,5,2,4,2,13,2,4,2,2,9,2,2,4,7,6,2,11,2,2,4,2,11,2,2,4,5,2,6,2,2,9,2,2,4,2,5,6,2,11,2,6,2,11,2,2,4,5,2,6,2,2,9,2,2,4,2,11,2,11,2,6,2,7,4,2,2,4,5,8,2,2,5,4,2,6,2,3,4,4,2,6,1,4,2,6,2,2,5,4,2,6,5,8,2,7,4,2,2,4,1,1,3,8,2,6,1,4,8,2,2,9,2,6,5,8,2,6,1,4,2,6,2,3,8,2,6,1,4,8,2,2,5,4,2,6,2,3,8,2,2,4,1,4,2,6,2,11,2,6,5,8,2,2,5,4,2,6,2,3,8,2,2,4,1,4,8,2,11,2,6,5,8,2,7,4,2,2,4,2,3,8,2,6,1,4,8,2,11,2,6,2,3,8,2,6,5,2,2,4,2,11,2,6,1,4,8,2,11,2,6,2,11,2,6,5,8,2,11,2,6,5,8,2,11,2,6,2,11,2,6,5,8,2,11,2,6,2,7,4,2,11,2,6,2,11,2,6,5,8,2,7,4,2,6,2,5,2,4,2,6,5,4,4,2,11,2,6,2,7,4,2,7,4,2,6,2,11,2,6,5,4,4,2,11,2,6,2,5,2,4,2,11,4,4,2,11,2,4,4,1,3,2,1,1,1,1,4,1,1,1,1,1,2,1,1,2,2,1,1,2,2,3,9,2,11,4,4,2,11,2,6,2,5,2,4,2,7,4,4,4,2,7,4,2,11,2,2,4,2,7,4,8,2,5,2,4,2,7,4,4,4,2,7,4,2,8,5,2,4,2,7,4,4,4,2,7,4,2,7,4,4,4,2,7,4,4,4,2,5,2,4,1,1,7,4,4,4,2,7,4,2,2,11,2,4,2,7,4,4,4,2,7,4,2,7,4,4,4,2,7,4,2,2,11,2,4,2,7,4,4,4,2,7,4,2,2,5,6,2,4,2,7,4,4,4,2,7,4,2,7,8,4,2,7,4,2,2,5,6,2,4,2,7,8,4,2,7,4,2,2,5,8,4,2,7,4,4,4,1,1,7,4,2,7,8,4,2,7,4,2,2,5,8,4,2,7,8,4,2,7,4,2,2,5,8,4,2,7,4,4,5,8,4,2,7,8,4,2,7,4,2,2,5,8,4,2,7,4,4,4,1,8,4,2,7,8,4,2,7,4,4,5,8,4,2,7,8,4,2,7,4,2,7,8,4,2,7,8,4,1,8,4,2,7,8,4,2,7,4,4,5,12,2,7,8,4,13,9,12,2,7,8,4,1,12,2,7,8,4,9,4,4,5,12,9,5,7,22,12,22,12,9,5,7,22,12,21,13,9,12,34,21,34,21,27,7,34,21,34,21,34,22,26,7,34,21,34,48,7,34,55,55,34,55,55,34,55,34,470,5,21,8,3,2,3,5,8,3,2,8,3,2,3,5,4,4,3,2,3,5,3,2,3,3,2,3,5,3,2,3,3,2,4,1,1,2,3,2,3,2,1,2,3,2,1,2,3,2,1,2,1,1,1,2,3,2,1,2,3,1,1,3,2,1,2,3,1,1,1,2,2,1,2,3,1,1,1,2,3,1,1,1,2,1,1,1,1,1,3,1,1,1,1,1,3,1,1,3,1,1,1,1,1,3,1,1,1,2,2,1,1,1,3,1,1,1,1,1,3,1,1,1,1,1,2,1,1,1,3,1,1,1,1,1,2,1,1,1,1,1,1,2,1,1,1,1,2,1,1,1,2,2,1,1,1,3,1,1,1,1,1,1,2,1,1,1,2,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,2,1,1,1];
     function loadLand() {
-      fetch('assets/land-110m.json')
-        .then(function (r) { return r.json(); })
-        .then(function (topo) {
-          var sc = topo.transform.scale, tl = topo.transform.translate;
-          var arcs = topo.arcs.map(function (arc) {
-            var ax = 0, ay = 0;
-            return arc.map(function (d) { ax += d[0]; ay += d[1]; return [ax * sc[0] + tl[0], ay * sc[1] + tl[1]]; });
-          });
-          var ring = function (idxs) {
-            var pts = [];
-            idxs.forEach(function (ai) {
-              var a = ai >= 0 ? arcs[ai] : arcs[~ai].slice().reverse();
-              pts = pts.concat(pts.length ? a.slice(1) : a);
-            });
-            return pts;
-          };
-          var MW = 720, MH = 360;
-          var mc = document.createElement('canvas');
-          mc.width = MW; mc.height = MH;
-          var mx = mc.getContext('2d');
-          mx.fillStyle = '#fff';
-          mx.beginPath();
-          var geoms = topo.objects.land.geometries || [topo.objects.land];
-          geoms.forEach(function (gm) {
-            var polys = gm.type === 'Polygon' ? [gm.arcs] : gm.arcs;
-            polys.forEach(function (poly) {
-              poly.forEach(function (idxs) {
-                ring(idxs).forEach(function (p, i) {
-                  var px = (p[0] + 180) * 2, py = (90 - p[1]) * 2;
-                  if (i === 0) mx.moveTo(px, py); else mx.lineTo(px, py);
-                });
-                mx.closePath();
-              });
-            });
-          });
-          mx.fill('evenodd');
-          var img = mx.getImageData(0, 0, MW, MH).data;
-          var R2D = 180 / Math.PI;
-          var land = fib(9000).filter(function (p) {
-            var lat = Math.asin(p[1]) * R2D;
-            var lonp = Math.atan2(p[0], p[2]) * R2D;
-            var xi = Math.min(MW - 1, Math.max(0, Math.round((lonp + 180) * 2)));
-            var yi = Math.min(MH - 1, Math.max(0, Math.round((90 - lat) * 2)));
-            return img[(yi * MW + xi) * 4 + 3] > 128;
-          });
-          if (land.length > 200) { dots = land; N = dots.length; isLand = true; redrawStatic(); }
-        })
-        .catch(function () { /* offline — keep the plain dotted sphere */ });
+      var idx = [], acc = 0, i;
+      for (i = 0; i < LAND_DELTAS.length; i++) { acc += LAND_DELTAS[i]; idx.push(acc); }
+      var all = fib(9000), land = [], k = 0;
+      for (i = 0; i < idx.length; i++) land.push(all[idx[i]]);
+      dots = land; N = dots.length; isLand = true;
+      redrawStatic();
     }
-
     var mk = OFFICES.map(function (o) {
       return { sy: Math.sin(o.lat * D2R), cl: Math.cos(o.lat * D2R), lon: o.lng * D2R };
     });
@@ -592,7 +638,7 @@
         var z1 = p[2] * cR - p[0] * sR;
         var y2 = p[1] * cT - z1 * sT, z2 = p[1] * sT + z1 * cT;
         if (z2 < -0.1) return;
-        var a = dim ? 0.06 + 0.17 * Math.max(0, z2) : (isLand ? 0.22 + 0.62 * Math.max(0, z2) : 0.10 + 0.46 * Math.max(0, z2));
+        var a = dim ? 0.09 + 0.2 * Math.max(0, z2) : (isLand ? 0.4 + 0.6 * Math.max(0, z2) : 0.10 + 0.46 * Math.max(0, z2));
         ctx.fillStyle = 'rgba(' + dotRgb + ',' + a.toFixed(3) + ')';
         var s2 = (isLand && !dim) ? 1.8 : 1.5;
         ctx.fillRect(c + x1 * R, c - y2 * R, s2, s2);
@@ -914,4 +960,419 @@
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
   else boot();
+})();
+
+/* ---------- Atelier layer: scroll progress + glass nav ---------- */
+(function () {
+  var prog = document.getElementById('prog');
+  var nav = document.querySelector('.nav');
+  function onScroll() {
+    var doc = document.documentElement;
+    var max = (doc.scrollHeight - window.innerHeight) || 1;
+    var y = window.scrollY || 0;
+    if (prog) prog.style.width = Math.min(100, (y / max) * 100) + '%';
+    if (nav) nav.classList.toggle('scrolled', y > 8);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
+/* ---------- Atelier layer: hero typewriter + icon rail sync ---------- */
+(function () {
+  var el = document.querySelector('.typeword');
+  if (!el) return;
+  var words = (el.dataset.typewords || '').split(',').map(function (w) { return w.trim(); }).filter(Boolean);
+  if (!words.length) return;
+  var chips = document.querySelectorAll('.hero__icon-chip');
+  var needle = document.querySelector('.hero__needle');
+  var compass = document.querySelector('.hero__compass');
+
+  function setLive(word) {
+    chips.forEach(function (c) { c.classList.toggle('is-live', c.dataset.word === word); });
+  }
+
+  /* ----- compass needle: eased rotation, lock-on vs wander ----- */
+  var angle = 0, target = 0, wander = false, wanderTimer = null, raf = null;
+
+  function angleToChip(word) {
+    if (!compass) return 0;
+    var chip = null;
+    chips.forEach(function (c) { if (c.dataset.word === word) chip = c; });
+    if (!chip) return 0;
+    var a = compass.getBoundingClientRect(), b = chip.getBoundingClientRect();
+    var cx = a.left + a.width / 2, cy = a.top + a.height / 2;
+    var px = b.left + b.width / 2, py = b.top + b.height / 2;
+    return Math.atan2(py - cy, px - cx) * 180 / Math.PI + 90; /* 0deg = needle up */
+  }
+
+  function lockOn(word) {
+    if (!needle) return;
+    wander = false;
+    if (wanderTimer) { clearInterval(wanderTimer); wanderTimer = null; }
+    target = angleToChip(word);
+  }
+
+  function startWander() {
+    if (!needle) return;
+    wander = true;
+    if (wanderTimer) clearInterval(wanderTimer);
+    wanderTimer = setInterval(function () {
+      target += (Math.random() * 220 - 110); /* drift, both directions */
+    }, 420);
+  }
+
+  function spin() {
+    var d = target - angle;
+    /* shortest-path easing, but allow long swings while wandering */
+    if (!wander) { d = ((d % 360) + 540) % 360 - 180; }
+    angle += d * 0.075;
+    if (needle) needle.style.transform = 'rotate(' + angle.toFixed(2) + 'deg)';
+    raf = requestAnimationFrame(spin);
+  }
+
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) {
+    el.textContent = words[0];
+    setLive(words[0]);
+    if (needle) needle.style.transform = 'rotate(' + angleToChip(words[0]).toFixed(2) + 'deg)';
+    return;
+  }
+
+  if (needle) spin();
+
+  /* ----- typewriter ----- */
+  var wi = 0, ci = 0, deleting = false;
+  el.textContent = '';
+  setLive(words[0]);
+  startWander(); /* needle searches until the first word lands */
+
+  function tick() {
+    var word = words[wi];
+    if (!deleting) {
+      ci++;
+      el.textContent = word.slice(0, ci);
+      if (ci >= word.length) {
+        lockOn(word);                       /* word complete: needle locks on */
+        deleting = true;
+        setTimeout(tick, 2415);   /* hold 15% longer */
+        return;
+      }
+      setTimeout(tick, 21 + Math.random() * 17);
+    } else {
+      if (ci === word.length) startWander(); /* word starts disappearing: needle drifts */
+      ci--;
+      el.textContent = word.slice(0, ci);
+      if (ci <= 0) {
+        deleting = false;
+        wi = (wi + 1) % words.length;
+        setLive(words[wi]);
+        setTimeout(tick, 620);  /* breather before the next word types in */
+        return;
+      }
+      setTimeout(tick, 10);
+    }
+  }
+  setTimeout(tick, 700);
+})();
+
+
+/* ---------- Atelier layer: stat band count-up ---------- */
+(function () {
+  var nums = document.querySelectorAll('[data-count]');
+  if (!nums.length) return;
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function run(el) {
+    var end = parseInt(el.dataset.count, 10) || 0;
+    if (reduced) { el.textContent = String(end); return; }
+    var t0 = null, dur = 1400;
+    function step(t) {
+      if (!t0) t0 = t;
+      var p = Math.min(1, (t - t0) / dur);
+      p = 1 - Math.pow(1 - p, 3); /* ease-out cubic */
+      el.textContent = String(Math.round(end * p));
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { run(e.target); io.unobserve(e.target); }
+    });
+  }, { threshold: .6 });
+  nums.forEach(function (n) { io.observe(n); });
+})();
+
+/* ---------- journey rail: slideshow controls ---------- */
+(function () {
+  var track = document.querySelector('[data-htl-track]');
+  if (!track) return;
+  var prev = document.querySelector('[data-htl-prev]');
+  var next = document.querySelector('[data-htl-next]');
+
+  function step() {
+    var item = track.querySelector('.htl__item');
+    return item ? item.getBoundingClientRect().width + 20 : 340;
+  }
+  function update() {
+    var max = track.scrollWidth - track.clientWidth - 2;
+    if (prev) prev.disabled = track.scrollLeft <= 2;
+    if (next) next.disabled = track.scrollLeft >= max;
+  }
+  if (prev) prev.addEventListener('click', function () { track.scrollBy({ left: -step(), behavior: 'smooth' }); });
+  if (next) next.addEventListener('click', function () { track.scrollBy({ left: step(), behavior: 'smooth' }); });
+  track.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+
+  /* pointer drag — the slideshow feel on desktop */
+  var down = false, startX = 0, startScroll = 0, moved = false;
+  track.addEventListener('pointerdown', function (e) {
+    if (e.pointerType !== 'mouse') return;      /* touch scrolls natively */
+    down = true; moved = false;
+    startX = e.clientX; startScroll = track.scrollLeft;
+    track.classList.add('is-dragging');
+  });
+  window.addEventListener('pointermove', function (e) {
+    if (!down) return;
+    var dx = e.clientX - startX;
+    if (Math.abs(dx) > 4) moved = true;
+    track.scrollLeft = startScroll - dx;
+  });
+  window.addEventListener('pointerup', function () {
+    if (!down) return;
+    down = false;
+    track.classList.remove('is-dragging');
+  });
+  /* swallow accidental clicks after a drag */
+  track.addEventListener('click', function (e) { if (moved) { e.preventDefault(); e.stopPropagation(); } }, true);
+})();
+
+/* ---------- method steps: the count keeps moving on its own ---------- */
+(function () {
+  var cards = document.querySelectorAll('.stepcard');
+  if (!cards.length) return;
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var i = 0, hold = false;
+
+  function setLive(n) {
+    i = n;
+    cards.forEach(function (c, j) { c.classList.toggle('is-live', j === n); });
+  }
+  setLive(0);
+  if (reduced) return;
+
+  setInterval(function () {
+    if (hold) return;
+    setLive((i + 1) % cards.length);
+  }, 3000);
+
+  cards.forEach(function (c, j) {
+    c.addEventListener('mouseenter', function () { hold = true; setLive(j); });
+    c.addEventListener('mouseleave', function () { hold = false; });
+  });
+})();
+
+
+/* ---------- demo modal: the card opens a popup, not a page ---------- */
+(function () {
+  var modal = document.querySelector('[data-vmodal]');
+  var stagePlay = document.querySelector('.stage--card .stage__play');
+  if (!modal || !stagePlay) return;
+
+  var cat = modal.querySelector('[data-vm-cat]');
+  var chip = modal.querySelector('[data-vm-chip]');
+  var title = modal.querySelector('[data-vm-title]');
+  var problem = modal.querySelector('[data-vm-problem]');
+  var solution = modal.querySelector('[data-vm-solution]');
+  var outcome = modal.querySelector('[data-vm-outcome]');
+  var caps = modal.querySelector('[data-vm-caps]');
+
+  function fill(c) {
+    if (cat) cat.textContent = c.tag;
+    if (chip) chip.textContent = c.chip || '';
+    if (title) title.textContent = c.title;
+    if (problem) problem.textContent = c.problem || c.sub;
+    if (solution) solution.textContent = c.solution || '';
+    if (outcome) outcome.textContent = c.outcome || '';
+    if (caps) {
+      caps.innerHTML = '';
+      (c.caps || []).forEach(function (k) {
+        var s = document.createElement('span');
+        s.textContent = k;
+        caps.appendChild(s);
+      });
+    }
+  }
+
+  function open() {
+    var cards = window.__reelCards || [];
+    var i = window.__reelIdx || 0;
+    if (!cards[i]) return;
+    fill(cards[i]);
+    modal.hidden = false;
+    document.body.style.overflow = 'hidden';
+    requestAnimationFrame(function () { modal.classList.add('is-open'); });
+  }
+  function close() {
+    modal.classList.remove('is-open');
+    document.body.style.overflow = '';
+    setTimeout(function () { modal.hidden = true; }, 250);
+  }
+
+  stagePlay.addEventListener('click', function (e) {
+    e.preventDefault();
+    open();
+  });
+  modal.querySelectorAll('[data-vmodal-close]').forEach(function (el) {
+    el.addEventListener('click', function (e) {
+      if (el.classList.contains('vmodal__cta')) { close(); return; }
+      e.preventDefault();
+      close();
+    });
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !modal.hidden) close();
+  });
+})();
+
+/* ---------- observability loop: a telemetry packet runs the ring ---------- */
+(function () {
+  var loop = document.querySelector('[data-loop]');
+  if (!loop) return;
+  var pulse = loop.querySelector('[data-loop-pulse]');
+  var nodes = loop.querySelectorAll('[data-loop-node]');
+  var edges = loop.querySelectorAll('[data-loop-edge]');
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ring geometry in container %: centre (50, 51.8), radius 26.11% x / 33.57% y */
+  function pos(deg) {
+    var r = deg * Math.PI / 180;
+    return { x: 50 + 26.11 * Math.sin(r), y: 51.8 - 33.57 * Math.cos(r) };
+  }
+  function nearest(deg, target) {
+    var d = Math.abs(((deg - target) % 360 + 540) % 360 - 180);
+    return d;
+  }
+
+  if (reduced) {
+    if (pulse) pulse.style.display = 'none';
+    if (nodes[0]) nodes[0].classList.add('is-live');
+    return;
+  }
+
+  var angle = 0;
+  var last = null;
+  function frame(t) {
+    if (last == null) last = t;
+    var dt = Math.min(64, t - last);
+    last = t;
+    angle = (angle + dt * 0.04) % 360;      /* ~9s per revolution */
+
+    if (pulse) {
+      var p = pos(angle);
+      pulse.style.left = p.x + '%';
+      pulse.style.top = p.y + '%';
+    }
+    nodes.forEach(function (n) {
+      n.classList.toggle('is-live', nearest(angle, parseFloat(n.dataset.loopNode)) < 16);
+    });
+    edges.forEach(function (e) {
+      var start = parseFloat(e.dataset.loopEdge);
+      var rel = ((angle - start) % 360 + 360) % 360;
+      e.classList.toggle('is-live', rel > 16 && rel < 104);
+    });
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+
+/* ---------- observability triangle: detect -> decide -> act, on loop ---------- */
+(function () {
+  var tri = document.querySelector('[data-tri]');
+  if (!tri) return;
+  var pkt = tri.querySelector('[data-tri-pkt]');
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var nodes = {};
+  tri.querySelectorAll('[data-tri-node]').forEach(function (n) { nodes[n.dataset.triNode] = n; });
+  var stats = {};
+  tri.querySelectorAll('[data-tri-status]').forEach(function (s) { stats[s.dataset.triStatus] = s; });
+  var lines = tri.querySelectorAll('[data-tri-line]');
+  var lbls = tri.querySelectorAll('[data-tri-lbl]');
+
+  /* edge endpoints in container % (viewBox 720x560) */
+  var EDGES = [
+    [{ x: 43.5, y: 33.0 }, { x: 28.7, y: 63.5 }],   /* obs -> aiops */
+    [{ x: 34.2, y: 76.8 }, { x: 65.8, y: 76.8 }],   /* aiops -> agents */
+    [{ x: 71.4, y: 63.8 }, { x: 56.3, y: 32.7 }]    /* agents -> obs */
+  ];
+
+  var PHASES = [
+    { type: 'node', node: 'obs', text: 'ANOMALY DETECTED', dur: 1400 },
+    { type: 'edge', edge: 0, dur: 1400 },
+    { type: 'node', node: 'aiops', text: 'DECISION · REMEDIATE — APPROVED', dur: 1800 },
+    { type: 'edge', edge: 1, dur: 1400 },
+    { type: 'node', node: 'agents', text: 'EXECUTING REMEDIATION', dur: 1800 },
+    { type: 'edge', edge: 2, dur: 1400 },
+    { type: 'node', node: 'obs', text: 'NEW SIGNALS · VERIFIED HEALTHY', dur: 1600 }
+  ];
+
+  function clearAll() {
+    Object.keys(nodes).forEach(function (k) { nodes[k].classList.remove('is-hot'); });
+    Object.keys(stats).forEach(function (k) { stats[k].classList.remove('is-on'); });
+    lines.forEach(function (l) { l.classList.remove('is-live'); });
+    lbls.forEach(function (l) { l.classList.remove('is-live'); });
+  }
+
+  if (reduced) {
+    /* static: show the whole story at once */
+    stats.obs.textContent = 'ANOMALY DETECTED';
+    stats.aiops.textContent = 'DECISION · APPROVED';
+    stats.agents.textContent = 'EXECUTING REMEDIATION';
+    Object.keys(stats).forEach(function (k) { stats[k].classList.add('is-on'); });
+    if (pkt) pkt.style.display = 'none';
+    return;
+  }
+
+  var pi = 0, t0 = null;
+  function ease(p) { return p < .5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2; }
+
+  function frame(t) {
+    if (t0 == null) t0 = t;
+    var ph = PHASES[pi];
+    var p = Math.min(1, (t - t0) / ph.dur);
+
+    if (ph.type === 'edge' && pkt) {
+      var e = EDGES[ph.edge], q = ease(p);
+      pkt.style.left = (e[0].x + (e[1].x - e[0].x) * q) + '%';
+      pkt.style.top = (e[0].y + (e[1].y - e[0].y) * q) + '%';
+    }
+
+    if (p >= 1) {
+      pi = (pi + 1) % PHASES.length;
+      t0 = t;
+      clearAll();
+      var next = PHASES[pi];
+      if (next.type === 'node') {
+        if (pkt) pkt.classList.remove('is-on');
+        nodes[next.node].classList.add('is-hot');
+        stats[next.node].textContent = next.text;
+        stats[next.node].classList.add('is-on');
+      } else {
+        if (pkt) pkt.classList.add('is-on');
+        lines[next.edge].classList.add('is-live');
+        lbls[next.edge].classList.add('is-live');
+        /* destination pre-warms as the packet approaches */
+        var dest = ['aiops', 'agents', 'obs'][next.edge];
+        nodes[dest].classList.add('is-hot');
+      }
+    }
+    requestAnimationFrame(frame);
+  }
+
+  /* boot into phase 0 */
+  nodes.obs.classList.add('is-hot');
+  stats.obs.textContent = PHASES[0].text;
+  stats.obs.classList.add('is-on');
+  requestAnimationFrame(frame);
 })();

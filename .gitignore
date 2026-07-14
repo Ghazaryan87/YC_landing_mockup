@@ -1,1 +1,7 @@
 .claude/
+
+# Generated export artifacts
+yourcompass-site/
+yourcompass-site.zip
+preview.html
+preview-observability.html
