@@ -81,7 +81,7 @@ nav.top.scrolled .nav__in{height:60px}
 nav.top .brand img{height:38px}
 .brand__name{font-family:var(--disp);font-weight:600;font-size:17px;letter-spacing:-.01em}
 .brand__sub{font-family:var(--disp);font-weight:500;font-size:var(--fs-xs);color:var(--indigo-soft);letter-spacing:.02em;padding:3px 10px;border:1px solid var(--line-2);border-radius:20px;white-space:nowrap}
-.nav__links{display:flex;align-items:center;gap:28px;font-size:var(--fs-sm);font-weight:500}
+.nav__links{display:flex;align-items:center;gap:28px;font-size:14px;font-weight:500}
 .nav__links a{color:var(--muted);transition:color .2s;white-space:nowrap;position:relative}
 .nav__links a::after{content:"";position:absolute;left:0;right:100%;bottom:-4px;height:1.5px;background:var(--indigo-soft);transition:right .25s}
 .nav__links a:hover{color:var(--text)}
@@ -89,7 +89,7 @@ nav.top .brand img{height:38px}
 .nav__links a.on{color:var(--text)}
 .nav__links a.on::after{right:0}
 .nav__cta-m{display:none}
-.nav__cta{font-size:var(--fs-sm);font-weight:600;color:#fff;background:var(--indigo);padding:10px 18px;border-radius:10px;transition:background .2s,box-shadow .2s;white-space:nowrap}
+.nav__cta{font-size:14px;font-weight:600;color:#fff;background:var(--indigo);padding:10px 18px;border-radius:10px;transition:background .2s,box-shadow .2s;white-space:nowrap}
 .nav__cta:hover{background:#7479FF;box-shadow:0 8px 24px -8px rgba(94,99,242,.7)}
 .burger{display:none;flex-direction:column;gap:5px;padding:8px;z-index:110}
 .burger span{width:22px;height:2px;background:var(--text);border-radius:2px;transition:transform .25s,opacity .25s}
@@ -105,7 +105,7 @@ nav.top .brand img{height:38px}
   background:radial-gradient(closest-side,rgba(123,212,245,.12),transparent 70%);pointer-events:none;will-change:transform}
 .compassring{position:absolute;top:-300px;left:50%;transform:translateX(-50%);width:840px;height:840px;opacity:.16;pointer-events:none;
   animation:spinslow 140s linear infinite}
-.hero__chip{position:relative;display:inline-flex;align-items:center;gap:9px;font-size:var(--fs-xs);font-weight:500;color:var(--muted);
+.hero__chip{position:relative;display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:500;color:var(--muted);
   border:1px solid var(--line-2);border-radius:30px;padding:7px 16px;margin-bottom:14px;background:rgba(19,20,44,.6);z-index:2}
 .hero__chip i{width:7px;height:7px;border-radius:50%;background:var(--ice);animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
@@ -698,8 +698,8 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--base-2)}
     <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     <div class="nav__links" id="navlinks">
       <a href="index.html">Home</a>
-      <a href="Enterprise.html">Enterprise Solutions</a>
-      <a href="Enterprise.html#managed">Managed Services</a>
+      <a href="enterprise.html">Enterprise Solutions</a>
+      <a href="managed.html">Managed Services</a>
       <a class="on" href="Foundry.html">AI Business Solutions</a>
       <a href="Observability.html">Observability</a>
       <a href="index.html#team">About</a>
