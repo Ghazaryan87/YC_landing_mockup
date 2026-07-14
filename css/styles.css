@@ -4892,6 +4892,10 @@ html { scroll-padding-top: calc(var(--nav-h) + 16px); }
 #partners.section,
 #coverage.section,
 #loop.section,
+#capabilities.section,
+#managed.section,
+#why.section,
+#excellence.section,
 .obs-case {
   padding-top: var(--sect-y);
   padding-bottom: var(--sect-y);
@@ -5035,3 +5039,115 @@ body::before {
 
 /* belt-and-braces: decorative layers can never intercept input */
 #prog, .statband__sheen, .hero__atmo, .hero__ring, .hero-orn--bg { pointer-events: none; }
+
+/* ============================================================
+   ENTERPRISE SOLUTIONS & MANAGED SERVICES (Enterprise.html)
+   ============================================================ */
+
+/* the capability tile that is also a door into the service factory */
+.obs-tile--msp {
+  display: block;
+  position: relative;
+  background: linear-gradient(160deg, #191B3E, #10122B);
+  border-color: rgba(155, 160, 255, .28);
+}
+.obs-tile--msp h3 { color: #F2F3FA; }
+.obs-tile--msp p { color: #B9BDDB; }
+.obs-tile--msp strong { color: var(--soft); font-weight: 600; }
+.obs-tile--msp::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 16px;
+  padding: 1px;
+  background: linear-gradient(140deg, rgba(155, 160, 255, .5), transparent 55%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* the service factory: five stages, signal flowing left to right */
+.factory {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+  counter-reset: factory;
+}
+.factory__stage {
+  position: relative;
+  background: var(--card);
+  border: 1px solid var(--card-line);
+  border-radius: 16px;
+  padding: 22px 20px 20px;
+  transition: border-color .25s, transform .25s;
+}
+.factory__stage:hover { border-color: var(--rule); transform: translateY(-3px); }
+
+/* the arrow between stages — the signal moving down the line */
+.factory__stage + .factory__stage::before {
+  content: "";
+  position: absolute;
+  left: -12px;
+  top: 50%;
+  width: 10px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--soft));
+}
+.factory__stage + .factory__stage::after {
+  content: "";
+  position: absolute;
+  left: -4px;
+  top: 50%;
+  width: 5px;
+  height: 5px;
+  border-top: 1px solid var(--soft);
+  border-right: 1px solid var(--soft);
+  transform: translateY(-50%) rotate(45deg);
+  opacity: .8;
+}
+
+.factory__n {
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: var(--fs-2xs);
+  letter-spacing: .16em;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.factory__stage h3 {
+  font-family: 'Sora', sans-serif;
+  font-weight: 600;
+  font-size: var(--fs-base);
+  letter-spacing: -.015em;
+  color: var(--fg);
+  margin: 0 0 7px;
+}
+.factory__stage p { margin: 0; color: var(--body); font-size: var(--fs-sm); line-height: 1.6; }
+
+/* the two stages that carry the argument: the machine acts, the human governs */
+.factory__stage--act { border-color: rgba(155, 160, 255, .34); }
+.factory__stage--act .factory__n { color: var(--soft); }
+.factory__stage--gov { border-color: rgba(123, 212, 245, .3); }
+.factory__stage--gov .factory__n { color: var(--ice); }
+
+.factory__foot {
+  margin: 26px 0 0;
+  color: var(--body);
+  font-size: var(--fs-sm2);
+  line-height: 1.6;
+}
+.factory__foot strong { color: var(--fg); font-weight: 600; }
+
+@media (max-width: 1100px) {
+  .factory { grid-template-columns: repeat(2, 1fr); }
+  /* the connector only reads on a single row — drop it once the grid wraps */
+  .factory__stage + .factory__stage::before,
+  .factory__stage + .factory__stage::after { display: none; }
+}
+@media (max-width: 620px) {
+  .factory { grid-template-columns: 1fr; }
+}
