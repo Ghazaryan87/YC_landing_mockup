@@ -1629,6 +1629,49 @@ a:hover { color: var(--sig2); }
 }
 .reel::-webkit-scrollbar { display: none; }
 
+/* ---------- showcase: domain filter ---------- */
+.showfilter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: -8px 0 clamp(22px, 2.6vw, 32px);
+}
+.showfilter__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 15px;
+  border: 1px solid var(--card-line);
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--body);
+  font-family: inherit;
+  font-size: var(--fs-sm2);
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+  transition: color .2s, border-color .2s, background .2s;
+}
+.showfilter__chip:hover { color: var(--fg); border-color: var(--rule); }
+.showfilter__chip[aria-pressed="true"] {
+  color: #fff;
+  background: var(--indigo, #5E63F2);
+  border-color: transparent;
+}
+.showfilter__n {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: var(--fs-xs);
+  opacity: .6;
+}
+.showfilter__empty {
+  margin: 0 0 24px;
+  color: var(--body);
+  font-size: var(--fs-sm2);
+}
+/* a filtered-out thumb must actually leave the strip — .thumb's own display
+   would otherwise win over the browser's [hidden] rule */
+.thumb[hidden] { display: none !important; }
+
 .thumb {
   flex: 0 0 auto;
   width: min(68vw, 280px);
@@ -3894,9 +3937,18 @@ html, body { overflow-x: clip; }
 @media (max-width: 560px) { .recog { flex-direction: column; } }
 
 /* ---------- brand assets ---------- */
-.nav__logo { height: 30px; width: auto; display: block; }
+/* ---------- fixed navbar ----------
+   Fixed lifts the bar out of flow, so body carries its height as padding and
+   anchor targets get scroll-padding — otherwise every #section lands under it. */
+:root { --nav-h: 78px; }
+.nav { position: fixed; top: 0; left: 0; right: 0; }
+body { padding-top: var(--nav-h); }
+html { scroll-padding-top: calc(var(--nav-h) + 16px); }
+@media (max-width: 560px) { :root { --nav-h: 68px; } }
+
+.nav__logo { height: 45px; width: auto; display: block; }
 .footer__logo { height: 26px; width: auto; display: block; }
-@media (max-width: 560px) { .nav__logo { height: 26px; } }
+@media (max-width: 560px) { .nav__logo { height: 39px; } }
 
 /* ---------- recognitions: official badge imagery ---------- */
 .recog__img { flex: none; border-radius: 12px; }

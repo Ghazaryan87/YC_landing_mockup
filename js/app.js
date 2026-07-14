@@ -56,37 +56,164 @@
     ]
   };
 
+  /* the showcase filter — order here is the order the chips render in */
+  var DOMAINS = [
+    { id: 'all', label: 'All domains' },
+    { id: 'itops', label: 'IT Operations & ITSM' },
+    { id: 'hr', label: 'HR & Employee Services' },
+    { id: 'finance', label: 'Procurement & Finance' },
+    { id: 'audit', label: 'Audit & Investigation' },
+    { id: 'field', label: 'Operations & Field Services' },
+    { id: 'legal', label: 'Legal & Compliance' },
+    { id: 'exec', label: 'Executive & Management' },
+    { id: 'knowledge', label: 'Knowledge & Training' }
+  ];
+
   var REEL_CARDS = [
-    { tag: 'OBSERVABILITY', len: '02:14', chip: 'Autonomous', title: 'A P1 caught, diagnosed, and closed — nobody paged', sub: 'Government entity · UAE · identity stripped',
+    { domain: 'itops', tag: 'OBSERVABILITY', len: '02:14', chip: 'Autonomous', title: 'A P1 caught, diagnosed, and closed — nobody paged', sub: 'Government entity · UAE · identity stripped',
       problem: "Critical incidents surface through threshold alerts long after users feel them — then triage crawls across dashboards, logs, and war rooms while the clock runs.",
       solution: "The agent flags the anomaly in live telemetry, correlates across services, isolates the failing dependency, drafts the diagnosis, and executes the approved remediation — with a replayable decision trace.",
       outcome: "\u2197 Detection-to-resolution collapses from hours to minutes — a 60% reduction in MTTR across delivered use cases.",
       caps: ['Observability Integration', 'Agentic Workflow Engine', 'Replayable Traces', 'Auto-Remediation'] },
-    { tag: 'SERVICE OPS', len: '01:48', chip: 'Act-with-Approval', title: 'A service request handled end-to-end', sub: 'Banking client · GCC · identity stripped',
+    { domain: 'itops', tag: 'SERVICE OPS', len: '01:48', chip: 'Act-with-Approval', title: 'A service request handled end-to-end', sub: 'Banking client · GCC · identity stripped',
       problem: "Routine requests queue for days: forms, approvals, handoffs between teams — each step waiting on a human to push it forward.",
       solution: "The agent intakes the request in natural language, validates entitlements, executes fulfilment across ITSM and identity systems, and routes high-risk actions for one-tap human approval.",
       outcome: "\u2197 Requests that took days close in minutes — with every action logged and approved.",
       caps: ['Conversational AI', 'Act-with-Approval', 'ITSM Connectors', 'Audit Trail'] },
-    { tag: 'IOC', len: '03:02', chip: 'Operations', title: 'Inside the Intelligent Observability Center', sub: 'Live operations wall · Abu Dhabi HQ',
+    { domain: 'itops', tag: 'IOC', len: '03:02', chip: 'Operations', title: 'Inside the Intelligent Observability Center', sub: 'Live operations wall · Abu Dhabi HQ',
       problem: "Enterprise estates emit millions of signals — without a nerve centre, teams see fragments, not the system.",
       solution: "The IOC fuses full-stack telemetry into one operations wall: watched, diagnosed, and remediated 24/7 by engineers working with the intelligent core.",
       outcome: "\u2197 One pane, full estate — operations that never go dark.",
       caps: ['Full-Stack Observability', '24/7 Operations', 'AIOps', 'Dynatrace'] },
-    { tag: 'AGENTIC WORKFLOW', len: '02:31', chip: 'Act-with-Approval', title: 'Humans approve. Agents execute.', sub: 'Approval-loop pattern · in production',
+    { domain: 'legal', tag: 'AGENTIC WORKFLOW', len: '02:31', chip: 'Act-with-Approval', title: 'Humans approve. Agents execute.', sub: 'Approval-loop pattern · in production',
       problem: "Automation either stops at suggestions — or runs unchecked. Neither survives enterprise governance.",
       solution: "Multi-step workflows execute end-to-end, with policy guardrails deciding what runs autonomously and what pauses for human approval — enforced by the platform, not by convention.",
       outcome: "\u2197 Zero unapproved high-risk actions — autonomy with governance built in.",
       caps: ['Agentic Workflow Engine', 'Policy Guardrails', 'RBAC', 'Kill-Switch'] },
-    { tag: 'SOVEREIGN AI', len: '01:56', chip: 'Strategic', title: 'On-prem agentic AI, end to end', sub: 'Air-gapped deployment walkthrough',
+    { domain: 'legal', tag: 'SOVEREIGN AI', len: '01:56', chip: 'Strategic', title: 'On-prem agentic AI, end to end', sub: 'Air-gapped deployment walkthrough',
       problem: "Cloud AI means your documents, queries, and embeddings leave the building — a non-starter for government and regulated enterprise.",
       solution: "The full stack — models, vectors, agents — runs inside your perimeter on a zero-egress boundary: air-gapped where required, with a PII-redaction gate at the door.",
       outcome: "\u2197 No document, embedding, or query ever leaves your network.",
       caps: ['On-Prem Deployment', 'Zero Egress', 'PII Redaction', 'Air-Gap Ready'] },
-    { tag: 'ONBOARDING', len: '02:20', chip: 'Method', title: 'The 8-step onboarding in two minutes', sub: 'Discovery to IOC operations',
+    { domain: 'exec', tag: 'ONBOARDING', len: '02:20', chip: 'Method', title: 'The 8-step onboarding in two minutes', sub: 'Discovery to IOC operations',
       problem: "AI initiatives die between the idea and the plan — undefined scope, improvised governance, hopeful kick-offs.",
       solution: "Eight steps from discovery to continuous value tracking — scope agreed, governance set, environments verified before delivery begins.",
       outcome: "\u2197 Delivery starts from a verified line — not a hopeful one.",
-      caps: ['Discovery', 'Governance Setup', 'Mobilisation', 'Value Tracking'] }
+      caps: ['Discovery', 'Governance Setup', 'Mobilisation', 'Value Tracking'] },
+
+    { domain: 'itops', tag: 'ITSM', len: '02:05', chip: 'Autonomous', title: 'A thousand tickets, triaged before the shift starts', sub: 'Telecom operator · GCC · identity stripped',
+      problem: "Every morning the queue is a wall: misrouted tickets, duplicate incidents, and priorities set by whoever shouted loudest.",
+      solution: "The agent reads each ticket in the user's own words, classifies and deduplicates it against open incidents, sets priority from real business impact, and routes it to the team that can actually close it.",
+      outcome: "↗ First-touch routing accuracy above 90% — the queue arrives sorted, not raw.",
+      caps: ['Ticket Classification', 'Deduplication', 'ITSM Connectors', 'Impact Scoring'] },
+
+    { domain: 'hr', tag: 'HR OPS', len: '02:12', chip: 'Act-with-Approval', title: 'A new joiner, productive on day one', sub: 'Government entity · UAE · identity stripped',
+      problem: "Onboarding spans HR, IT, facilities, and security — a new hire waits days for accounts, access, and a laptop that nobody owns end to end.",
+      solution: "One agent orchestrates the whole joiner flow: identity created, role-based access provisioned, assets requested, induction scheduled — with the security-sensitive grants pausing for approval.",
+      outcome: "↗ Two weeks of chasing collapses into a single working morning.",
+      caps: ['Joiner Orchestration', 'RBAC Provisioning', 'Act-with-Approval', 'HRIS Connectors'] },
+
+    { domain: 'hr', tag: 'EMPLOYEE SERVICES', len: '01:41', chip: 'Autonomous', title: 'Every policy question, answered from the source', sub: 'Banking client · GCC · identity stripped',
+      problem: "Staff ask HR the same hundred questions about leave, benefits, and allowances — and get answers that vary by whoever happens to reply.",
+      solution: "The agent answers in the employee's own language directly from the current policy documents, cites the clause it used, and escalates the genuine edge cases to a human with the context already attached.",
+      outcome: "↗ Around 70% of routine HR queries resolved without a human — every answer traceable to a clause.",
+      caps: ['Grounded Retrieval', 'Citations', 'Arabic & English', 'Escalation Routing'] },
+
+    { domain: 'hr', tag: 'HR OPS', len: '02:28', chip: 'Act-with-Approval', title: 'Leave, letters, and payroll — self-service that actually serves', sub: 'Energy sector · UAE · identity stripped',
+      problem: "Salary certificates, NOC letters, and leave corrections queue behind a shared inbox that only clears when someone has a quiet afternoon.",
+      solution: "The agent validates entitlement against the HR system, generates the document from the approved template, and files the payroll correction — routing anything with a financial impact for sign-off.",
+      outcome: "↗ Requests that waited days are issued in minutes, correctly, every time.",
+      caps: ['Document Generation', 'Entitlement Checks', 'Payroll Connectors', 'Audit Trail'] },
+
+    { domain: 'finance', tag: 'ACCOUNTS PAYABLE', len: '02:24', chip: 'Act-with-Approval', title: 'Invoice to payment, matched and cleared', sub: 'Logistics group · GCC · identity stripped',
+      problem: "Invoices arrive as PDFs, scans, and photographs — then a human keys them in and goes hunting for the purchase order and the delivery note.",
+      solution: "The agent extracts the invoice, performs the three-way match against purchase order and goods receipt, flags the true exceptions, and posts the clean ones straight to the ledger.",
+      outcome: "↗ Straight-through processing on the majority of invoices — humans see only the exceptions.",
+      caps: ['Document Extraction', 'Three-Way Match', 'ERP Connectors', 'Exception Handling'] },
+
+    { domain: 'finance', tag: 'PROCUREMENT', len: '02:16', chip: 'Act-with-Approval', title: 'A vendor onboarded, screened, and scored', sub: 'Public sector · UAE · identity stripped',
+      problem: "Vendor onboarding means collecting documents by email, checking sanctions lists by hand, and hoping the trade licence has not expired.",
+      solution: "The agent collects and validates the documentation, runs the screening checks, verifies licence validity against the registry, and scores the vendor against your qualification criteria before a buyer ever looks.",
+      outcome: "↗ Onboarding cycle cut from weeks to days — with the screening evidence attached to the record.",
+      caps: ['Document Validation', 'Sanctions Screening', 'Vendor Scoring', 'Audit Trail'] },
+
+    { domain: 'finance', tag: 'FINANCE', len: '01:52', chip: 'Advisory', title: 'A requisition checked against the budget that funds it', sub: 'Banking client · GCC · identity stripped',
+      problem: "Purchase requests get approved on gut feel, then collide with a budget line that ran dry two months ago.",
+      solution: "The agent reads the requisition, maps it to the cost centre and budget line, checks remaining headroom and existing contract coverage, and tells the approver what they are actually approving.",
+      outcome: "↗ Budget overruns caught before approval, not at quarter close.",
+      caps: ['Budget Lookup', 'Contract Coverage', 'Policy Checks', 'Approver Briefing'] },
+
+    { domain: 'audit', tag: 'INTERNAL AUDIT', len: '02:47', chip: 'Autonomous', title: 'An audit trail assembled in an afternoon', sub: 'Government entity · UAE · identity stripped',
+      problem: "Preparing for an audit means weeks of pulling evidence out of a dozen systems and assembling it into something a reviewer can actually follow.",
+      solution: "The agent gathers the evidence across systems, reconciles it against the control being tested, assembles the working paper, and flags every gap it could not close.",
+      outcome: "↗ Evidence gathering drops from weeks to hours — auditors spend their time on judgement, not collection.",
+      caps: ['Evidence Collection', 'Control Mapping', 'Working Papers', 'Gap Flagging'] },
+
+    { domain: 'audit', tag: 'FORENSICS', len: '02:33', chip: 'Autonomous', title: 'Anomalous transactions surfaced before the quarter closes', sub: 'Financial services · GCC · identity stripped',
+      problem: "Sampling catches what it happens to look at. The patterns that matter hide in the transactions nobody sampled.",
+      solution: "The agent examines the full population rather than a sample, scores each transaction against learned behaviour and policy rules, and hands investigators a ranked queue with the reasoning attached.",
+      outcome: "↗ Full-population testing replaces sampling — exceptions arrive explained, not just flagged.",
+      caps: ['Population Testing', 'Anomaly Detection', 'Explainable Scoring', 'Case Handoff'] },
+
+    { domain: 'audit', tag: 'INVESTIGATION', len: '03:10', chip: 'Act-with-Approval', title: 'A case file read, cross-referenced, and summarised', sub: 'Law enforcement · UAE · identity stripped',
+      problem: "An investigator opens a case with four hundred pages of statements, transactions, and correspondence — and a deadline.",
+      solution: "The agent reads the file, builds a timeline, cross-references entities across documents, and produces a summary where every claim links back to the page it came from. Nothing is asserted without a source.",
+      outcome: "↗ Days of reading become an hour of review — with every line traceable to evidence.",
+      caps: ['Timeline Reconstruction', 'Entity Resolution', 'Source Linking', 'On-Prem Deployment'] },
+
+    { domain: 'field', tag: 'FIELD SERVICE', len: '02:08', chip: 'Autonomous', title: 'The right engineer dispatched to the right site', sub: 'Utilities provider · GCC · identity stripped',
+      problem: "Dispatch is a whiteboard exercise: skills, certifications, parts, and travel time balanced in someone's head, badly, under pressure.",
+      solution: "The agent reads the fault, matches the skills and certifications it needs, checks van stock for the part, and schedules the engineer whose route actually absorbs the job.",
+      outcome: "↗ First-time fix rate up, repeat visits down — the truck arrives with the part already in it.",
+      caps: ['Skills Matching', 'Route Optimisation', 'Parts Availability', 'Scheduling'] },
+
+    { domain: 'field', tag: 'ASSET OPS', len: '02:39', chip: 'Autonomous', title: 'A failing asset flagged three weeks early', sub: 'Energy sector · UAE · identity stripped',
+      problem: "Maintenance runs on a calendar, not on condition — so healthy assets get serviced and failing ones run to breakdown.",
+      solution: "The agent watches sensor telemetry against the asset's own history, detects the drift that precedes failure, and raises a work order carrying the evidence and the recommended intervention.",
+      outcome: "↗ Unplanned downtime falls as failures are met before they happen, not after.",
+      caps: ['Predictive Maintenance', 'Sensor Telemetry', 'Work Order Automation', 'Condition Monitoring'] },
+
+    { domain: 'field', tag: 'INSPECTIONS', len: '01:59', chip: 'Act-with-Approval', title: 'A site inspection written from the photographs', sub: 'Construction group · GCC · identity stripped',
+      problem: "Inspectors spend their evenings turning photographs and scribbled notes into reports that are already out of date by the time they are filed.",
+      solution: "The agent reads the site imagery and the inspector's voice notes, drafts the report against the compliance checklist, and marks the defects it could not classify for the inspector to confirm.",
+      outcome: "↗ The report is drafted before the inspector leaves site — they review rather than write.",
+      caps: ['Vision Models', 'Voice Capture', 'Checklist Compliance', 'Defect Classification'] },
+
+    { domain: 'legal', tag: 'CONTRACTS', len: '02:22', chip: 'Advisory', title: 'A contract reviewed against your playbook, not a generic one', sub: 'Public sector · UAE · identity stripped',
+      problem: "Legal reviews the same clauses a hundred times a month — and the hundredth review is never as sharp as the first.",
+      solution: "The agent reads the draft against your negotiation playbook, flags every deviation from the approved position, proposes fallback language, and leaves the judgement calls to counsel.",
+      outcome: "↗ First-pass review in minutes — counsel arrives at the questions that actually need a lawyer.",
+      caps: ['Clause Extraction', 'Playbook Comparison', 'Fallback Language', 'Redline Drafting'] },
+
+    { domain: 'exec', tag: 'MANAGEMENT', len: '02:44', chip: 'Advisory', title: 'The board pack drafted from live systems', sub: 'Diversified group · GCC · identity stripped',
+      problem: "The monthly pack is assembled by hand from a dozen exports — and by the time it reaches the board, the numbers have already moved.",
+      solution: "The agent pulls the current figures from the source systems, reconciles them against last month, drafts the commentary explaining what moved and why, and cites the system each number came from.",
+      outcome: "↗ A week of assembly becomes an afternoon of review — and the numbers are live.",
+      caps: ['Data Reconciliation', 'Narrative Drafting', 'Source Citations', 'BI Connectors'] },
+
+    { domain: 'exec', tag: 'DECISION SUPPORT', len: '02:01', chip: 'Advisory', title: 'One question, answered across every system', sub: 'Government entity · UAE · identity stripped',
+      problem: "A simple executive question — how many, where, since when — takes three analysts two days and comes back with three different answers.",
+      solution: "The agent decomposes the question, queries each authoritative system in turn, resolves the conflicts it finds, and answers with the workings shown — so the number can be challenged.",
+      outcome: "↗ Answers in the meeting, not the week after it — with the derivation attached.",
+      caps: ['Federated Query', 'Conflict Resolution', 'Shown Workings', 'RBAC'] },
+
+    { domain: 'knowledge', tag: 'KNOWLEDGE', len: '02:18', chip: 'Autonomous', title: 'Every document, one answer — with citations', sub: 'Energy sector · UAE · identity stripped',
+      problem: "Thirty years of standards, drawings, and procedures sit in a document store that only rewards people who already know where to look.",
+      solution: "The agent answers questions from the corpus in natural language, cites the document and page behind every statement, and respects the access rights of whoever is asking.",
+      outcome: "↗ Institutional knowledge becomes answerable — and every answer shows its source.",
+      caps: ['Grounded Retrieval', 'Citations', 'Permission-Aware Search', 'On-Prem Vectors'] },
+
+    { domain: 'knowledge', tag: 'TRAINING', len: '02:35', chip: 'Method', title: 'A new engineer trained on your estate, not a generic course', sub: 'Telecom operator · GCC · identity stripped',
+      problem: "New engineers learn the vendor's course, then spend six months discovering how your estate actually differs from it.",
+      solution: "The agent builds the curriculum from your own runbooks, incident history, and architecture — then drills the engineer against real scenarios your teams have already faced.",
+      outcome: "↗ Ramp-up measured in weeks instead of quarters — on your systems, not a textbook's.",
+      caps: ['Curriculum Generation', 'Scenario Drills', 'Runbook Grounding', 'Progress Tracking'] },
+
+    { domain: 'knowledge', tag: 'TRIBAL KNOWLEDGE', len: '01:47', chip: 'Strategic', title: 'The knowledge that walks out at retirement, captured', sub: 'Utilities provider · GCC · identity stripped',
+      problem: "The three people who understand the legacy plant are within five years of retiring, and almost none of what they know is written down.",
+      solution: "The agent interviews the experts, structures what it hears into procedures and decision trees, and validates the result back against the systems those procedures describe.",
+      outcome: "↗ Undocumented expertise becomes a queryable asset before the expertise leaves the building.",
+      caps: ['Expert Elicitation', 'Procedure Structuring', 'Validation Loops', 'On-Prem Deployment'] }
   ];
 
   /* ---------- accent ---------- */
@@ -392,12 +519,22 @@
     var sub = $('[data-stage-sub]');
     var numEl = $('[data-reel-num]');
     var totalEl = $('[data-reel-total]');
+    var totalStageEl = $('[data-stage-total]');
+    var filterHost = $('[data-reel-filters]');
+    var emptyEl = $('[data-reel-empty]');
 
+    /* idx is always an index into REEL_CARDS; `view` is the subset the
+       active filter admits. Everything the user drives — arrows, autoplay,
+       counters — walks `view`, never the full library. */
     var idx = 0;
+    var view = REEL_CARDS.map(function (c, i) { return i; });
     var progress = 0;
     var hold = 0;
 
-    if (totalEl) totalEl.textContent = String(REEL_CARDS.length).padStart(2, '0');
+    function pad(n) { return String(n).padStart(2, '0'); }
+    function count(id) {
+      return id === 'all' ? REEL_CARDS.length : REEL_CARDS.filter(function (c) { return c.domain === id; }).length;
+    }
 
     var thumbs = REEL_CARDS.map(function (c, i) {
       var btn = document.createElement('button');
@@ -425,13 +562,16 @@
     function render() {
       window.__reelIdx = idx;
       var c = REEL_CARDS[idx];
+      var pos = view.indexOf(idx) + 1;
       if (tag) tag.textContent = c.tag;
       if (len) len.textContent = c.chip || c.len;
       var cnt = $('[data-stage-count]');
-      if (cnt) cnt.textContent = String(idx + 1).padStart(2, '0');
+      if (cnt) cnt.textContent = pad(pos);
       if (title) title.textContent = c.title;
       if (sub) sub.textContent = c.sub;
-      if (numEl) numEl.textContent = String(idx + 1).padStart(2, '0');
+      if (numEl) numEl.textContent = pad(pos);
+      if (totalEl) totalEl.textContent = pad(view.length);
+      if (totalStageEl) totalStageEl.textContent = pad(view.length);
       thumbs.forEach(function (t, j) { t.setAttribute('aria-current', String(idx === j)); });
     }
 
@@ -440,10 +580,10 @@
       progress = 0;
       if (user) hold = performance.now() + 9000;
 
-      // Wrapping the ends (6 -> 1, or 1 -> 6) would smooth-scroll the whole
-      // strip across every card. Cut straight there instead.
-      var lastIdx = REEL_CARDS.length - 1;
-      var wrapped = (idx === lastIdx && i === 0) || (idx === 0 && i === lastIdx);
+      // Wrapping the ends of the view (last -> first) would smooth-scroll the
+      // strip across every card in between. Cut straight there instead.
+      var first = view[0], last = view[view.length - 1];
+      var wrapped = (idx === last && i === first) || (idx === first && i === last);
 
       idx = i;
       render();
@@ -456,22 +596,56 @@
       }
       var th = thumbs[idx];
       if (th) {
-        var pad = parseFloat(getComputedStyle(strip).paddingLeft) || 24;
+        var padLeft = parseFloat(getComputedStyle(strip).paddingLeft) || 24;
         strip.scrollTo({
-          left: Math.max(0, th.offsetLeft - pad),
+          left: Math.max(0, th.offsetLeft - padLeft),
           behavior: (reduce || wrapped) ? 'auto' : 'smooth'
         });
       }
     }
 
+    /* walk `delta` steps through the filtered view, wrapping at its ends */
+    function hop(delta, user) {
+      if (view.length < 2) return;
+      var pos = view.indexOf(idx);
+      select(view[(pos + delta + view.length) % view.length], user);
+    }
+
+    var chips = DOMAINS.map(function (d) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'showfilter__chip';
+      btn.dataset.domain = d.id;
+      btn.innerHTML = '<span class="showfilter__label"></span><span class="showfilter__n"></span>';
+      $('.showfilter__label', btn).textContent = d.label;
+      $('.showfilter__n', btn).textContent = pad(count(d.id));
+      btn.addEventListener('click', function () { applyFilter(d.id); });
+      if (filterHost) filterHost.appendChild(btn);
+      return btn;
+    });
+
+    function applyFilter(id) {
+      view = REEL_CARDS
+        .map(function (c, i) { return i; })
+        .filter(function (i) { return id === 'all' || REEL_CARDS[i].domain === id; });
+
+      chips.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.domain === id)); });
+      thumbs.forEach(function (t, i) { t.hidden = view.indexOf(i) === -1; });
+      if (emptyEl) emptyEl.hidden = view.length > 0;
+
+      // keep the current card if the new filter still admits it, else open the first
+      if (view.length && view.indexOf(idx) === -1) idx = view[0];
+      progress = 0;
+      hold = performance.now() + 9000;
+      render();
+      strip.scrollTo({ left: 0, behavior: reduce ? 'auto' : 'smooth' });
+    }
+
+    applyFilter('all');
     render();
 
-    $('[data-reel-prev]').addEventListener('click', function () {
-      select((idx + REEL_CARDS.length - 1) % REEL_CARDS.length, true);
-    });
-    $('[data-reel-next]').addEventListener('click', function () {
-      select((idx + 1) % REEL_CARDS.length, true);
-    });
+    $('[data-reel-prev]').addEventListener('click', function () { hop(-1, true); });
+    $('[data-reel-next]').addEventListener('click', function () { hop(1, true); });
 
     if (reduce) return;
 
@@ -494,7 +668,7 @@
         progress += dt / DUR;
         if (progress >= 1) {
           progress = 0;
-          select((idx + 1) % REEL_CARDS.length, false);
+          hop(1, false);
         }
       }
       if (bar) bar.style.width = (Math.min(1, progress) * 100).toFixed(2) + '%';
