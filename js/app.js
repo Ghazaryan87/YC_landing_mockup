@@ -26,10 +26,10 @@
   ];
 
   var BEARINGS = [
-    { tag: 'N · THE FOUNDRY', label: 'AI Business Solutions', x: '50%', y: '7%', deg: 0, desc: 'Agents delivered to production — platform, accelerators, and IP, built inside your walls, on your data.', href: 'Foundry_2.html', link: 'Explore the YC AI Foundry →' },
-    { tag: 'E', label: 'Enterprise Solutions', x: '88%', y: '53.2%', deg: 90, desc: 'Full-stack enterprise platforms, infrastructure, and cybersecurity — delivered with engineering rigor and single-point accountability.', href: 'AI%20Solutions.dc.html#build', link: 'Enterprise Solutions →' },
-    { tag: 'S', label: 'Managed Services', x: '50%', y: '96%', deg: 180, desc: 'AIOps-enabled operations — end-to-end managed services with intelligence built into every service we run.', href: 'AI%20Solutions.dc.html#build', link: 'Managed Services →' },
-    { tag: 'W', label: 'Observability', x: '12%', y: '53.2%', deg: 270, desc: 'Full stack — including AI workloads. Observability feeds the intelligence, and now observes the AI itself.', href: 'Observability.html', link: 'Observability & Intelligent Operations →' }
+    { tag: 'N · THE FOUNDRY', label: 'AI Business Solutions', x: '50%', y: '7%', deg: 0, href: 'Foundry.html', link: 'Explore the YC AI Foundry →' },
+    { tag: 'E', label: 'Enterprise Solutions', x: '88%', y: '53.2%', deg: 90, href: 'Foundry.html#build', link: 'Enterprise Solutions →' },
+    { tag: 'S', label: 'Managed Services', x: '50%', y: '96%', deg: 180, href: 'Foundry.html#build', link: 'Managed Services →' },
+    { tag: 'W', label: 'Observability', x: '12%', y: '53.2%', deg: 270, href: 'Observability.html', link: 'Observability & Intelligent Operations →' }
   ];
 
   var METHOD_STEPS = [
@@ -197,7 +197,6 @@
   function initBearings() {
     var host = $('[data-bearings]');
     var kicker = $('[data-bearing-kicker]');
-    var desc = $('[data-bearing-desc]');
     var link = $('[data-bearing-link]');
     if (!host) return;
 
@@ -248,7 +247,6 @@
       target = b.deg;
       if (reduce && needle) needle.style.transform = 'rotate(' + b.deg + 'deg)';
       if (kicker) kicker.textContent = b.tag;
-      if (desc) desc.textContent = b.desc;
       if (link) { link.textContent = b.link; link.href = b.href; }
     }
 

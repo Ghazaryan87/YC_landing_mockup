@@ -2914,6 +2914,19 @@ a:hover { color: var(--sig2); }
 .practice__desc { flex: 1; }
 .practice__signal { margin-top: auto; }
 
+/* each practice card carries its own way in, pinned to the bottom edge */
+.practice__link {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--card-line);
+  font-size: var(--fs-sm2);
+  font-weight: 600;
+  color: var(--accent);
+  transition: color .2s, transform .2s;
+}
+.practice__link:hover { color: var(--fg); }
+.practice__signal:not([hidden]) + .practice__link { border-top: 0; padding-top: 10px; }
+
 .bearing {
   background: var(--card);
   border: 1px solid var(--card-line);
