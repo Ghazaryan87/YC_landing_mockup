@@ -27,8 +27,8 @@
 
   var BEARINGS = [
     { tag: 'N · THE FOUNDRY', label: 'AI Business Solutions', x: '50%', y: '7%', deg: 0, href: 'Foundry.html', link: 'Explore the YC AI Foundry →' },
-    { tag: 'E', label: 'Enterprise Solutions', x: '88%', y: '53.2%', deg: 90, href: 'Enterprise.html', link: 'Enterprise Solutions →' },
-    { tag: 'S', label: 'Managed Services', x: '50%', y: '96%', deg: 180, href: 'Enterprise.html#managed', link: 'Managed Services →' },
+    { tag: 'E', label: 'Enterprise Solutions', x: '88%', y: '53.2%', deg: 90, href: 'enterprise.html', link: 'Enterprise Solutions →' },
+    { tag: 'S', label: 'Managed Services', x: '50%', y: '96%', deg: 180, href: 'managed.html', link: 'Managed Services →' },
     { tag: 'W', label: 'Observability', x: '12%', y: '53.2%', deg: 270, href: 'Observability.html', link: 'Observability & Intelligent Operations →' }
   ];
 
