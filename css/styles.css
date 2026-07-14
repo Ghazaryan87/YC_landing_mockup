@@ -445,9 +445,10 @@ a:hover { color: var(--sig2); }
   font-family: 'Sora', sans-serif;
   font-weight: 600;
   color: var(--fg);
-  font-size: clamp(38px, 5.7vw, 74px);
-  line-height: 1.02;
-  letter-spacing: -.028em;
+  /* matched to the AI Foundry hero (h1.hero__h) so both pages open at one scale */
+  font-size: clamp(34px, 5.2vw, 58px);
+  line-height: 1.08;
+  letter-spacing: -.035em;
   margin: 0 0 24px;
   text-wrap: balance;
 }
@@ -3564,8 +3565,8 @@ a:hover { color: var(--sig2); }
   .practice__desc, .htl__card p { font-size: clamp(14px, 0.98vw, 19px); }
   .proc__panel p { font-size: clamp(16px, 1.08vw, 21px); }
 
-  /* display type: lift the desktop caps so headlines grow with the glass */
-  .hero__h1 { font-size: clamp(38px, 5vw, 108px); }
+  /* display type: lift the desktop caps so headlines grow with the glass.
+     The hero is deliberately left out — it holds the AI Foundry hero's scale. */
   .h2 { font-size: clamp(30px, 3.6vw, 78px); }
   .reframe__h2 { font-size: clamp(30px, 3.4vw, 74px); }
   .team__h2 { font-size: clamp(26px, 3.2vw, 68px); }
