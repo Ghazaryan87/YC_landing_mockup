@@ -575,7 +575,7 @@ a:hover { color: var(--sig2); }
 }
 
 .reframe__inner {
-  max-width: 920px;
+  max-width: 1120px;
   margin: 0 auto;
   padding: 0 24px;
   text-align: center;
@@ -592,7 +592,8 @@ a:hover { color: var(--sig2); }
   line-height: 1.22;
   letter-spacing: -.015em;
   margin: 0 0 30px;
-  text-wrap: balance;
+  /* the line break is authored in the markup — don't let balancing re-flow it */
+  text-wrap: initial;
 }
 .reframe__h2 em { font-style: normal; color: var(--accent); }
 
@@ -600,7 +601,7 @@ a:hover { color: var(--sig2); }
   color: var(--body);
   font-size: clamp(15.5px, 1.5vw, 18px);
   line-height: 1.7;
-  max-width: 720px;
+  max-width: 960px;
   margin: 0 auto;
 }
 
@@ -3414,8 +3415,9 @@ a:hover { color: var(--sig2); }
   /* copy blocks scale with the wider canvas */
   .hero__copy { max-width: 62vw; }
   .hero__sub { max-width: 46vw; font-size: clamp(17px, 1.15vw, 23px); }
-  .reframe__inner { max-width: 64vw; }
-  .reframe__body { max-width: 52ch; font-size: clamp(17px, 1.15vw, 23px); }
+  .reframe__inner { max-width: 74vw; }
+  /* the measure was 52ch — the copy now spreads wider before it wraps */
+  .reframe__body { max-width: 76ch; font-size: clamp(17px, 1.15vw, 23px); }
   .method__head, .credentials__head, .journey__head { max-width: 56vw; }
   .lead { font-size: clamp(16px, 1.1vw, 22px); }
   .globe-body p { font-size: clamp(16px, 1.08vw, 21px); max-width: 44ch; }
@@ -5095,3 +5097,6 @@ body::before {
 }
 .ms-card p { margin: 0; color: var(--body); font-size: var(--fs-sm); line-height: 1.62; }
 @media (max-width: 780px) { .ms-why__grid { grid-template-columns: 1fr; } }
+
+/* the name lands whole — never split across a line break */
+.reframe__bridge strong { white-space: nowrap; }
