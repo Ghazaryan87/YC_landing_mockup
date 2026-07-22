@@ -2296,7 +2296,10 @@ a:hover { color: var(--sig2); }
 
 /* hero atmosphere: radial glows + slow compass ring */
 .hero__atmo {
-  position: absolute;
+  /* fixed, not absolute: the animated gradient stays anchored to the viewport
+     as the hero scrolls past, rather than sliding up with it. The opaque
+     sections below the hero paint over it, so it only ever shows through the hero. */
+  position: fixed;
   inset: 0;
   pointer-events: none;
   overflow: hidden;
