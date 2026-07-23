@@ -111,13 +111,19 @@
 
 .es-eco { padding-top: var(--sect-y); padding-bottom: var(--sect-y); }
 
+.es-eco__leads {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
 .es-eco__lead {
   position: relative;
   background: var(--card);
   border: 1px solid var(--rule);
   border-radius: 18px;
   padding: 26px 28px 24px;
-  margin-bottom: 18px;
   box-shadow: 0 26px 70px -30px rgba(94, 99, 242, .5);
 }
 
@@ -135,49 +141,123 @@
   opacity: .8;
 }
 
+.es-eco__lead--cohere::before {
+  background: linear-gradient(140deg, var(--ice), transparent 40%, transparent 60%, var(--soft));
+}
+
+.es-eco__lead-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.es-eco__lead-icon {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, var(--sig) 9%, transparent);
+  border: 1px solid color-mix(in srgb, var(--sig) 22%, transparent);
+}
+
+.es-eco__lead-icon img { width: 20px; height: 20px; object-fit: contain; }
+
+.es-eco__lead-icon--cohere {
+  background: color-mix(in srgb, var(--ice) 14%, transparent);
+  border-color: color-mix(in srgb, var(--ice) 30%, transparent);
+  color: var(--ice);
+}
+
+.es-eco__lead-icon--cohere svg { width: 20px; height: 20px; fill: currentColor; }
+
 .es-eco__lead h3 {
   font-family: "Sora", sans-serif;
   font-weight: 600;
   font-size: 20px;
   letter-spacing: -.015em;
   color: var(--fg);
-  margin: 0 0 12px;
+  margin: 0;
 }
 
 .es-eco__lead p { margin: 12px 0 0; color: var(--body); font-size: var(--fs-sm); }
 
+.es-eco__lead-tag { font-weight: 500; color: var(--strong); }
+
+@media (max-width: 720px) {
+.es-eco__leads { grid-template-columns: 1fr; }
+}
+
 .es-eco__wall {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 12px;
+  gap: clamp(14px, 1.6vw, 22px);
 }
 
-.es-eco__wall span {
+.es-eco__row {
+  position: relative;
+  overflow: hidden;
+  background: var(--surface);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
+}
+
+.es-eco__track {
+  display: flex;
+  width: max-content;
+  animation: v4Marquee 68s linear infinite;
+}
+
+.es-eco__row--rev .es-eco__track {
+  animation-duration: 84s;
+  animation-direction: reverse;
+}
+
+.es-eco__row:hover .es-eco__track { animation-play-state: paused; }
+
+.es-eco__group {
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  min-height: 58px;
-  padding: 12px 14px;
-  border-radius: 12px;
-  background: var(--card);
-  border: 1px solid var(--card-line);
-  color: var(--body);
-  font-size: var(--fs-sm);
-  font-weight: 500;
-  transition: border-color .25s, color .25s, transform .25s;
+  gap: clamp(40px, 4.6vw, 78px);
+  padding-right: clamp(40px, 4.6vw, 78px);
 }
 
-.es-eco__wall span:hover {
-  border-color: var(--soft);
-  color: var(--fg);
-  transform: translateY(-2px);
+.es-eco__icon { flex: 0 0 auto; display: flex; align-items: center; }
+
+.es-eco__icon img {
+  display: block;
+  height: clamp(40px, 3.8vw, 52px);
+  width: auto;
+  max-width: 200px;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  filter: grayscale(1) brightness(1.03) contrast(1.2);
+  opacity: .95;
+  transition: opacity .3s ease, filter .3s ease;
 }
 
-@media (max-width: 1100px) {
-.es-eco__wall { grid-template-columns: repeat(3, 1fr); }
+.es-eco__row:hover .es-eco__icon img { opacity: .4; }
+
+.es-eco__icon img:hover {
+  filter: grayscale(0) brightness(1.03);
+  opacity: 1;
 }
 
-@media (max-width: 560px) {
-.es-eco__wall { grid-template-columns: repeat(2, 1fr); }
+@media (prefers-reduced-motion: reduce) {
+.es-eco__track { animation: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+.es-eco__row {
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+.es-eco__row::-webkit-scrollbar { display: none; }
 }
