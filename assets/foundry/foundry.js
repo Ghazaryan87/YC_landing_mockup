@@ -2,7 +2,6 @@ const $=id=>document.getElementById(id), qa=(s,c)=>[...(c||document).querySelect
 const delay=ms=>new Promise(r=>setTimeout(r,ms));
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const finePointer=matchMedia('(hover:hover) and (pointer:fine)').matches;
-$('yr').textContent=new Date().getFullYear();
 
 
 /* scroll systems: progress bar, nav shrink, parallax */

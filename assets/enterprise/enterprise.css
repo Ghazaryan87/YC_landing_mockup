@@ -118,6 +118,13 @@
   margin-bottom: 18px;
 }
 
+.es-eco__leads--single {
+  grid-template-columns: 1fr;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .es-eco__lead {
   position: relative;
   background: var(--card);
@@ -232,16 +239,13 @@
   width: auto;
   max-width: 200px;
   object-fit: contain;
-  mix-blend-mode: multiply;
-  filter: grayscale(1) brightness(1.03) contrast(1.2);
   opacity: .95;
-  transition: opacity .3s ease, filter .3s ease;
+  transition: opacity .3s ease;
 }
 
-.es-eco__row:hover .es-eco__icon img { opacity: .4; }
+.es-eco__row:hover .es-eco__icon img { opacity: .5; }
 
 .es-eco__icon img:hover {
-  filter: grayscale(0) brightness(1.03);
   opacity: 1;
 }
 

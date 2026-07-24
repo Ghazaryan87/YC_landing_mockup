@@ -659,7 +659,8 @@
 
 .credentials {
   border-top: 1px solid var(--line);
-  padding: clamp(72px, 9.5vw, 120px) 0;
+  padding-top: clamp(72px, 9.5vw, 120px);
+  padding-bottom: clamp(36px, 4.5vw, 60px);
 }
 
 .credentials__head { max-width: 720px; margin-bottom: clamp(34px, 4.5vw, 48px); }
@@ -722,24 +723,18 @@
 .logos__item { flex: 0 0 auto; display: flex; align-items: center; }
 
 .logos__item img {
-  --logo-lift: 1;
   display: block;
   height: clamp(40px, 3.8vw, 52px);
   width: auto;
   max-width: 200px;
   object-fit: contain;
-  mix-blend-mode: multiply;
-  filter: grayscale(1) brightness(var(--logo-lift)) contrast(1.2);
   opacity: .95;
-  transition: opacity .3s ease, filter .3s ease;
+  transition: opacity .3s ease;
 }
 
-.logos__row--plate .logos__item img { --logo-lift: 1.03; }
-
-.logos__row:hover .logos__item img { opacity: .4; }
+.logos__row:hover .logos__item img { opacity: .5; }
 
 .logos__item img:hover {
-  filter: grayscale(0) brightness(var(--logo-lift));
   opacity: 1;
 }
 

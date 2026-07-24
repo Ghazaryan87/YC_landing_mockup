@@ -30,7 +30,7 @@
     { flag: '🇦🇲', country: 'Armenia', city: 'YEREVAN', role: 'Engineering & R&D hub', lat: 40.18, lng: 44.51 },
     { flag: '🇸🇦', country: 'Saudi Arabia', city: 'KSA', role: 'In-Kingdom presence — local teams', lat: 24.71, lng: 46.68 },
     { flag: '🇶🇦', country: 'Qatar', city: 'DOHA', role: 'Regional delivery & collaboration', lat: 25.29, lng: 51.53 },
-    { flag: '🇧🇭', country: 'Bahrain', city: 'MANAMA', role: 'Regional delivery & collaboration', lat: 26.22, lng: 50.58 },
+    { flag: '🇴🇲', country: 'Oman', city: 'MUSCAT', role: 'Regional delivery & collaboration', lat: 23.59, lng: 58.38 },
     { flag: '🇪🇬', country: 'Egypt', city: 'CAIRO', role: 'Talent & delivery center', lat: 30.04, lng: 31.23 }
   ];
 
