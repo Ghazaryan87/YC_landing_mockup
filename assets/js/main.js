@@ -26,11 +26,20 @@
     var iconOpen = burger.querySelector('[data-burger-open]');
     var iconClose = burger.querySelector('[data-burger-close]');
 
+    // SVGElement.hidden doesn't reliably reflect to the DOM attribute in
+    // every engine — assigning the IDL property silently no-ops instead
+    // of adding [hidden], so both icons stayed visible at once. Toggle
+    // the attribute directly instead.
+    var showHide = function (el, hide) {
+      if (!el) return;
+      if (hide) el.setAttribute('hidden', ''); else el.removeAttribute('hidden');
+    };
+
     var set = function (open) {
       panel.hidden = !open;
       burger.setAttribute('aria-expanded', String(open));
-      if (iconOpen) iconOpen.hidden = open;
-      if (iconClose) iconClose.hidden = !open;
+      showHide(iconOpen, open);
+      showHide(iconClose, !open);
     };
 
     burger.addEventListener('click', function () {

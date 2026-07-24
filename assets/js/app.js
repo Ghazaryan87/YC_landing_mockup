@@ -24,14 +24,14 @@
   /* ---------- data ---------- */
 
   var OFFICES = [
-    { flag: '🇨🇦', country: 'Canada', city: 'OTTAWA', role: 'Global headquarters — founded here in 2010', lat: 45.42, lng: -75.70 },
-    { flag: '🇺🇸', country: 'USA', city: 'UNITED STATES', role: 'North American operations & partnerships', lat: 38.90, lng: -77.04 },
-    { flag: '🇦🇪', country: 'UAE', city: 'ABU DHABI', role: 'Regional HQ & delivery hub — on-site in hours', lat: 24.45, lng: 54.38 },
-    { flag: '🇦🇲', country: 'Armenia', city: 'YEREVAN', role: 'Engineering & R&D hub', lat: 40.18, lng: 44.51 },
-    { flag: '🇸🇦', country: 'Saudi Arabia', city: 'KSA', role: 'In-Kingdom presence — local teams', lat: 24.71, lng: 46.68 },
-    { flag: '🇶🇦', country: 'Qatar', city: 'DOHA', role: 'Regional delivery & collaboration', lat: 25.29, lng: 51.53 },
-    { flag: '🇴🇲', country: 'Oman', city: 'MUSCAT', role: 'Regional delivery & collaboration', lat: 23.59, lng: 58.38 },
-    { flag: '🇪🇬', country: 'Egypt', city: 'CAIRO', role: 'Talent & delivery center', lat: 30.04, lng: 31.23 }
+    { flag: '🇨🇦', country: 'Canada', abbr: 'CAN', city: 'OTTAWA', role: 'Global headquarters — founded here in 2010', lat: 45.42, lng: -75.70 },
+    { flag: '🇺🇸', country: 'USA', abbr: 'USA', city: 'WASHINGTON, D.C.', role: 'North American operations & partnerships', lat: 38.90, lng: -77.04 },
+    { flag: '🇦🇪', country: 'UAE', abbr: 'UAE', city: 'ABU DHABI', role: 'Regional HQ & delivery hub — on-site in hours', lat: 24.45, lng: 54.38 },
+    { flag: '🇦🇲', country: 'Armenia', abbr: 'ARM', city: 'YEREVAN', role: 'Engineering & R&D hub', lat: 40.18, lng: 44.51 },
+    { flag: '🇸🇦', country: 'Saudi Arabia', abbr: 'KSA', city: 'KSA', role: 'In-Kingdom presence — local teams', lat: 24.71, lng: 46.68 },
+    { flag: '🇶🇦', country: 'Qatar', abbr: 'QAT', city: 'DOHA', role: 'Regional delivery & collaboration', lat: 25.29, lng: 51.53 },
+    { flag: '🇴🇲', country: 'Oman', abbr: 'OMN', city: 'MUSCAT', role: 'Regional delivery & collaboration', lat: 23.59, lng: 58.38 },
+    { flag: '🇪🇬', country: 'Egypt', abbr: 'EGY', city: 'CAIRO', role: 'Talent & delivery center', lat: 30.04, lng: 31.23 }
   ];
 
   var BEARINGS = [
@@ -436,8 +436,14 @@
     list.addEventListener('mouseleave', function () { hovering = false; });
     list.addEventListener('touchstart', function () { hold = performance.now() + 9000; }, { passive: true });
 
+    // below 640px the steps become a tap-to-expand accordion inline in the
+    // page flow — auto-advancing would jump the page height every 3.4s
+    // while someone's mid-read, so the phone layout is manual-only
+    var mobileAccordion = window.matchMedia('(max-width: 640px)');
+
     var iv = null;
     var tick = function () {
+      if (mobileAccordion.matches) return;
       if (!hovering && performance.now() >= hold) setStep((current + 1) % METHOD_STEPS.length);
     };
     var start = function () { if (!iv) iv = setInterval(tick, 3400); };
@@ -498,6 +504,7 @@
     var totalEl = $('[data-reel-total]');
     var totalStageEl = $('[data-stage-total]');
     var filterHost = $('[data-reel-filters]');
+    var filterSelect = $('[data-reel-filter-select]');
     var emptyEl = $('[data-reel-empty]');
 
     /* idx is always an index into REEL_CARDS; `view` is the subset the
@@ -611,12 +618,27 @@
       return btn;
     });
 
+    // small screens swap the chip row for a native <select> — a real
+    // OS-native picker beats a wall of wrapped pill buttons on a phone
+    if (filterSelect) {
+      DOMAINS.forEach(function (d) {
+        var opt = document.createElement('option');
+        opt.value = d.id;
+        opt.textContent = d.label + ' (' + count(d.id) + ')';
+        filterSelect.appendChild(opt);
+      });
+      filterSelect.addEventListener('change', function () {
+        applyFilter(filterSelect.value, true);
+      });
+    }
+
     function applyFilter(id, user) {
       view = REEL_CARDS
         .map(function (c, i) { return i; })
         .filter(function (i) { return id === 'all' || REEL_CARDS[i].domain === id; });
 
       chips.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.domain === id)); });
+      if (filterSelect && filterSelect.value !== id) filterSelect.value = id;
       thumbs.forEach(function (t, i) { t.hidden = view.indexOf(i) === -1; });
       if (emptyEl) emptyEl.hidden = view.length > 0;
 
@@ -632,14 +654,16 @@
       // filter-to-stage area is already on screen, or the filter row is
       // already sitting at the top, jumping the page would just be
       // disruptive for no gain.
-      if (user && filterHost) {
+      var visibleFilterEl = (filterHost && filterHost.offsetParent) ? filterHost
+        : (filterSelect && filterSelect.offsetParent) ? filterSelect : null;
+      if (user && visibleFilterEl) {
         var navH = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 96;
-        var fRect = filterHost.getBoundingClientRect();
+        var fRect = visibleFilterEl.getBoundingClientRect();
         var sRect = stage.getBoundingClientRect();
         var alreadyAtTop = fRect.top >= 0 && fRect.top <= navH + 24;
         var alreadyFullyVisible = fRect.top >= navH && sRect.bottom <= window.innerHeight;
         if (!alreadyAtTop && !alreadyFullyVisible) {
-          filterHost.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+          visibleFilterEl.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
         }
       }
     }
@@ -692,8 +716,9 @@
 
   function initOffices(focusOffice) {
     var host = $('[data-offices]');
-    if (!host) return;
+    if (!host) return [];
 
+    var buttons = [];
     OFFICES.forEach(function (o, i) {
       var btn = document.createElement('button');
       btn.type = 'button';
@@ -711,16 +736,114 @@
       $('.office__role', btn).textContent = o.role;
       btn.addEventListener('click', function () { focusOffice(i); });
       host.appendChild(btn);
+      buttons.push(btn);
     });
+    return buttons;
   }
 
-  function initGlobe() {
+  // phone-only carousel: countries slide directly under the globe. built
+  // as [clone(last), item0..itemN-1, clone(first)] so a swipe past either
+  // end lands on a real clone, then jumps (no animation) to its twin —
+  // giving the illusion of an infinite loop off native scroll-snap
+  function initOfficesCarousel(focusOffice) {
+    var track = $('[data-oc-track]');
+    var dotsHost = $('[data-oc-dots]');
+    var viewport = $('[data-offices-carousel]');
+    if (!track || !viewport) return;
+
+    var N = OFFICES.length;
+
+    function buildSlide(o, realIndex) {
+      var el = document.createElement('div');
+      el.className = 'oc-slide';
+      el.innerHTML =
+        '<div class="oc-slide__card">' +
+          '<div class="oc-slide__row">' +
+            '<span class="oc-slide__flag"></span>' +
+            '<span class="oc-slide__country"></span>' +
+            '<span class="oc-slide__city"></span>' +
+          '</div>' +
+          '<div class="oc-slide__role"></div>' +
+        '</div>';
+      $('.oc-slide__flag', el).textContent = o.flag;
+      $('.oc-slide__country', el).textContent = o.country;
+      $('.oc-slide__city', el).textContent = o.city;
+      $('.oc-slide__role', el).textContent = o.role;
+      $('.oc-slide__card', el).addEventListener('click', function () { focusOffice(realIndex); });
+      return el;
+    }
+
+    var slides = [];
+    slides.push(buildSlide(OFFICES[N - 1], N - 1)); // leading clone of last
+    OFFICES.forEach(function (o, i) { slides.push(buildSlide(o, i)); });
+    slides.push(buildSlide(OFFICES[0], 0)); // trailing clone of first
+    slides.forEach(function (s) { track.appendChild(s); });
+
+    var dots = [];
+    OFFICES.forEach(function (o, i) {
+      var d = document.createElement('button');
+      d.type = 'button';
+      d.className = 'oc-dot';
+      d.setAttribute('aria-label', o.country);
+      d.addEventListener('click', function () { goTo(i + 1, true); });
+      dotsHost.appendChild(d);
+      dots.push(d);
+    });
+
+    function setActiveDot(realIndex) {
+      dots.forEach(function (d, i) { d.classList.toggle('oc-dot--active', i === realIndex); });
+    }
+
+    var pos = 1; // index into the cloned slides array
+    function goTo(index, smooth) {
+      pos = index;
+      viewport.scrollTo({ left: viewport.clientWidth * pos, behavior: smooth ? 'smooth' : 'auto' });
+    }
+
+    goTo(1, false);
+    setActiveDot(0);
+
+    var settleTimer = 0;
+    function onScroll() {
+      clearTimeout(settleTimer);
+      settleTimer = setTimeout(settle, 100);
+    }
+    function settle() {
+      var w = viewport.clientWidth || 1;
+      var idx = Math.round(viewport.scrollLeft / w);
+      if (idx <= 0) { idx = N; viewport.scrollLeft = w * idx; }
+      else if (idx >= N + 1) { idx = 1; viewport.scrollLeft = w * idx; }
+      pos = idx;
+      setActiveDot(idx - 1);
+    }
+    viewport.addEventListener('scroll', onScroll, { passive: true });
+
+    window.addEventListener('resize', function () {
+      viewport.scrollLeft = viewport.clientWidth * pos;
+    }, { passive: true });
+  }
+
+  function initGlobe(onActive) {
     var canvas = $('[data-globe]');
     var card = $('[data-globe-card]');
     var noop = function () {};
     if (!canvas || !card) return { focus: noop, resize: noop };
 
     var wrap = canvas.parentElement;
+
+    // labels/highlights stay off until the copy paragraph beside the globe
+    // is fully in view, so they don't fire while the section is still
+    // scrolling into place
+    var labelsReady = false;
+    var copyEl = $('[data-globe-copy]');
+    if (copyEl && 'IntersectionObserver' in window) {
+      var copyIO = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { labelsReady = en.intersectionRatio >= 0.999; });
+      }, { threshold: [0, 0.5, 0.99, 1] });
+      copyIO.observe(copyEl);
+    } else {
+      labelsReady = true;
+    }
     var ctx = canvas.getContext('2d');
     var D2R = Math.PI / 180;
     var TILT = -0.42;
@@ -881,13 +1004,12 @@
       var o = OFFICES[i], s = screens[i];
       if (!o || !s) return;
       $('[data-gc-flag]', card).textContent = o.flag;
-      $('[data-gc-name]', card).textContent = o.country + ' — ' + o.city;
-      $('[data-gc-role]', card).textContent = o.role;
-      // the card opens upward from its anchor (translate(-50%,-115%) in CSS),
+      $('[data-gc-name]', card).textContent = o.city;
+      $('[data-gc-abbr]', card).textContent = o.abbr;
+      // the card opens upward from its anchor (translate(-50%,-115%) in CSS)
       // so the anchor's minimum y must clear the card's own height or it
-      // spills above the globe box — measure it per-office since role text
-      // length varies.
-      var minTop = (card.offsetHeight || 90) * 1.15 + 10;
+      // spills above the globe box
+      var minTop = (card.offsetHeight || 40) * 1.15 + 10;
       card.style.left = Math.max(125, Math.min(W - 125, s.x)) + 'px';
       card.style.top = Math.max(minTop, s.y - 14) + 'px';
       card.style.opacity = '1';
@@ -902,15 +1024,19 @@
       redrawStatic = function () { draw(sRot, 0, true); };
       redrawStatic();
       showCard(0);
+      if (onActive) onActive(0);
       return {
-        focus: function (i) { sRot = -mk[i].lon; draw(sRot, 0, true); showCard(i); },
+        focus: function (i) { sRot = -mk[i].lon; draw(sRot, 0, true); showCard(i); if (onActive) onActive(i); },
         resize: function () { size(); draw(sRot, 0, true); }
       };
     }
 
     var CRUISE = 0.16;
+    // how far out (in radians of longitude) the globe starts easing down
+    // as a marker approaches, and how slow it gets right at the marker
+    var NEAR = 0.4, NEAR_FACTOR = 0.1;
     var rot = -mk[0].lon - 0.7, vel = CRUISE, last = 0;
-    var pauseUntil = 0, active = -1, prevActive = -1, hover = -1, rotTarget = null, targetIdx = -1;
+    var pauseUntil = 0, active = -1, prevActive = -1, reportedActive = -2, hover = -1, rotTarget = null, targetIdx = -1;
     var running = false, raf = 0;
     redrawStatic = function () { if (!running) draw(rot, 0, false); };
 
@@ -929,18 +1055,21 @@
           pauseUntil = now + 2400; active = targetIdx;
         }
       } else {
-        // steady spin, west→east like the real Earth; pauses only for hover/tap
-        var tv = (hover >= 0 || now < pauseUntil) ? 0 : CRUISE;
+        var bd = Infinity, bi = -1;
+        for (var i = 0; i < mk.length; i++) {
+          var d = Math.abs(norm(mk[i].lon + rot));
+          if (d < bd) { bd = d; bi = i; }
+        }
+
+        // steady spin, west→east like the real Earth; eases down on approach
+        // to a marker and pauses only for hover/tap
+        var nearFactor = NEAR_FACTOR + (1 - NEAR_FACTOR) * Math.min(1, bd / NEAR);
+        var tv = (hover >= 0 || now < pauseUntil) ? 0 : CRUISE * nearFactor;
         vel += (tv - vel) * Math.min(1, dt * 5);
         rot += vel * dt;
         if (hover >= 0) {
           active = hover;
         } else if (now >= pauseUntil) {
-          var bd = Infinity, bi = -1;
-          for (var i = 0; i < mk.length; i++) {
-            var d = Math.abs(norm(mk[i].lon + rot));
-            if (d < bd) { bd = d; bi = i; }
-          }
           active = bd < 0.22 ? bi : -1;
         }
       }
@@ -952,8 +1081,16 @@
       }
 
       draw(rot, ts, false);
-      if (active >= 0 && screens[active] && screens[active].front) showCard(active);
+
+      // labels/highlights only once the copy beside the globe is fully visible
+      var effActive = labelsReady ? active : -1;
+      if (effActive >= 0 && screens[effActive] && screens[effActive].front) showCard(effActive);
       else hideCard();
+      if (effActive !== reportedActive) {
+        reportedActive = effActive;
+        if (onActive) onActive(effActive);
+      }
+
       raf = requestAnimationFrame(step);
     }
 
@@ -1131,8 +1268,12 @@
     initDemos();
     initReel();
 
-    var globe = initGlobe();
-    initOffices(globe.focus);
+    var officeEls = [];
+    var globe = initGlobe(function (idx) {
+      officeEls.forEach(function (el, i) { el.classList.toggle('office--active', i === idx); });
+    });
+    officeEls = initOffices(globe.focus);
+    initOfficesCarousel(globe.focus);
     window.addEventListener('resize', globe.resize, { passive: true });
 
     initReveals();
