@@ -407,6 +407,43 @@
       return btn;
     });
 
+    // small/tablet screens show the rail as a slide carousel. The step
+    // numbers on the rail itself are too small to read there, so this strip
+    // is its top-of-component position indicator — instead of plain dots it
+    // shows the step number, with the current step centered and marked and
+    // one neighbour on each side.
+    var dotsHost = $('[data-mstep-dots]');
+    var dotEls = dotsHost ? [0, 1, 2].map(function () {
+      var d = document.createElement('button');
+      d.type = 'button';
+      d.className = 'proc__num';
+      dotsHost.appendChild(d);
+      return d;
+    }) : [];
+    function renderDots(i) {
+      if (!dotEls.length) return;
+      var n = METHOD_STEPS.length;
+      [(i - 1 + n) % n, i, (i + 1) % n].forEach(function (stepIdx, pos) {
+        var d = dotEls[pos];
+        d.textContent = String(stepIdx + 1).padStart(2, '0');
+        d.classList.toggle('proc__num--active', pos === 1);
+        d.setAttribute('aria-label', METHOD_STEPS[stepIdx].t);
+        d.setAttribute('aria-current', String(pos === 1));
+        d.onclick = function () { hold = performance.now() + 8000; setStep(stepIdx); };
+      });
+    }
+
+    var prevBtn = $('[data-mstep-prev]');
+    var nextBtn = $('[data-mstep-next]');
+    if (prevBtn) prevBtn.addEventListener('click', function () {
+      hold = performance.now() + 8000;
+      setStep((current - 1 + METHOD_STEPS.length) % METHOD_STEPS.length);
+    });
+    if (nextBtn) nextBtn.addEventListener('click', function () {
+      hold = performance.now() + 8000;
+      setStep((current + 1) % METHOD_STEPS.length);
+    });
+
     var detail = $('[data-method-detail]');
     var title = $('[data-method-title]');
     var badge = $('[data-method-badge]');
@@ -415,6 +452,7 @@
     function setStep(i) {
       current = i;
       buttons.forEach(function (b, j) { b.setAttribute('aria-selected', String(i === j)); });
+      renderDots(i);
       if (num) num.textContent = String(i + 1).padStart(2, '0');
       if (badge) badge.textContent = String(i + 1).padStart(2, '0');
       if (title) title.textContent = METHOD_STEPS[i].full || METHOD_STEPS[i].t;
@@ -424,6 +462,12 @@
         detail.classList.remove('swap');
         void detail.offsetWidth;      /* restart the reveal */
         detail.classList.add('swap');
+      }
+      // when the rail is a horizontally-scrolling slide carousel (small/
+      // tablet), keep the active slide scrolled into view; a no-op on the
+      // desktop grid, which never overflows
+      if (list.scrollWidth > list.clientWidth + 1) {
+        buttons[i].scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', inline: 'center', block: 'nearest' });
       }
     }
 
@@ -436,14 +480,8 @@
     list.addEventListener('mouseleave', function () { hovering = false; });
     list.addEventListener('touchstart', function () { hold = performance.now() + 9000; }, { passive: true });
 
-    // below 640px the steps become a tap-to-expand accordion inline in the
-    // page flow — auto-advancing would jump the page height every 3.4s
-    // while someone's mid-read, so the phone layout is manual-only
-    var mobileAccordion = window.matchMedia('(max-width: 640px)');
-
     var iv = null;
     var tick = function () {
-      if (mobileAccordion.matches) return;
       if (!hovering && performance.now() >= hold) setStep((current + 1) % METHOD_STEPS.length);
     };
     var start = function () { if (!iv) iv = setInterval(tick, 3400); };
@@ -723,6 +761,7 @@
       var btn = document.createElement('button');
       btn.type = 'button';
       btn.className = 'office';
+      btn.setAttribute('data-flag', o.flag);
       btn.innerHTML =
         '<div class="office__row">' +
           '<span class="office__flag"></span>' +
@@ -769,6 +808,7 @@
       $('.oc-slide__country', el).textContent = o.country;
       $('.oc-slide__city', el).textContent = o.city;
       $('.oc-slide__role', el).textContent = o.role;
+      $('.oc-slide__card', el).setAttribute('data-flag', o.flag);
       $('.oc-slide__card', el).addEventListener('click', function () { focusOffice(realIndex); });
       return el;
     }

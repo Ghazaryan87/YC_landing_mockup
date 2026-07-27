@@ -30,6 +30,14 @@
   --f-sect-y: clamp(56px, 7vw, 96px);
   --f-sect-y-lg: clamp(90px, 9.5vw, 130px);
 }
+
+/* large screens: inter-section rhythm opened up +75%, matching css/main.css */
+@media (min-width: 1121px) {
+  :root {
+    --f-sect-y: clamp(98px, 12.25vw, 168px);
+    --f-sect-y-lg: clamp(158px, 16.6vw, 228px);
+  }
+}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{background:var(--base);color:var(--text);font-family:var(--body);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
@@ -651,8 +659,8 @@ h1 .accent{background:linear-gradient(100deg,var(--indigo-soft),var(--indigo) 50
 .cohere__card{position:relative;background:linear-gradient(160deg,var(--surface-2),var(--surface));border:1px solid var(--line-2);border-radius:20px;padding:30px 30px 26px;box-shadow:0 0 0 1px rgba(94,99,242,.15),0 30px 80px -30px rgba(94,99,242,.45)}
 .cohere__card::before{content:"";position:absolute;inset:-1px;border-radius:20px;padding:1px;background:linear-gradient(140deg,var(--indigo-soft),transparent 35%,transparent 65%,var(--ice));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;opacity:.7}
 .cohere__hd{display:flex;align-items:center;gap:14px;margin-bottom:22px}
-.cohere__mark{flex:none;width:44px;height:44px;border-radius:13px;display:flex;align-items:center;justify-content:center;color:#fff;
-  background:linear-gradient(140deg,var(--indigo),var(--ice));box-shadow:0 10px 26px -8px rgba(94,99,242,.7)}
+.cohere__mark{flex:none;width:44px;height:44px;border-radius:13px;display:flex;align-items:center;justify-content:center;
+  background:#fff;box-shadow:0 10px 26px -8px rgba(94,99,242,.5)}
 .cohere__badge{font-family:var(--disp);font-weight:600;font-size:19px;letter-spacing:-.02em}
 .cohere__sub{font-family:var(--mono);font-size:var(--fs-2xs);letter-spacing:.18em;text-transform:uppercase;color:var(--ice);margin-top:4px}
 .cohere__card ul{display:flex;flex-direction:column;gap:16px}

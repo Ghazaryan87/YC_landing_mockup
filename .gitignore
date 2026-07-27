@@ -1,4 +1,5 @@
 .claude/
+.qa-tools/
 
 # Generated export artifacts
 yourcompass-site/

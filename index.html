@@ -27,7 +27,6 @@
         <a class="nav__link" href="Observability.html">Observability</a>
         <a class="nav__link" href="enterprise.html">Enterprise Solutions</a>
         <a class="nav__link" href="managed.html">Managed Services</a>
-        <a class="nav__link" href="#team">About</a>
         <a class="nav__cta" href="#close">Get In Touch</a>
       </div>
       <button class="nav__burger" type="button" data-burger aria-expanded="false" aria-controls="mnav" aria-label="Menu">
@@ -46,7 +45,6 @@
         <a class="nav__panel-link" href="Observability.html"><span>Observability</span><span>&rarr;</span></a>
         <a class="nav__panel-link" href="enterprise.html"><span>Enterprise Solutions</span><span>&rarr;</span></a>
         <a class="nav__panel-link" href="managed.html"><span>Managed Services</span><span>&rarr;</span></a>
-        <a class="nav__panel-link" href="#team"><span>About</span><span>&rarr;</span></a>
         <a class="nav__panel-cta" href="#close">Get In Touch</a>
       </div>
     </div>
@@ -401,7 +399,14 @@
           <span>THE 8-STEP ONBOARDING</span>
           <span class="method__count"><b data-method-num>01</b> / 08</span>
         </div>
-        <div class="proc__steps" data-msteps></div>
+        <div class="proc__dotsrow">
+          <button class="proc__nav proc__nav--prev" type="button" data-mstep-prev aria-label="Previous step">&larr;</button>
+          <div class="proc__dots" data-mstep-dots aria-hidden="true"></div>
+          <button class="proc__nav proc__nav--next" type="button" data-mstep-next aria-label="Next step">&rarr;</button>
+        </div>
+        <div class="proc__stepswrap">
+          <div class="proc__steps" data-msteps></div>
+        </div>
         <div class="proc__detail" data-method-detail>
           <svg class="stepcard__bg proc__detail-bg" data-step-art="0" viewBox="0 0 120 120" aria-hidden="true"><circle cx="52" cy="52" r="30" fill="none" stroke="currentColor" stroke-width="5"/><path d="M74 74 L104 104" stroke="currentColor" stroke-width="8" stroke-linecap="round"/><path d="M40 46 L64 46 M40 56 L58 56" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>
           <svg class="stepcard__bg proc__detail-bg" data-step-art="1" viewBox="0 0 120 120" aria-hidden="true"><rect x="26" y="14" width="68" height="92" rx="8" fill="none" stroke="currentColor" stroke-width="5"/><path d="M40 38 L48 46 L62 30" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M40 62 L80 62 M40 76 L72 76 M40 90 L76 90" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>
@@ -935,8 +940,6 @@
           <a href="Observability.html">Observability</a>
           <a href="enterprise.html">Enterprise Solutions</a>
           <a href="managed.html">Managed Services</a>
-          <a href="#team">About</a>
-          <a href="#close">Contact</a>
         </div>
       </div>
       <div class="footer__col">

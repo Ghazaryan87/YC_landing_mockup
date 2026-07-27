@@ -129,7 +129,11 @@
 
 .orn-pulse { animation: v4Pulse 2.6s ease-in-out infinite; }
 
-.reframe { padding: clamp(48px, 7vw, 72px) 0 clamp(32px, 5vw, 64px) 0; }
+.reframe { padding: clamp(28px, 4.5vw, 44px) 0 clamp(20px, 3vw, 32px) 0; }
+
+@media (min-width: 1121px) {
+.reframe { padding: clamp(49px, 7.875vw, 77px) 0 clamp(35px, 5.25vw, 56px) 0; }
+}
 
 .reframe__glow {
   inset: -10% 0 0 0;
@@ -166,7 +170,11 @@
   margin: 0 auto;
 }
 
-.journey { padding: clamp(40px, 6vw, 60px) 0; }
+.journey { padding: clamp(24px, 4vw, 40px) 0; }
+
+@media (min-width: 1121px) {
+.journey { padding: clamp(42px, 7vw, 70px) 0; }
+}
 
 .journey__head { max-width: 760px; margin-bottom: clamp(44px, 5vw, 64px); }
 
@@ -313,7 +321,7 @@
 
 .rose-panel a { font-size: var(--fs-sm2); font-weight: 600; color: var(--accent); }
 
-.method { padding: clamp(40px, 6vw, 60px) 0; }
+.method { padding: clamp(24px, 4vw, 40px) 0; }
 
 .method__glow {
   background: radial-gradient(720px 440px at 85% 10%, color-mix(in srgb, var(--sig) 10%, transparent), transparent 60%);
@@ -327,7 +335,7 @@
 
 .method__count b { color: var(--accent); font-weight: 400; }
 
-.demos { padding: clamp(40px, 6vw, 60px) 0; }
+.demos { padding: clamp(24px, 4vw, 40px) 0; }
 
 .demos__head {
   display: flex;
@@ -453,7 +461,7 @@
 
 .demo__body .badge { align-self: flex-start; }
 
-.showcase { padding: clamp(40px, 5vw, 60px) 0 clamp(30px, 4vw, 40px); }
+.showcase { padding: clamp(24px, 3.5vw, 40px) 0 clamp(18px, 2.5vw, 28px); }
 
 .showcase__glow {
   background: radial-gradient(760px 460px at 16% 0%, color-mix(in srgb, var(--sig) 10%, transparent), transparent 62%);
@@ -685,8 +693,8 @@
 
 .credentials {
   border-top: 1px solid var(--line);
-  padding-top: clamp(40px, 6vw, 60px);
-  padding-bottom: clamp(36px, 4.5vw, 60px);
+  padding-top: clamp(24px, 4vw, 40px);
+  padding-bottom: clamp(20px, 3vw, 36px);
 }
 
 .credentials__head { max-width: 720px; margin-bottom: clamp(34px, 4.5vw, 48px); }
@@ -701,7 +709,7 @@
 
 .cred__momentum .cred__kicker { color: var(--sig2); }
 
-.logos { padding: clamp(40px, 6vw, 60px) 0; }
+.logos { padding: clamp(24px, 4vw, 40px) 0; }
 
 .logos__head { text-align: center; }
 
@@ -793,7 +801,7 @@
 .logos__row::-webkit-scrollbar { display: none; }
 }
 
-.footprint { padding: clamp(40px, 5vw, 60px) 0; }
+.footprint { padding: clamp(24px, 3.5vw, 40px) 0; }
 
 .globe-grid {
   max-width: 1280px;
@@ -901,6 +909,8 @@
 }
 
 .oc-slide__card {
+  position: relative;
+  overflow: hidden;
   text-align: left;
   background: var(--card);
   border: 1px solid var(--card-line);
@@ -911,6 +921,25 @@
 }
 
 .oc-slide__card:active { border-color: var(--sig); background: color-mix(in srgb, var(--fg) 7%, transparent); }
+
+/* the wide, mostly-empty card gets a giant watermark flag bleeding off
+   the right edge, fading into the card rather than sitting as a hard box */
+.oc-slide__card::before {
+  content: attr(data-flag);
+  position: absolute;
+  top: 50%;
+  right: -10px;
+  transform: translateY(-50%);
+  font-size: 92px;
+  line-height: 1;
+  opacity: .18;
+  -webkit-mask-image: linear-gradient(to left, #000 35%, transparent 92%);
+  mask-image: linear-gradient(to left, #000 35%, transparent 92%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.oc-slide__row, .oc-slide__role { position: relative; z-index: 1; }
 
 .oc-slide__row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; flex-wrap: wrap; }
 
@@ -956,7 +985,7 @@
 
 .team {
   border-top: 1px solid var(--line);
-  padding: clamp(40px, 6vw, 60px) 0;
+  padding: clamp(24px, 4vw, 40px) 0;
 }
 
 .team__grid {
@@ -1061,7 +1090,7 @@
   padding: 6px 12px;
 }
 
-.close { padding: clamp(40px, 6vw, 60px) 0; }
+.close { padding: clamp(24px, 4vw, 40px) 0; }
 
 .close__glow {
   background: radial-gradient(660px 420px at 50% 100%, color-mix(in srgb, var(--sig) 14%, transparent), transparent 65%);
@@ -1407,6 +1436,12 @@
 
 .method__count b { color: var(--ice); font-weight: 600; }
 
+.proc__dots { display: none; }
+
+.proc__stepswrap { position: relative; }
+
+.proc__nav { display: none; }
+
 .proc__steps {
   position: relative;
   display: grid;
@@ -1496,73 +1531,159 @@
 
 .method__strip p { margin: 0; color: var(--body); font-size: var(--fs-sm2); }
 
+/* small screens & tablet: the 8-across rail + far-away detail panel
+   becomes a slide carousel — each slide carries its own number, name,
+   and description, with a dot strip + counter as the top-of-component
+   position indicator (mirrors the office & journey carousels) */
 @media (max-width: 940px) {
-.proc__steps { grid-template-columns: repeat(4, 1fr); row-gap: 26px; }
+.proc__railhead { margin-bottom: 14px; }
+
+.proc__dotsrow { display: flex; justify-content: center; align-items: center; gap: 14px; margin: 0 0 18px; }
+
+.proc__dots { position: relative; display: flex; justify-content: center; align-items: center; gap: 22px; }
+
+.proc__dots::before {
+  content: "";
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  top: 50%;
+  height: 1px;
+  background: var(--rule);
+  transform: translateY(-50%);
+  z-index: 0;
 }
 
-@media (max-width: 940px) {
-.proc__steps::before { display: none; }
+.proc__num {
+  position: relative;
+  z-index: 1;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  cursor: pointer;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  opacity: .6;
+  transition: all .25s;
 }
 
-@media (max-width: 520px) {
-.proc__steps { grid-template-columns: repeat(2, 1fr); }
+.proc__num--active {
+  width: 38px;
+  height: 38px;
+  color: #fff;
+  background: var(--sig);
+  border-color: var(--sig);
+  opacity: 1;
+  font-size: 12px;
+  font-weight: 600;
+  box-shadow: 0 0 0 5px rgba(94, 99, 242, .18), 0 0 24px -4px rgba(94, 99, 242, .8);
 }
 
-@media (max-width: 640px) {
-/* the circle grid + far-away detail panel doesn't work on a phone —
-   swap it for a tap-to-expand accordion so each step's description
-   sits right under its own row instead of scrolling distance away */
-.proc__steps { grid-template-columns: 1fr; gap: 0; }
+.proc__dotsrow .proc__nav {
+  position: static;
+  flex: none;
+  transform: none;
+  width: 36px;
+  height: 36px;
+  font-size: 15px;
+}
+
+.proc__stepswrap { position: relative; margin: 0 -4px; }
+
+.proc__steps {
+  display: flex;
+  grid-template-columns: none;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 4px 4px 6px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  mask-image: linear-gradient(90deg, transparent, #000 16px, #000 calc(100% - 16px), transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 16px, #000 calc(100% - 16px), transparent);
+}
+
+.proc__steps::-webkit-scrollbar { display: none; }
+
 .proc__steps::before { display: none; }
 
 .proc .mstep {
-  display: block;
-  width: 100%;
+  flex: 0 0 min(78vw, 320px);
+  scroll-snap-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
   text-align: left;
-  border-bottom: 1px solid var(--line);
-  border-left: 2px solid transparent;
-  padding: 14px 4px 14px 8px;
-  transition: background .25s, border-color .25s;
+  background: var(--card);
+  border: 1px solid var(--card-line);
+  border-radius: 16px;
+  padding: 22px 22px 20px;
+  transition: border-color .25s, box-shadow .25s;
 }
 
 .proc .mstep[aria-selected="true"] {
-  background: color-mix(in srgb, var(--fg) 5%, transparent);
-  border-left-color: var(--sig);
+  border-color: var(--sig);
+  box-shadow: 0 0 0 1px var(--sig) inset, 0 18px 40px -26px rgba(94, 99, 242, .55);
 }
 
 .proc .mstep__row { flex-direction: row; align-items: center; justify-content: flex-start; gap: 12px; }
 
-.proc .mstep__num { width: 30px; height: 30px; font-size: 11px; flex-shrink: 0; }
+.proc .mstep__num { width: 34px; height: 34px; font-size: 12px; flex-shrink: 0; }
 
-.proc .mstep__title { font-size: var(--fs-sm2); }
+.proc .mstep__title { font-size: var(--fs-base); }
 
 .proc .mstep__meta { margin-left: auto; text-align: right; }
 
-.proc .mstep__reveal {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows .4s cubic-bezier(.16, .84, .44, 1);
-}
+.proc .mstep__reveal { display: block; }
 
-.proc .mstep[aria-selected="true"] .mstep__reveal { grid-template-rows: 1fr; }
-
-.proc .mstep__clip { display: block; overflow: hidden; min-height: 0; }
+.proc .mstep__clip { display: block; overflow: visible; min-height: 0; }
 
 .proc .mstep__desc {
   display: block;
-  padding: 8px 0 2px 42px;
+  padding: 0;
   color: var(--body);
   font-size: var(--fs-sm2);
   line-height: 1.6;
-  opacity: 0;
-  transition: opacity .4s ease .1s;
+  opacity: 1;
 }
 
-.proc .mstep[aria-selected="true"] .mstep__desc { opacity: 1; }
+.proc__nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--rule);
+  background: color-mix(in srgb, var(--surface) 85%, transparent);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: var(--fg);
+  font-size: 17px;
+  cursor: pointer;
+  transition: border-color .25s, background .25s;
+}
 
-/* the description now lives inline in the accordion — the side panel
+.proc__nav:hover { border-color: var(--soft); background: var(--card); }
+
+/* the description now lives inline on each slide — the side panel
    would just be a redundant, disconnected repeat of the same text */
 .proc__detail { display: none; }
+}
+
+@media (max-width: 560px) {
+.proc .mstep { flex-basis: min(84vw, 300px); padding: 20px 18px 18px; }
 }
 
 .core-rose .rose { max-width: 620px; }
@@ -1609,7 +1730,7 @@
 
 .journey__head { margin-bottom: clamp(28px, 4vw, 44px); }
 
-.journey { padding-top: clamp(40px, 6vw, 60px); padding-bottom: clamp(40px, 6vw, 60px); }
+.journey { padding-top: clamp(24px, 4vw, 40px); padding-bottom: clamp(24px, 4vw, 40px); }
 
 .globe-canvas-wrap {
   --globe-dot-rgb: 208, 216, 255;
@@ -1738,7 +1859,7 @@
 }
 
 @media (max-width: 1120px) {
-.htl__card { flex: initial; }
+.htl__card { flex: 1; }
 }
 
 @media (max-width: 640px) {
@@ -1746,7 +1867,7 @@
 }
 
 @media (max-width: 640px) {
-.htl__item { flex-direction: row; align-items: flex-start; gap: 14px; }
+.htl__item { flex-direction: row; align-items: stretch; gap: 14px; }
 }
 
 @media (max-width: 640px) {
@@ -1994,6 +2115,11 @@
 }
 
 .reframe__bridge { margin-top: 10px; }
+
+@media (max-width: 760px) {
+.reframe__body { margin-bottom: 4px; }
+.reframe__bridge { margin-top: 18px; }
+}
 
 .stepcard__bg {
   position: absolute;
@@ -2508,9 +2634,9 @@
 .vmodal__frame { aspect-ratio: 16 / 9; }
 }
 
-.close { padding-top: clamp(40px, 6vw, 60px); padding-bottom: clamp(40px, 6vw, 60px); }
+.close { padding-top: clamp(24px, 4vw, 40px); padding-bottom: clamp(24px, 4vw, 40px); }
 
-.showcase { padding: clamp(40px, 6vw, 60px) 0 clamp(30px, 4vw, 56px); }
+.showcase { padding: clamp(24px, 4vw, 40px) 0 clamp(18px, 2.5vw, 28px); }
 
 .vmodal[hidden] { display: none !important; }
 

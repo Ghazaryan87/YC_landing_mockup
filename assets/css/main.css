@@ -1228,17 +1228,20 @@ a:hover { color: var(--sig2); }
 }
 
 .showfilter__clear {
-  display: none;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 15px;
   height: 15px;
   border-radius: 50%;
   background: rgba(255, 255, 255, .22);
-  opacity: .9;
+  opacity: 0;
+  visibility: hidden;
 }
 
-.showfilter__chip[aria-pressed="true"] .showfilter__clear { display: inline-flex; }
+/* space for the X is always reserved (see above) so a chip's width — and
+   the wrapped row's line breaks — never shift when it toggles active */
+.showfilter__chip[aria-pressed="true"] .showfilter__clear { opacity: .9; visibility: visible; }
 
 .showfilter__chip[aria-pressed="true"]:hover .showfilter__clear { background: rgba(255, 255, 255, .34); }
 
@@ -1418,6 +1421,12 @@ a:hover { color: var(--sig2); }
 }
 
 .office {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
   text-align: left;
   font-family: inherit;
   background: transparent;
@@ -1435,6 +1444,25 @@ a:hover { color: var(--sig2); }
 }
 
 .office--active { transition: border-color .3s, background .3s; }
+
+/* same watermark-flag treatment as the phone carousel, so the grid
+   cards read consistently at every breakpoint */
+.office::before {
+  content: attr(data-flag);
+  position: absolute;
+  top: 50%;
+  right: -8px;
+  transform: translateY(-50%);
+  font-size: 64px;
+  line-height: 1;
+  opacity: .16;
+  -webkit-mask-image: linear-gradient(to left, #000 35%, transparent 92%);
+  mask-image: linear-gradient(to left, #000 35%, transparent 92%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.office__row, .office__role { position: relative; z-index: 1; }
 
 .office__row {
   display: flex;
@@ -1696,6 +1724,10 @@ a:hover { color: var(--sig2); }
 @media (max-width: 760px) {
 .footer__grid { grid-template-columns: 1fr; gap: 32px; }
 .footer__brand { height: auto; }
+/* extra breathing room around each link so a thumb resting near a link
+   while a scroll comes to rest doesn't register as a tap on it */
+.footer__links, .footer__contact { gap: 4px; }
+.footer__links a, .footer__contact a { display: block; padding: 8px 0; margin: -8px 0; }
 }
 
 @media (max-width: 480px) {
@@ -2490,8 +2522,12 @@ html, body { overflow-x: clip; }
 
 .reframe--statement.t-white {
   clip-path: polygon(0 0, 100% 3.2vw, 100% 100%, 0 calc(100% - 3.2vw));
-  padding-top: 120px;
-  padding-bottom: 120px;
+  padding-top: clamp(36px, 4.5vw, 56px);
+  padding-bottom: clamp(36px, 4.5vw, 56px);
+}
+
+@media (min-width: 1121px) {
+.reframe--statement.t-white { padding-top: clamp(63px, 7.875vw, 98px); padding-bottom: clamp(63px, 7.875vw, 98px); }
 }
 
 .reframe--statement.t-white .reframe__h2 em {
@@ -2504,12 +2540,20 @@ html, body { overflow-x: clip; }
 
 .reframe--statement.t-white .reframe__glow { display: none; }
 
+@media (max-width: 980px) {
+.reframe--statement.t-white { padding-top: 66px; padding-bottom: 66px; }
+}
+
 @media (max-width: 760px) {
 .reframe--statement.t-white {
     clip-path: polygon(0 0, 100% 5vw, 100% 100%, 0 calc(100% - 5vw));
-    padding-top: 120px;
-    padding-bottom: 120px;
+    padding-top: 72px;
+    padding-bottom: 72px;
   }
+}
+
+@media (max-width: 560px) {
+.reframe--statement.t-white { padding-top: 57px; padding-bottom: 65px; }
 }
 
 .reframe--statement.t-white .reframe__bridge strong {
@@ -2957,12 +3001,21 @@ html, body { overflow-x: clip; }
 #loop.section { padding-bottom: clamp(84px, 10vw, 150px); }
 
 :root {
-  
-  --sect-y: clamp(56px, 5vw, 72px);       
-  --sect-y-lg: clamp(48px, 6vw, 76px);   
-  --band-y: clamp(36px, 4vw, 52px);       
-  --head-gap: clamp(26px, 3.2vw, 42px);   
-  --sect-x: 24px;                          
+
+  --sect-y: clamp(32px, 4vw, 48px);
+  --sect-y-lg: clamp(36px, 4.5vw, 56px);
+  --band-y: clamp(24px, 3vw, 36px);
+  --head-gap: clamp(20px, 2.6vw, 32px);
+  --sect-x: 24px;
+}
+
+/* large screens: inter-section rhythm opened up +75% over the base scale above */
+@media (min-width: 1121px) {
+  :root {
+    --sect-y: clamp(56px, 7vw, 84px);
+    --sect-y-lg: clamp(63px, 7.875vw, 98px);
+    --band-y: clamp(42px, 5.25vw, 63px);
+  }
 }
 
 .reframe,
