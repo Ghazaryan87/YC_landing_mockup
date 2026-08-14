@@ -98,7 +98,10 @@
 
 .ms-tools { display: flex; flex-wrap: wrap; gap: 10px; }
 
-.ms-tools span {
+.ms-tool {
+  display: flex;
+  align-items: center;
+  gap: 0;
   font-size: var(--fs-sm);
   font-weight: 500;
   color: var(--body);
@@ -109,7 +112,33 @@
   transition: border-color .25s, color .25s;
 }
 
-.ms-tools span:hover { border-color: var(--sig); color: var(--fg); }
+.ms-tool:hover { border-color: var(--sig); color: var(--fg); }
+
+.ms-tool__icon {
+  display: none;
+  flex: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--card-line);
+}
+
+.ms-tool__icon img { width: 100%; height: 100%; object-fit: contain; display: block; }
+
+.ms-tool__icon svg { width: 16px; height: 16px; }
+
+.ms-tool__icon--generic.ms-tool__icon--email { color: var(--sig); background: color-mix(in srgb, var(--sig) 12%, var(--surface)); }
+
+.ms-tool__icon--generic.ms-tool__icon--siem { color: var(--ice); background: color-mix(in srgb, var(--ice) 14%, var(--surface)); }
+
+@media (min-width: 901px) {
+.ms-tool { gap: 10px; padding: 6px 18px 6px 6px; }
+.ms-tool__icon { display: flex; }
+}
 
 .ms-why__grid {
   display: grid;

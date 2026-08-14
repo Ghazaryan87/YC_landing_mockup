@@ -63,4 +63,31 @@
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+
+  /* ---- hide the nav's own Get In Touch once the page's own CTA is in view ---- */
+  if ('IntersectionObserver' in window) {
+    var pageCtas = document.querySelectorAll('[data-page-cta]');
+    if (pageCtas.length) {
+      var visibleCtas = 0;
+      var ctaIO = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          visibleCtas += en.isIntersecting ? 1 : -1;
+        });
+        nav.classList.toggle('nav--cta-hidden', visibleCtas > 0);
+      }, { threshold: 0.4 });
+      pageCtas.forEach(function (el) { ctaIO.observe(el); });
+    }
+
+    /* ---- hide the whole bar once the footer scrolls into view ---- */
+    var footer = document.querySelector('.footer');
+    if (footer) {
+      var footerIO = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          var open = panel && !panel.hidden;
+          nav.classList.toggle('nav--hidden', en.isIntersecting && !open);
+        });
+      }, { threshold: 0.35 });
+      footerIO.observe(footer);
+    }
+  }
 })();

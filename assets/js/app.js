@@ -35,10 +35,10 @@
   ];
 
   var BEARINGS = [
-    { label: 'AI Business Solutions', x: '50%', y: '7%', deg: 0, href: 'Foundry.html', link: 'Explore the YC AI Foundry →' },
-    { label: 'Observability', x: '88%', y: '53.2%', deg: 90, href: 'Observability.html', link: 'Observability & Intelligent Operations →' },
-    { label: 'Enterprise Solutions', x: '50%', y: '96%', deg: 180, href: 'enterprise.html', link: 'Enterprise Solutions →' },
-    { label: 'Managed Services', x: '12%', y: '53.2%', deg: 270, href: 'managed.html', link: 'Managed Services →' }
+    { label: 'AI Business Solutions', tag: '01', x: '50%', y: '7%', deg: 0, href: 'Foundry.html', link: 'Explore the YC AI Foundry →' },
+    { label: 'Observability', tag: '02', x: '88%', y: '53.2%', deg: 90, href: 'Observability.html', link: 'Observability & Intelligent Operations →' },
+    { label: 'Enterprise Solutions', tag: '03', x: '50%', y: '96%', deg: 180, href: 'enterprise.html', link: 'Enterprise Solutions →' },
+    { label: 'Managed Services', tag: '04', x: '12%', y: '53.2%', deg: 270, href: 'managed.html', link: 'Managed Services →' }
   ];
 
   var METHOD_STEPS = [
@@ -315,7 +315,8 @@
       btn.style.left = b.x;
       btn.style.top = b.y;
       btn.setAttribute('aria-pressed', String(i === 0));
-      btn.innerHTML = '<span class="bearing__label"></span>';
+      btn.innerHTML = '<span class="bearing__tag"></span><span class="bearing__label"></span>';
+      $('.bearing__tag', btn).textContent = b.tag;
       $('.bearing__label', btn).textContent = b.label;
 
       var select = function () { setBearing(i); hold = true; };
@@ -420,11 +421,18 @@
       dotsHost.appendChild(d);
       return d;
     }) : [];
+    // Step 1 has no previous step and step 8 has no next step — the
+    // sequence is linear (an onboarding order), not a loop, so neither end
+    // wraps to the other.
     function renderDots(i) {
       if (!dotEls.length) return;
       var n = METHOD_STEPS.length;
-      [(i - 1 + n) % n, i, (i + 1) % n].forEach(function (stepIdx, pos) {
+      [i - 1, i, i + 1].forEach(function (stepIdx, pos) {
         var d = dotEls[pos];
+        var valid = stepIdx >= 0 && stepIdx < n;
+        d.style.visibility = valid ? '' : 'hidden';
+        d.onclick = null;
+        if (!valid) return;
         d.textContent = String(stepIdx + 1).padStart(2, '0');
         d.classList.toggle('proc__num--active', pos === 1);
         d.setAttribute('aria-label', METHOD_STEPS[stepIdx].t);
@@ -436,12 +444,14 @@
     var prevBtn = $('[data-mstep-prev]');
     var nextBtn = $('[data-mstep-next]');
     if (prevBtn) prevBtn.addEventListener('click', function () {
+      if (current === 0) return;
       hold = performance.now() + 8000;
-      setStep((current - 1 + METHOD_STEPS.length) % METHOD_STEPS.length);
+      setStep(current - 1);
     });
     if (nextBtn) nextBtn.addEventListener('click', function () {
+      if (current === METHOD_STEPS.length - 1) return;
       hold = performance.now() + 8000;
-      setStep((current + 1) % METHOD_STEPS.length);
+      setStep(current + 1);
     });
 
     var detail = $('[data-method-detail]');
@@ -453,6 +463,8 @@
       current = i;
       buttons.forEach(function (b, j) { b.setAttribute('aria-selected', String(i === j)); });
       renderDots(i);
+      if (prevBtn) prevBtn.disabled = i === 0;
+      if (nextBtn) nextBtn.disabled = i === METHOD_STEPS.length - 1;
       if (num) num.textContent = String(i + 1).padStart(2, '0');
       if (badge) badge.textContent = String(i + 1).padStart(2, '0');
       if (title) title.textContent = METHOD_STEPS[i].full || METHOD_STEPS[i].t;
@@ -464,10 +476,16 @@
         detail.classList.add('swap');
       }
       // when the rail is a horizontally-scrolling slide carousel (small/
-      // tablet), keep the active slide scrolled into view; a no-op on the
-      // desktop grid, which never overflows
+      // tablet), center the active slide in the strip; a no-op on the
+      // desktop grid, which never overflows. Scrolled manually (not
+      // scrollIntoView) so only this strip moves — scrollIntoView walks up
+      // the ancestor chain and can drag an outer scroll container along
+      // with it depending on where the carousel sits on the page.
       if (list.scrollWidth > list.clientWidth + 1) {
-        buttons[i].scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', inline: 'center', block: 'nearest' });
+        var btn = buttons[i];
+        var target = btn.offsetLeft - (list.clientWidth - btn.offsetWidth) / 2;
+        target = Math.max(0, Math.min(target, list.scrollWidth - list.clientWidth));
+        list.scrollTo({ left: target, behavior: reduce ? 'auto' : 'smooth' });
       }
     }
 
@@ -482,7 +500,9 @@
 
     var iv = null;
     var tick = function () {
-      if (!hovering && performance.now() >= hold) setStep((current + 1) % METHOD_STEPS.length);
+      if (hovering || performance.now() < hold) return;
+      if (current < METHOD_STEPS.length - 1) setStep(current + 1);
+      else stop(); // reached the last step — don't loop back to the first
     };
     var start = function () { if (!iv) iv = setInterval(tick, 3400); };
     var stop = function () { if (iv) { clearInterval(iv); iv = null; } };
@@ -687,22 +707,27 @@
       render();
       strip.scrollTo({ left: 0, behavior: reduce ? 'auto' : 'smooth' });
 
-      // a user-driven filter change brings the filter row to the top of the
-      // viewport — but only when it's actually needed. If the whole
-      // filter-to-stage area is already on screen, or the filter row is
-      // already sitting at the top, jumping the page would just be
-      // disruptive for no gain.
+      // a user-driven filter change always brings the filter row to the top
+      // of the viewport, regardless of how close it already is — a partial
+      // scroll (or none) reads as unresponsive since the result list below
+      // changes and the user needs a consistent, predictable place to land.
+      // Deferred a frame: called synchronously (e.g. from a <select> change),
+      // the browser is often still mid-reflow from the thumb hidden/shown
+      // toggle above (or, on mobile, mid-dismissal of the native picker UI),
+      // and a scroll issued into that in-flight layout gets silently dropped
+      // or fought — one rAF lets both settle first.
+      // Scrolled manually (not scrollIntoView) so the landing gap is exactly
+      // 10px under the sticky nav — scrollIntoView would additionally stack
+      // against the site-wide html{scroll-padding-top}, overshooting well
+      // past the filter row.
       var visibleFilterEl = (filterHost && filterHost.offsetParent) ? filterHost
         : (filterSelect && filterSelect.offsetParent) ? filterSelect : null;
       if (user && visibleFilterEl) {
-        var navH = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 96;
-        var fRect = visibleFilterEl.getBoundingClientRect();
-        var sRect = stage.getBoundingClientRect();
-        var alreadyAtTop = fRect.top >= 0 && fRect.top <= navH + 24;
-        var alreadyFullyVisible = fRect.top >= navH && sRect.bottom <= window.innerHeight;
-        if (!alreadyAtTop && !alreadyFullyVisible) {
-          visibleFilterEl.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
-        }
+        requestAnimationFrame(function () {
+          var navH = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 96;
+          var top = visibleFilterEl.getBoundingClientRect().top + window.scrollY - navH - 10;
+          window.scrollTo({ top: top, behavior: reduce ? 'auto' : 'smooth' });
+        });
       }
     }
 

@@ -27,15 +27,15 @@
   /* local spacing scale — mirrors the reduced site-wide rhythm
      in css/styles.css (--sect-y). Kept local until Foundry is
      migrated onto the shared token system. */
-  --f-sect-y: clamp(56px, 7vw, 96px);
-  --f-sect-y-lg: clamp(90px, 9.5vw, 130px);
+  --f-sect-y: clamp(32px, 4vw, 48px);
+  --f-sect-y-lg: clamp(36px, 4.5vw, 56px);
 }
 
-/* large screens: inter-section rhythm opened up +75%, matching css/main.css */
+/* large screens: matches css/main.css's --sect-y/--sect-y-lg exactly */
 @media (min-width: 1121px) {
   :root {
-    --f-sect-y: clamp(98px, 12.25vw, 168px);
-    --f-sect-y-lg: clamp(158px, 16.6vw, 228px);
+    --f-sect-y: clamp(56px, 7vw, 84px);
+    --f-sect-y-lg: clamp(63px, 7.875vw, 98px);
   }
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -66,7 +66,7 @@ ul,ol{list-style:none}
 .btn--primary{background:var(--indigo);color:#fff;box-shadow:0 8px 30px -8px rgba(94,99,242,.55)}
 .btn--primary::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.25) 50%,transparent 70%);transform:translateX(-110%);transition:transform .6s}
 .btn--primary:hover::after{transform:translateX(110%)}
-.btn--primary:hover{background:#7479FF;transform:translateY(-2px);box-shadow:0 14px 40px -10px rgba(94,99,242,.7)}
+.btn--primary:hover{background:#7479FF;color:#fff;transform:translateY(-2px);box-shadow:0 14px 40px -10px rgba(94,99,242,.7)}
 .btn--quiet{border-color:var(--line-2);color:var(--text)}
 .btn--quiet:hover{background:var(--surface);border-color:var(--indigo-soft)}
 .btn--sm{font-size:var(--fs-sm);padding:10px 18px;border-radius:9px}
@@ -174,6 +174,10 @@ h1 .accent{background:linear-gradient(100deg,var(--indigo-soft),var(--indigo) 50
   display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 10px 30px -8px rgba(94,99,242,.7)}
 .fcore__t{font-family:var(--disp);font-weight:600;font-size:18px;letter-spacing:-.02em;margin-bottom:4px}
 .fcore__d{font-size:var(--fs-sm);color:var(--muted);line-height:1.4}
+/* mobile-only "processor pins" motif — replaces the branch/beam connectors
+   (which have no room to reach the input/output columns once everything
+   stacks) with small nodes radiating directly off the core box itself */
+.fcore__pins{display:none}
 .fline__cap{display:grid;grid-template-columns:1fr 240px 1fr;margin-top:16px}
 .fline__cap span:nth-child(1){text-align:right;padding-right:64px}
 .fline__cap span:nth-child(2){text-align:center}
@@ -181,11 +185,11 @@ h1 .accent{background:linear-gradient(100deg,var(--indigo-soft),var(--indigo) 50
 .fline__cap span{font-size:var(--fs-xs);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
 
 /* trust */
-.trust{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--base-2);position:relative;overflow:hidden}
+.trust{padding:20px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--base-2);position:relative;overflow:hidden}
 .trust::before{content:"";position:absolute;top:0;left:-30%;width:30%;height:1px;background:linear-gradient(90deg,transparent,var(--ice),transparent);animation:sweep 4s linear infinite}
 @keyframes sweep{to{left:130%}}
 .trust__in{display:grid;grid-template-columns:repeat(4,1fr)}
-.trust__cell{padding:32px 26px;border-right:1px solid var(--line)}
+.trust__cell{padding:18px 26px;border-right:1px solid var(--line)}
 .trust__cell:last-child{border-right:none}
 .trust__num{font-family:var(--disp);font-size:35px;font-weight:600;letter-spacing:-.02em}
 .trust__num em{font-style:normal;color:var(--ice)}
@@ -282,11 +286,12 @@ h1 .accent{background:linear-gradient(100deg,var(--indigo-soft),var(--indigo) 50
 .stage--1{min-height:330px}.stage--2{min-height:380px}
 .stage--3{min-height:430px;background:linear-gradient(170deg,#FFFFFF,#F2F3FF);border-color:rgba(27,28,154,.3);
   box-shadow:0 26px 60px -26px rgba(27,28,154,.4)}
-.stage__lvl{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px}
-.stage__num{font-family:var(--disp);font-size:var(--fs-sm2);font-weight:600;color:var(--lt-faint);letter-spacing:.08em}
+.stage__lvl{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;row-gap:8px;margin-bottom:14px}
+.stage__num{font-family:var(--disp);font-size:var(--fs-sm2);font-weight:600;color:var(--lt-faint);letter-spacing:.08em;white-space:nowrap}
 .stage--3 .stage__num{color:var(--indigo-deep)}
-.stage__tag{font-size:var(--fs-2xs);font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--lt-faint);border:1px solid var(--lt-line);padding:4px 10px;border-radius:20px}
+.stage__tag{font-size:var(--fs-2xs);font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--lt-faint);border:1px solid var(--lt-line);padding:4px 10px;border-radius:20px;white-space:nowrap}
 .stage--3 .stage__tag{color:#fff;background:var(--indigo-deep);border-color:var(--indigo-deep)}
+.stage--1 .stage__lvl,.stage--2 .stage__lvl{flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:8px}
 .stage h3{font-family:var(--disp);font-size:21px;font-weight:600;letter-spacing:-.02em;margin-bottom:14px}
 .stage ul{display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
 .stage li{font-size:var(--fs-sm);color:var(--lt-muted);padding-left:18px;position:relative}
@@ -672,7 +677,7 @@ h1 .accent{background:linear-gradient(100deg,var(--indigo-soft),var(--indigo) 50
 @media(max-width:900px){.cohere__grid{grid-template-columns:1fr;gap:34px}.cohere{padding:64px 0}}
 
 /* use case extraction */
-.ucx{padding:var(--f-sect-y) 0;background:var(--lt-bg);color:var(--lt-text)}
+.ucx{padding:calc(var(--f-sect-y) * .7) 0;background:var(--lt-bg);color:var(--lt-text)}
 .ucx .fnd-kicker{color:var(--indigo)}
 .ucx .sec-hd p{color:var(--lt-muted)}
 .ucx__flow{display:grid;grid-template-columns:1fr 1fr .8fr 1fr 1fr .8fr;gap:14px;margin-bottom:44px}
@@ -686,7 +691,7 @@ h1 .accent{background:linear-gradient(100deg,var(--indigo-soft),var(--indigo) 50
 .ucx__ph p{color:var(--lt-muted);font-size:var(--fs-xs);line-height:1.6;flex:1}
 .ucx__gate p{color:rgba(255,255,255,.8);font-size:var(--fs-xs);line-height:1.6;flex:1}
 .ucx__out{margin-top:14px;padding-top:12px;border-top:1px solid var(--lt-line);font-family:var(--mono);font-size:var(--fs-2xs);color:var(--indigo)}
-.ucx__funnel{display:flex;align-items:center;justify-content:center;gap:26px;flex-wrap:wrap;background:var(--lt-surface);border:1px solid var(--lt-line);border-radius:18px;padding:30px 34px}
+.ucx__funnel{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;background:var(--lt-surface);border:1px solid var(--lt-line);border-radius:18px;padding:30px 34px}
 .ucx__fstat{text-align:center}
 .ucx__fstat b{display:block;font-family:var(--disp);font-weight:600;font-size:clamp(28px,3vw,38px);letter-spacing:-.02em}
 .ucx__fstat span{display:block;color:var(--lt-muted);font-size:var(--fs-sm);margin-top:4px;max-width:15em}
@@ -720,11 +725,47 @@ html,body{overflow-x:clip}
   .hero__h1{font-size:clamp(26px,8vw,40px)}
   .hero__ctas{flex-direction:column;align-items:stretch;gap:12px}
   .hero__ctas a{text-align:center;justify-content:center;padding:15px 20px}
-  .trust__in{grid-template-columns:1fr 1fr}
   .fnd__card,.anat__card{padding:22px 20px}
   .cohere__card{padding:22px 20px}
   .ucx__funnel{padding:22px 20px;gap:16px}
   .ucx__farr{transform:rotate(90deg)}
   .fnd__chips{gap:12px}
   .fnd__chips-lbl{padding-top:0}
+
+  /* --- foundry illustration: on hold — hidden entirely on small screens
+     for now, to be reworked later. Stacked/core-first rules below are kept
+     in place (inert while .fline is hidden) as a starting point for that. --- */
+  .fline{display:none}
+  .fline{padding-bottom:14px}
+  .fline__stage{display:flex;flex-direction:column;align-items:center;gap:20px}
+  .fline__col{width:100%}
+  .fline__col--in,.fline__col--out{align-items:center;padding:0;gap:8px}
+  .fchip{width:100%;max-width:280px}
+  .fcore{order:-1;width:200px;padding:16px 16px;margin-bottom:2px}
+  .fcore__pins{
+    display:block;position:absolute;inset:-15px;z-index:1;pointer-events:none;overflow:visible;
+    background-repeat:no-repeat;
+    background-image:
+      radial-gradient(circle, var(--indigo-soft) 0 3px, transparent 3px),
+      radial-gradient(circle, var(--indigo-soft) 0 3px, transparent 3px),
+      radial-gradient(circle, var(--indigo-soft) 0 3px, transparent 3px),
+      radial-gradient(circle, var(--indigo-soft) 0 3px, transparent 3px),
+      radial-gradient(circle, var(--ice) 0 2.2px, transparent 2.2px),
+      radial-gradient(circle, var(--ice) 0 2.2px, transparent 2.2px),
+      radial-gradient(circle, var(--ice) 0 2.2px, transparent 2.2px),
+      radial-gradient(circle, var(--ice) 0 2.2px, transparent 2.2px);
+    background-position:
+      50% 0, 50% 100%, 0 50%, 100% 50%,
+      14% 14%, 86% 14%, 14% 86%, 86% 86%;
+    opacity:.75;
+    animation:pinpulse 3.2s ease-in-out infinite;
+  }
+  @keyframes pinpulse{0%,100%{opacity:.45}50%{opacity:.85}}
+  .fline__cap{margin-top:4px;gap:18px;flex-wrap:wrap}
+
+  /* --- trust/stats band: sized for a phone, not a desktop stat wall --- */
+  .trust__in{grid-template-columns:1fr 1fr}
+  .trust__cell{padding:18px 14px}
+  .trust__num{font-size:24px}
+  .trust__lbl{font-size:var(--fs-2xs);margin-top:3px}
 }

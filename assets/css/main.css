@@ -57,12 +57,32 @@ html { scroll-padding-top: calc(var(--nav-h) + 16px); }
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid transparent;
-  transition: background .3s, border-color .3s;
+  transition: background .3s, border-color .3s, transform .35s ease, opacity .35s ease;
 }
 /* quiet at the top, solid with a hairline once scrolled */
 .nav.scrolled {
   background: color-mix(in srgb, var(--nav-surface) 92%, transparent);
   border-bottom-color: var(--nav-line);
+}
+
+.nav--hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.nav__cta {
+  transition: opacity .25s ease, transform .25s ease;
+}
+
+.nav--cta-hidden .nav__cta {
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+.nav, .nav__cta { transition: none; }
 }
 
 .nav__inner {
@@ -465,6 +485,12 @@ a:hover { color: var(--sig2); }
   color: #fff;
   transform: translateY(-2px);
   box-shadow: 0 14px 40px -10px rgba(94, 99, 242, .7);
+}
+
+.btn-primary--lg {
+  padding: 20px 38px;
+  font-size: clamp(17px, 1.3vw, 19px);
+  border-radius: 14px;
 }
 
 .btn-ghost {
@@ -1700,13 +1726,13 @@ a:hover { color: var(--sig2); }
 
 .footer__links { display: flex; flex-direction: column; gap: 9px; }
 
-.footer__links a { color: #A7ABCB; font-size: 13px; line-height: 1.3; transition: color .2s; }
+.footer__links a { color: #A7ABCB; font-size: 13px; line-height: 1.3; transition: color .2s; align-self: flex-start; }
 
 .footer__links a:hover { color: #F2F3FA; }
 
 .footer__contact { display: flex; flex-direction: column; gap: 9px; }
 
-.footer__contact a { color: #A7ABCB; font-size: 13px; line-height: 1.3; transition: color .2s; }
+.footer__contact a { color: #A7ABCB; font-size: 13px; line-height: 1.3; transition: color .2s; align-self: flex-start; }
 
 .footer__contact a:hover { color: #F2F3FA; }
 
@@ -2907,6 +2933,15 @@ html, body { overflow-x: clip; }
   gap: 40px;
   flex-wrap: wrap;
 }
+
+.obs-close--stacked .obs-close__inner {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 30px;
+}
+
+.obs-close--stacked .obs-close__sub { max-width: 52ch; margin-left: auto; margin-right: auto; }
 
 .obs-close__sub { margin: 14px 0 0; color: var(--body); font-size: var(--fs-base); max-width: 44ch; }
 

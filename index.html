@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>YourCompass — The AI-first systems integrator</title>
-<link rel="icon" type="image/png" href="assets/favicon.png">
+<title>YourCompass, The AI-first systems integrator</title>
+<link rel="icon" type="image/png" href="assets/favicon-tab.png">
 <link rel="stylesheet" href="css/fonts.css">
 <link rel="stylesheet" href="assets/css/main.css">
 <link rel="stylesheet" href="assets/index/index.css">
@@ -267,7 +267,7 @@
         <p class="hero__sub">YourCompass is an engineering-led systems integrator and digital transformation partner. We design and deliver systems integration, observability-led, and AI-powered solutions that give organisations real-time insight, operational control, and the confidence to transform at scale.</p>
 
         <div class="hero__ctas">
-          <a class="btn-primary" href="#close">Book a discovery session</a>
+          <a class="btn-primary" href="#close" data-page-cta>Book a discovery session</a>
         </div>
 
       </div>
@@ -305,7 +305,7 @@
       <div class="kicker" data-reveal>The reframe</div>
       <h2 class="reframe__h2" data-wordsplit>Anyone can plug in AI.<br><em>We know how to make it hold.</em></h2>
       <p class="reframe__body" data-reveal data-d="200">Government, banking, and energy do not forgive a system that fails under load. Fifteen years operating mission-critical systems in those environments has taught us three things: how to build systems that hold under load, how to observe them closely enough to see failure coming, and how to remediate before it costs you anything. That is the knowledge we bring to AI. We do not build for the demo. We build for what happens after it.</p>
-      <p class="reframe__body reframe__bridge" data-reveal data-d="300">That knowledge is the core. We gave it a name — <strong>the YC AI Foundry</strong>.</p>
+      <p class="reframe__body reframe__bridge" data-reveal data-d="300">That knowledge is the core. We gave it a name, <strong>the YC AI Foundry</strong>.</p>
     </div>
   </section>
 
@@ -314,7 +314,7 @@
     <div class="reframe__inner">
       <div class="kicker" data-reveal>One Intelligent Core &middot; Four Practices</div>
       <h2 class="reframe__h2" data-wordsplit>Intelligence runs through <em>everything we do</em></h2>
-      <p class="reframe__body" data-reveal data-d="200">Enterprise solutions, managed services, and observability are not parallel offerings — they are engineered on a single intelligent core. Insight, automation, and governance are built once and leveraged across every engagement: capability compounds, complexity doesn't.</p>
+      <p class="reframe__body" data-reveal data-d="200">Enterprise solutions, managed services, and observability are not parallel offerings, they are engineered on a single intelligent core. Insight, automation, and governance are built once and leveraged across every engagement: capability compounds, complexity doesn't.</p>
     </div>
 
     <div class="wrap core-rose" id="compass">
@@ -322,6 +322,7 @@
         <svg class="rose__svg" viewBox="0 0 880 620" aria-hidden="true">
           <circle class="rose__ring" cx="440" cy="330" r="238"></circle>
           <circle class="rose__ticks" cx="440" cy="330" r="238"></circle>
+          <circle class="rose__ticks rose__ticks--inner" cx="440" cy="330" r="196"></circle>
           <line class="rose__spoke" x1="440" y1="330" x2="440" y2="92"></line>
           <line class="rose__spoke" x1="440" y1="330" x2="678" y2="330"></line>
           <line class="rose__spoke" x1="440" y1="330" x2="440" y2="568"></line>
@@ -351,36 +352,122 @@
 
     </div>
 
-    <div class="wrap practices practices--four">
-      <article class="practice practice--core" data-reveal>
-        <h3 class="practice__name">AI Business Solutions</h3>
-        <p class="practice__desc">Enterprise AI agents designed, built, and operated on the YC AI Foundry — combining a sovereign deployment platform, delivery accelerators, and an evidence-first methodology that moves organizations from ideation to production with discipline.</p>
-        <p class="practice__signal" hidden>Agents built on our platform, inside your walls, on your data — the core made real.</p>
-        <a class="practice__link" href="Foundry.html">Explore the YC AI Foundry &rarr;</a>
-      </article>
-
-      <article class="practice practice--core" data-reveal data-d="90">
-        <h3 class="practice__name">Observability</h3>
-        <p class="practice__desc">An established mastery practice: top-tier partnerships, one of the largest certified benches worldwide, and full-stack visibility from infrastructure to agentic workloads.</p>
-        <p class="practice__signal" hidden>Observability feeds the intelligence — and now observes the AI itself.</p>
-        <a class="practice__link" href="Observability.html">Observability &amp; Intelligent Operations &rarr;</a>
-      </article>
-
-      <article class="practice practice--core" id="enterprise" data-reveal data-d="180">
-        <h3 class="practice__name">Enterprise Solutions</h3>
-        <p class="practice__desc">Design, integration, and optimisation of enterprise-grade platforms for complex, mission-critical environments — engineered with single-point accountability, and built as the substrate the intelligent core operates on.</p>
-        <p class="practice__signal" hidden>Built once at the core, engineered into every platform we deliver.</p>
-        <a class="practice__link" href="enterprise.html">Enterprise Solutions &rarr;</a>
-      </article>
-
-      <article class="practice practice--core" id="managed" data-reveal data-d="270">
-        <h3 class="practice__name">Managed Services</h3>
-        <p class="practice__desc">End-to-end operations — monitoring, incident and change management, preventive maintenance, and vendor coordination, run by AIOps and governed by our engineers.</p>
-        <p class="practice__signal" hidden>AIOps-enabled — the core runs operations, our engineers govern them.</p>
-        <a class="practice__link" href="managed.html">Managed Services &rarr;</a>
-      </article>
-    </div>
   </section>
+
+  <div class="pillars">
+    <div class="pillars__glow" aria-hidden="true"></div>
+    <div class="pillars__grid">
+
+      <a class="pillar-card pillar-card--foundry practice" href="Foundry.html" data-reveal>
+        <div class="pillar-card__art" aria-hidden="true">
+          <div class="pillar-card__art-glow"></div>
+          <svg class="pillar-card__art-svg" viewBox="0 0 340 452" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <g fill="none" stroke="var(--accent)">
+              <line class="art-rail" x1="70" y1="10" x2="70" y2="392" stroke-width="1" stroke-dasharray="3 7" opacity=".35"/>
+              <line class="art-rail" x1="118" y1="10" x2="118" y2="392" stroke-width="1" stroke-dasharray="3 7" opacity=".35"/>
+              <circle class="art-core-orbit" cx="300" cy="372" r="98" stroke-width="1" stroke-dasharray="2 9" opacity=".3"/>
+              <circle class="art-core-ring" cx="300" cy="372" r="72" stroke-width="1" stroke-dasharray="1 6" opacity=".5"/>
+              <circle class="art-core-ring-in" cx="300" cy="372" r="50" stroke-width="1" stroke-dasharray="9 5" opacity=".6"/>
+            </g>
+            <circle class="art-rail-part" cx="70" cy="10" r="3" fill="var(--accent)"/>
+            <circle class="art-rail-part art-rail-part--lag" cx="118" cy="10" r="3" fill="var(--accent)"/>
+            <circle class="art-core-pulse" cx="300" cy="372" r="9" fill="var(--accent)"/>
+          </svg>
+          <div class="pillar-card__scrim"></div>
+        </div>
+        <span class="pillar-card__hairline" aria-hidden="true"></span>
+        <div class="pillar-card__body">
+          <span class="pillar-card__eyebrow" aria-hidden="true">01</span>
+          <h3 class="pillar-card__title">AI Business Solutions</h3>
+          <p class="pillar-card__text">Enterprise AI agents designed, built, and operated on the YC AI Foundry, combining a sovereign deployment platform, delivery accelerators, and an evidence-first methodology that moves organizations from ideation to production with discipline.</p>
+          <div class="pillar-card__spacer"></div>
+          <div class="pillar-card__rule" aria-hidden="true"></div>
+          <span class="pillar-card__link">Explore the YC AI Foundry&nbsp;<span aria-hidden="true">&rarr;</span></span>
+        </div>
+      </a>
+
+      <a class="pillar-card pillar-card--observability practice" href="Observability.html" data-reveal data-d="90">
+        <div class="pillar-card__art" aria-hidden="true">
+          <div class="pillar-card__art-glow"></div>
+          <svg class="pillar-card__art-svg" viewBox="0 0 340 452" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <line class="art-scan" x1="0" y1="0" x2="0" y2="452" stroke="var(--accent)" stroke-width="2" opacity="0"/>
+            <g fill="var(--accent)">
+              <rect class="art-bar" x="196" y="352" width="11" height="60" rx="2" opacity=".55"/>
+              <rect class="art-bar" x="217" y="316" width="11" height="96" rx="2" opacity=".55"/>
+              <rect class="art-bar" x="238" y="336" width="11" height="76" rx="2" opacity=".55"/>
+              <rect class="art-bar" x="259" y="296" width="11" height="116" rx="2" opacity=".55"/>
+              <rect class="art-bar" x="280" y="326" width="11" height="86" rx="2" opacity=".55"/>
+              <rect class="art-bar" x="301" y="276" width="11" height="136" rx="2" opacity=".55"/>
+            </g>
+            <circle class="art-ping" cx="306" cy="276" r="4" fill="var(--accent)"/>
+          </svg>
+          <div class="pillar-card__scrim"></div>
+        </div>
+        <span class="pillar-card__hairline" aria-hidden="true"></span>
+        <div class="pillar-card__body">
+          <span class="pillar-card__eyebrow" aria-hidden="true">02</span>
+          <h3 class="pillar-card__title">Observability</h3>
+          <p class="pillar-card__text">An established mastery practice: top-tier partnerships, one of the largest certified benches worldwide, and full-stack visibility from infrastructure to agentic workloads.</p>
+          <div class="pillar-card__spacer"></div>
+          <div class="pillar-card__rule" aria-hidden="true"></div>
+          <span class="pillar-card__link">Observability &amp; Intelligent Operations&nbsp;<span aria-hidden="true">&rarr;</span></span>
+        </div>
+      </a>
+
+      <a class="pillar-card pillar-card--enterprise practice" id="enterprise" href="enterprise.html" data-reveal data-d="180">
+        <div class="pillar-card__art" aria-hidden="true">
+          <div class="pillar-card__art-glow"></div>
+          <div class="pillar-card__blueprint"></div>
+          <svg class="pillar-card__art-svg" viewBox="0 0 340 452" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <g fill="none" stroke="var(--accent)">
+              <line class="art-connector" x1="272" y1="256" x2="272" y2="398" stroke-width="1" stroke-dasharray="4 6" opacity=".5"/>
+              <rect class="art-layer" x="188" y="382" width="144" height="26" rx="6" opacity=".55"/>
+              <rect class="art-layer art-layer--2" x="200" y="342" width="132" height="26" rx="6" opacity=".55"/>
+              <rect class="art-layer art-layer--3" x="212" y="302" width="120" height="26" rx="6" opacity=".55"/>
+            </g>
+          </svg>
+          <div class="pillar-card__scrim"></div>
+        </div>
+        <span class="pillar-card__hairline" aria-hidden="true"></span>
+        <div class="pillar-card__body">
+          <span class="pillar-card__eyebrow" aria-hidden="true">03</span>
+          <h3 class="pillar-card__title">Enterprise Solutions</h3>
+          <p class="pillar-card__text">Design, integration, and optimisation of enterprise-grade platforms for complex, mission-critical environments, engineered with single-point accountability, and built as the substrate the intelligent core operates on.</p>
+          <div class="pillar-card__spacer"></div>
+          <div class="pillar-card__rule" aria-hidden="true"></div>
+          <span class="pillar-card__link">Enterprise Solutions&nbsp;<span aria-hidden="true">&rarr;</span></span>
+        </div>
+      </a>
+
+      <a class="pillar-card pillar-card--managed practice" id="managed" href="managed.html" data-reveal data-d="270">
+        <div class="pillar-card__art" aria-hidden="true">
+          <div class="pillar-card__art-glow"></div>
+          <svg class="pillar-card__art-svg" viewBox="0 0 340 452" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <line class="art-pulse" x1="24" y1="54" x2="132" y2="54" stroke="var(--accent)" stroke-width="1" stroke-dasharray="6 6" opacity=".4" fill="none"/>
+          </svg>
+          <div class="pillar-card__radar">
+            <div class="pillar-card__radar-sweep"></div>
+            <div class="pillar-card__radar-ring"></div>
+            <div class="pillar-card__radar-core"></div>
+          </div>
+          <span class="art-shift-dot" style="top:38px;left:26px;"></span>
+          <span class="art-shift-dot art-shift-dot--2" style="top:66px;left:54px;"></span>
+          <span class="art-shift-dot art-shift-dot--3" style="top:94px;left:34px;"></span>
+          <div class="pillar-card__scrim"></div>
+        </div>
+        <span class="pillar-card__hairline" aria-hidden="true"></span>
+        <div class="pillar-card__body">
+          <span class="pillar-card__eyebrow" aria-hidden="true">04</span>
+          <h3 class="pillar-card__title">Managed Services</h3>
+          <p class="pillar-card__text">End-to-end operations, monitoring, incident and change management, preventive maintenance, and vendor coordination, run by AIOps and governed by our engineers.</p>
+          <div class="pillar-card__spacer"></div>
+          <div class="pillar-card__rule" aria-hidden="true"></div>
+          <span class="pillar-card__link">Managed Services&nbsp;<span aria-hidden="true">&rarr;</span></span>
+        </div>
+      </a>
+
+    </div>
+  </div>
 
   <!-- ============ 1.3 JOURNEY ============ -->
   <!-- ============ 1.4 COMPASS-ROSE HUB ============ -->
@@ -391,7 +478,7 @@
       <div class="method__head">
         <div class="kicker" data-reveal>How we work with AI</div>
         <h2 class="h2" data-reveal>A method, <em>not a magic.</em></h2>
-        <p class="lead method__lead" data-reveal data-d="80">Every engagement is <strong>use-case-driven</strong> — each one identified, scoped, proven, then productionized through the <strong>8-step onboarding</strong> — and operated from the <strong>Intelligent Observability Center (IOC)</strong>. 25+ AI-enabled use cases delivered this way — and counting.</p>
+        <p class="lead method__lead" data-reveal data-d="80">Every engagement is <strong>use-case-driven</strong>, each one identified, scoped, proven, then productionized through the <strong>8-step onboarding</strong>, and operated from the <strong>Intelligent Observability Center (IOC)</strong>. 25+ AI-enabled use cases delivered this way, and counting.</p>
       </div>
 
       <div class="proc" data-reveal data-d="120">
@@ -426,7 +513,7 @@
 
       <div class="method__strip" data-reveal data-d="160">
         <div class="method__strip-kicker">SOVEREIGN &amp; ON-PREM BY DESIGN</div>
-        <p>AI that lives inside your perimeter — meeting the data-residency reality of government and regulated enterprise in the region.</p>
+        <p>AI that lives inside your perimeter, meeting the data-residency reality of government and regulated enterprise in the region.</p>
       </div>
     </div>
   </section>
@@ -475,7 +562,7 @@
               <div class="demo__dots" data-demo-dots style="display:contents"></div>
               <button class="demo__next" type="button" data-demo-next>NEXT FRAME &rarr;</button>
             </div>
-            <h3>A service request handled end-to-end — humans approve, not type</h3>
+            <h3>A service request handled end-to-end, humans approve, not type</h3>
             <p class="demo__meta">Built for a banking client in the GCC &middot; identity stripped</p>
           </div>
         </article>
@@ -510,7 +597,7 @@
         <select class="showfilter__select" data-reel-filter-select aria-label="Filter demos by business domain"></select>
       </div>
 
-      <p class="showfilter__empty" data-reel-empty hidden>No demos in this domain yet — more are landing shortly.</p>
+      <p class="showfilter__empty" data-reel-empty hidden>No demos in this domain yet, more are landing shortly.</p>
 
       <div class="stage stage--card" data-stage data-reveal>
         <div class="stage__frame">
@@ -558,7 +645,7 @@
           <div class="recog2__tile" aria-hidden="true" style="background: none; border: none; box-shadow: none;">
             <img src="assets/YC_Dubai_AI_Seal.png" alt="Dubai AI Seal" style="max-width: 100%; max-height: 100%; object-fit: contain;">
           </div>
-          <h3>Dubai AI Seal &mdash; Tier E</h3>
+          <h3>Dubai AI Seal, Tier E</h3>
           <p class="recog2__sub">Verified AI Supplier &middot; Verified AI Business User</p>
           <p>Certified by the Dubai Centre for Artificial Intelligence. <span class="recog__verify">Verify at dub.ai/ai-seal &rarr;</span></p>
         </a>
@@ -576,7 +663,7 @@
             <img src="assets/Premier_Sales_Partner.png" alt="Dynatrace Premier Sales Partner" style="max-width: 100%; max-height: 100%; object-fit: contain;">
           </div>
           <h3>Dynatrace Premier Partner</h3>
-          <p>The sole Dynatrace Premier Partner in the UAE &mdash; the highest partnership tier, earned through certified delivery excellence.</p>
+          <p>The sole Dynatrace Premier Partner in the UAE, the highest partnership tier, earned through certified delivery excellence.</p>
         </div>
 
         <div class="recog2" data-reveal data-d="330">
@@ -584,7 +671,7 @@
             <img src="assets/Endorsed_Services_Partner_-_Observability.png" alt="Dynatrace Services Endorsed Partner" style="max-width: 100%; max-height: 100%; object-fit: contain;">
           </div>
           <h3>Dynatrace Services Endorsed Partner</h3>
-          <p>The sole services-endorsed Dynatrace partner in the GCC &mdash; with one of the largest certified engineering benches globally.</p>
+          <p>The sole services-endorsed Dynatrace partner in the GCC, with one of the largest certified engineering benches globally.</p>
         </div>
       </div>
 
@@ -756,7 +843,7 @@
       </div>
 
       <div class="globe-body" data-globe-body>
-        <p data-reveal data-globe-copy>Unlike remote consultancies, our engineers work alongside you. With a presence across eight countries, we deploy directly to your sites—sitting in your control rooms and navigating your data centers to solve mission-critical issues where they happen.</p>
+        <p data-reveal data-globe-copy>Unlike remote consultancies, our engineers work alongside you. With a presence across eight countries, we deploy directly to your sites, sitting in your control rooms and navigating your data centers to solve mission-critical issues where they happen.</p>
       </div>
 
       <div class="globe-legend" data-globe-legend>
@@ -772,7 +859,7 @@
       <div>
         <div class="kicker" data-reveal>The team</div>
         <h2 class="team__h2" data-reveal>98% engineers. 100% battle-tested.</h2>
-        <p class="team__lead" data-reveal data-d="80">We are an engineering company, not a consultancy with a delivery team. The experts you engage with are the same ones who maintain government, banking, and energy systems under real production pressure. Our proven track record speaks for itself: <strong>[PLACEHOLDER — METRIC PENDING]</strong>.</p>
+        <p class="team__lead" data-reveal data-d="80">We are an engineering company, not a consultancy with a delivery team. The experts you engage with are the same ones who maintain government, banking, and energy systems under real production pressure. Our proven track record speaks for itself: <strong>[PLACEHOLDER, METRIC PENDING]</strong>.</p>
         <a class="team__link" href="#team" data-reveal data-d="130" hidden>Meet the team &rarr;</a>
       </div>
 
@@ -784,7 +871,7 @@
 
         <div class="team__card team__card--solid t-dark" data-reveal data-d="90">
           <div class="team__stat">—</div>
-          <div class="team__stat-label">PLACEHOLDER — METRIC PENDING</div>
+          <div class="team__stat-label">PLACEHOLDER, METRIC PENDING</div>
         </div>
 
         <div class="team__card team__wide" data-reveal data-d="180">
@@ -899,7 +986,7 @@
             <div class="htl__card">
               <svg class="htl__sil" viewBox="0 0 150 100" aria-hidden="true"><path d="M69 6 L72 6 L73 22 L68 22 Z M66 22 L75 22 L75 28 L66 28 Z"/><path d="M52 28 L98 28 L98 42 L52 42 Z M40 42 L110 42 L110 56 L40 56 Z M28 56 L122 56 L122 70 L28 70 Z M16 70 L134 70 L134 84 L16 84 Z M4 84 L146 84 L146 100 L4 100 Z"/><path d="M68 30 L82 30 L82 42 L68 42 Z M64 44 L86 44 L86 56 L64 56 Z M60 58 L90 58 L90 70 L60 70 Z M56 72 L94 72 L94 84 L56 84 Z M52 86 L98 86 L98 100 L52 100 Z" fill="#0A0A18" opacity=".45"/><path d="M56 34 L60 34 L60 42 L56 42 Z M90 34 L94 34 L94 42 L90 42 Z M46 46 L50 46 L50 56 L46 56 Z M100 46 L104 46 L104 56 L100 56 Z M34 60 L38 60 L38 70 L34 70 Z M112 60 L116 60 L116 70 L112 70 Z M22 74 L26 74 L26 84 L22 84 Z M124 74 L128 74 L128 84 L124 84 Z" fill="#0A0A18" opacity=".3"/></svg>
               <h3>Yerevan Engineering Center</h3>
-              <p>Established the Yerevan Engineering Center in Armenia — deep engineering capacity and delivery that follows the sun.</p>
+              <p>Established the Yerevan Engineering Center in Armenia, deep engineering capacity and delivery that follows the sun.</p>
               <div class="htl__spacer" aria-hidden="true"></div>
               <div class="htl__more-body"><span><b>Role</b> Engineering center</span><span><b>Focus</b> Engineering capacity, round-the-clock delivery.</span></div>
             </div>
@@ -914,9 +1001,9 @@
     <div class="glow close__glow" data-plx="0.04"></div>
     <div class="close__inner">
       <h2 class="close__h2" data-reveal>See it running on your systems.</h2>
-      <p class="close__sub" data-reveal data-d="80">A working session, not a sales call — usually with a live demo on the table.</p>
+      <p class="close__sub" data-reveal data-d="80">A working session, not a sales call, usually with a live demo on the table.</p>
       <div class="close__ctas" data-reveal data-d="140">
-        <a class="btn-primary" href="mailto:contact@yourcompass.com">Book a discovery session</a>
+        <a class="btn-primary" href="mailto:contact@yourcompass.com" data-page-cta>Book a discovery session</a>
       </div>
     </div>
   </section>
@@ -968,7 +1055,7 @@
       <button class="vmodal__play" type="button" aria-label="Play demo video">
         <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6.2 L18 12 L9 17.8 Z" fill="#1B0F14"></path></svg>
       </button>
-      <span class="vmodal__soon">DEMO VIDEO &mdash; COMING SOON</span>
+      <span class="vmodal__soon">DEMO VIDEO, COMING SOON</span>
     </div>
     <div class="vmodal__body">
       <div class="vmodal__kickrow">
@@ -991,7 +1078,7 @@
       <div class="vmodal__caps" data-vm-caps></div>
       <div class="vmodal__foot">
         <a class="btn-primary vmodal__cta" href="#close" data-vmodal-close>Request a demo &rarr;</a>
-        <span class="vmodal__lock">&#128274; Data stays on your network &mdash; zero cloud dependency</span>
+        <span class="vmodal__lock">&#128274; Data stays on your network, zero cloud dependency</span>
       </div>
     </div>
   </div>
