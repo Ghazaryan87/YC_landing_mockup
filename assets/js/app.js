@@ -378,10 +378,11 @@
     var panel = $('[data-method-desc]');
     if (!list) return;
 
+    var STEPS = window.METHOD_STEPS_OVERRIDE || METHOD_STEPS;
     var hold = 0;
     var current = 0;
 
-    var buttons = METHOD_STEPS.map(function (s, i) {
+    var buttons = STEPS.map(function (s, i) {
       var btn = document.createElement('button');
       btn.type = 'button';
       btn.className = 'mstep';
@@ -426,7 +427,7 @@
     // wraps to the other.
     function renderDots(i) {
       if (!dotEls.length) return;
-      var n = METHOD_STEPS.length;
+      var n = STEPS.length;
       [i - 1, i, i + 1].forEach(function (stepIdx, pos) {
         var d = dotEls[pos];
         var valid = stepIdx >= 0 && stepIdx < n;
@@ -435,7 +436,7 @@
         if (!valid) return;
         d.textContent = String(stepIdx + 1).padStart(2, '0');
         d.classList.toggle('proc__num--active', pos === 1);
-        d.setAttribute('aria-label', METHOD_STEPS[stepIdx].t);
+        d.setAttribute('aria-label', STEPS[stepIdx].t);
         d.setAttribute('aria-current', String(pos === 1));
         d.onclick = function () { hold = performance.now() + 8000; setStep(stepIdx); };
       });
@@ -449,7 +450,7 @@
       setStep(current - 1);
     });
     if (nextBtn) nextBtn.addEventListener('click', function () {
-      if (current === METHOD_STEPS.length - 1) return;
+      if (current === STEPS.length - 1) return;
       hold = performance.now() + 8000;
       setStep(current + 1);
     });
@@ -464,11 +465,11 @@
       buttons.forEach(function (b, j) { b.setAttribute('aria-selected', String(i === j)); });
       renderDots(i);
       if (prevBtn) prevBtn.disabled = i === 0;
-      if (nextBtn) nextBtn.disabled = i === METHOD_STEPS.length - 1;
+      if (nextBtn) nextBtn.disabled = i === STEPS.length - 1;
       if (num) num.textContent = String(i + 1).padStart(2, '0');
       if (badge) badge.textContent = String(i + 1).padStart(2, '0');
-      if (title) title.textContent = METHOD_STEPS[i].full || METHOD_STEPS[i].t;
-      if (panel) panel.textContent = METHOD_STEPS[i].d;
+      if (title) title.textContent = STEPS[i].full || STEPS[i].t;
+      if (panel) panel.textContent = STEPS[i].d;
       arts.forEach(function (a) { a.classList.toggle('is-art-live', a.dataset.stepArt == String(i)); });
       if (detail) {
         detail.classList.remove('swap');
@@ -501,7 +502,7 @@
     var iv = null;
     var tick = function () {
       if (hovering || performance.now() < hold) return;
-      if (current < METHOD_STEPS.length - 1) setStep(current + 1);
+      if (current < STEPS.length - 1) setStep(current + 1);
       else stop(); // reached the last step — don't loop back to the first
     };
     var start = function () { if (!iv) iv = setInterval(tick, 3400); };
