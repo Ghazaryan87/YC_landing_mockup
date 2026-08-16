@@ -63,9 +63,9 @@ ul,ol{list-style:none}
 .fnd-wrap{max-width:var(--maxw);margin:0 auto;padding:0 30px;position:relative;z-index:2}
 .fnd-kicker{display:inline-flex;align-items:center;gap:12px;font-size:var(--fs-sm);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--indigo-soft)}
 .fnd-kicker::before{content:"";width:22px;height:1.5px;background:linear-gradient(90deg,currentColor,transparent);flex:none}
-.sec-hd{margin-bottom:56px;max-width:48em}
-.sec-hd h2{font-family:var(--disp);font-weight:600;font-size:clamp(29px,3.8vw,42px);letter-spacing:-.03em;line-height:1.1;margin:16px 0 16px}
-.sec-hd p{color:var(--muted);font-size:17px}
+.sec-hd{margin-bottom:56px;max-width:64em}
+.sec-hd h2{font-family:var(--disp);font-weight:600;font-size:clamp(30px,4.2vw,54px);letter-spacing:-.02em;line-height:1.05;margin:16px 0 16px}
+.sec-hd p{color:var(--muted);font-size:var(--fs-base);line-height:1.6}
 .fade{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.2,.7,.3,1),transform .8s cubic-bezier(.2,.7,.3,1)}
 .fade.in{opacity:1;transform:none}
 .stag>*{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
@@ -107,12 +107,12 @@ ul,ol{list-style:none}
   background:radial-gradient(closest-side,rgba(123,212,245,.12),transparent 70%);pointer-events:none;will-change:transform}
 .compassring{position:absolute;top:-300px;left:50%;transform:translateX(-50%);width:840px;height:840px;opacity:.16;pointer-events:none;
   animation:spinslow 140s linear infinite}
-h1.hero__h{position:relative;font-family:var(--disp);font-weight:600;font-size:clamp(32px,4.6vw,52px);line-height:1.08;letter-spacing:-.035em;max-width:12em;margin:0 auto 12px;z-index:2}
+h1.hero__h{position:relative;font-family:var(--disp);font-weight:600;font-size:clamp(34px,5.2vw,58px);line-height:1.08;letter-spacing:-.035em;max-width:12em;margin:0 auto 24px;z-index:2}
 h1 .w{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.08em;margin-bottom:-.08em}
 h1 .w i{display:inline-block;font-style:normal;transform:translateY(115%);animation:wordup .9s cubic-bezier(.2,.75,.25,1) forwards}
 @keyframes wordup{to{transform:none}}
 h1 .accent{background:linear-gradient(100deg,var(--indigo-soft),var(--indigo) 50%,var(--ice));-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero__sub{position:relative;font-size:16px;color:var(--muted);max-width:38em;margin:0 auto 18px;z-index:2}
+.hero__sub{position:relative;font-size:clamp(16px,1.6vw,19px);line-height:1.6;color:var(--muted);max-width:38em;margin:0 auto 18px;z-index:2}
 .hero__sub strong{color:var(--text);font-weight:500}
 .hero__ctas{position:relative;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:24px;z-index:2}
 
@@ -540,9 +540,9 @@ h1 .accent{background:linear-gradient(100deg,var(--indigo-soft),var(--indigo) 50
 .contact{padding:var(--f-sect-y-lg) 0;background:var(--base);position:relative;overflow:hidden}
 .contact__glow{position:absolute;bottom:-380px;left:50%;transform:translateX(-50%);width:1200px;height:700px;border-radius:50%;
   background:radial-gradient(closest-side,rgba(94,99,242,.3),rgba(123,212,245,.06) 60%,transparent 75%);pointer-events:none;will-change:transform}
-.contact__grid{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;z-index:2}
-.contact__copy h2{font-family:var(--disp);font-weight:600;font-size:clamp(30px,4vw,46px);letter-spacing:-.03em;line-height:1.06;margin:16px 0 18px}
-.contact__copy p{color:var(--muted);font-size:16.5px;max-width:30em}
+.contact__grid{position:relative;display:grid;grid-template-columns:1.25fr 1fr;gap:70px;align-items:center;z-index:2}
+.contact__copy h2{font-family:var(--disp);font-weight:600;font-size:clamp(30px,4.2vw,54px);letter-spacing:-.02em;line-height:1.05;margin:16px 0 18px}
+.contact__copy p{color:var(--muted);font-size:var(--fs-base);line-height:1.6;max-width:46em}
 .contact__alt{margin-top:30px;display:flex;align-items:center;gap:14px;font-size:var(--fs-sm2);color:var(--faint)}
 .cformwrap{position:relative;border-radius:22px;padding:1.5px;background:linear-gradient(var(--g,140deg),var(--indigo),transparent 35%,transparent 65%,var(--ice))}
 .cform{background:var(--surface);border-radius:21px;padding:34px 32px}
@@ -1135,13 +1135,54 @@ html,body{overflow-x:clip}
 .fnd .cta-block__lead,.fnd .cta-block p{color:var(--lt-text)}
 .fnd .cta-block p{color:var(--lt-muted)}
 
+/* the six lifecycle disciplines, as a connected pill chain rather than
+   a run-on sentence — each stage its own tag, joined by a hairline */
+.lifecycle-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 0 0 22px;
+  padding: 0;
+  list-style: none;
+}
+.lifecycle-tags li {
+  font-family: var(--mono);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--indigo-soft);
+  padding: 9px 18px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--indigo-soft) 30%, transparent);
+  background: color-mix(in srgb, var(--indigo-soft) 9%, transparent);
+}
+.lifecycle-tags li:not(:last-child) { position: relative; }
+.lifecycle-tags li:not(:last-child)::after {
+  content: "→";
+  margin-left: 10px;
+  color: var(--faint);
+  font-family: var(--body);
+  letter-spacing: 0;
+  text-transform: none;
+  font-weight: 400;
+  display: inline-block;
+  position: absolute;
+  right: -19px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+@media(max-width:720px){ .lifecycle-tags li:not(:last-child)::after{ display:none; } }
+
 /* small mono tag-line used at the foot of a card (comma/middot list) */
 .uc__tags { font-family: var(--mono); font-size: var(--fs-2xs); letter-spacing: .02em; line-height: 1.7; color: var(--ice); margin-top: 14px; }
 .fnd__card .uc__tags { color: var(--indigo-deep); }
 
 /* simple centered statement block (region / capability paragraphs) */
 .region { padding: var(--f-sect-y) 0; background: var(--base); border-top: 1px solid var(--line); text-align: center; }
-.region__inner { max-width: 42em; margin: 0 auto; }
+.region__inner { max-width: 62em; margin: 0 auto; }
 .region h2 { font-family: var(--disp); font-weight: 600; font-size: clamp(26px, 3.2vw, 38px); letter-spacing: -.03em; line-height: 1.14; margin-bottom: 18px; }
 .region p { color: var(--muted); font-size: var(--fs-base); line-height: 1.7; margin-top: 12px; }
 
