@@ -35,10 +35,10 @@
   ];
 
   var BEARINGS = [
-    { label: 'AI Business Solutions', tag: '01', x: '50%', y: '7%', deg: 0, href: 'Foundry.html', link: 'Explore the YC AI Foundry →' },
-    { label: 'Observability', tag: '02', x: '88%', y: '53.2%', deg: 90, href: 'Observability.html', link: 'Observability & Intelligent Operations →' },
-    { label: 'Enterprise Solutions', tag: '03', x: '50%', y: '96%', deg: 180, href: 'enterprise.html', link: 'Enterprise Solutions →' },
-    { label: 'Managed Services', tag: '04', x: '12%', y: '53.2%', deg: 270, href: 'managed.html', link: 'Managed Services →' }
+    { label: 'Agentic AI', tag: '01', x: '50%', y: '7%', deg: 0, href: 'Foundry.html', link: 'Explore Agentic AI →' },
+    { label: 'Observability', tag: '02', x: '88%', y: '53.2%', deg: 90, href: 'Observability.html', link: 'Explore Observability →' },
+    { label: 'Enterprise Systems', tag: '03', x: '50%', y: '96%', deg: 180, href: 'enterprise.html', link: 'Explore Enterprise Systems →' },
+    { label: 'Managed Operations', tag: '04', x: '12%', y: '53.2%', deg: 270, href: 'managed.html', link: 'Explore Managed Operations →' }
   ];
 
   var METHOD_STEPS = [

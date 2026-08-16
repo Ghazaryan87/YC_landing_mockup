@@ -2788,6 +2788,9 @@ html, body { overflow-x: clip; }
   color: var(--body);
   font-size: var(--fs-sm2);
   line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .obs-org__list li::before {
@@ -2798,6 +2801,182 @@ html, body { overflow-x: clip; }
   width: 12px;
   height: 2.5px;
   background: var(--ice);
+}
+
+.obs-org__list li strong {
+  color: var(--fg);
+  font-weight: 600;
+}
+
+/* ---------- services organisation: capability cards ---------- */
+
+@keyframes svcDashFlow { to { stroke-dashoffset: -48; } }
+@keyframes svcSpinSlow { to { transform: rotate(360deg); } }
+@keyframes svcPulseRing { 0% { transform: scale(1); opacity: .5; } 100% { transform: scale(2); opacity: 0; } }
+@keyframes svcSoftBlink { 0%, 100% { opacity: .15; } 50% { opacity: .9; } }
+
+.svc-head {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr));
+  gap: 32px 72px;
+  align-items: end;
+  padding-bottom: clamp(30px, 4vw, 46px);
+  border-bottom: 1px solid var(--card-line);
+}
+
+.svc-head__h2 { margin: 0; }
+
+.svc-head__lede {
+  margin: 0 0 12px;
+  font-family: "Sora", sans-serif;
+  font-weight: 600;
+  font-size: clamp(18px, 1.6vw, 21px);
+  letter-spacing: -.01em;
+  color: var(--soft);
+}
+
+.svc-head__copy .obs-bridge { margin-top: 0; }
+
+.svc-grid {
+  margin-top: clamp(34px, 4.5vw, 46px);
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 820px) {
+.svc-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.svc-card {
+  position: relative;
+  overflow: hidden;
+  padding: 36px 38px 34px;
+  border-radius: 14px;
+  border: 1px solid var(--card-line);
+  background: linear-gradient(180deg, var(--card), var(--surface));
+  transition: background .35s ease, border-color .35s ease;
+}
+
+.svc-card:hover {
+  border-color: var(--soft);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--card) 80%, white 20%), var(--card));
+}
+
+.svc-art {
+  position: absolute;
+  right: -16px;
+  bottom: -18px;
+  width: 62%;
+  max-width: 300px;
+  height: auto;
+  opacity: .45;
+  pointer-events: none;
+}
+
+.svc-body {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 14px;
+  align-content: start;
+}
+
+.svc-body__row { display: flex; align-items: center; gap: 14px; }
+
+.svc-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 9px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--chip-line);
+  background: color-mix(in srgb, var(--soft) 8%, transparent);
+  color: var(--soft);
+}
+
+.svc-num {
+  margin-left: auto;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11.5px;
+  letter-spacing: .16em;
+  color: color-mix(in srgb, var(--fg) 34%, transparent);
+}
+
+.svc-title {
+  margin: 0;
+  font-family: "Sora", sans-serif;
+  font-weight: 600;
+  font-size: clamp(18px, 1.5vw, 21.5px);
+  letter-spacing: -.015em;
+  line-height: 1.25;
+  color: var(--fg);
+}
+
+.svc-desc {
+  margin: 0;
+  color: var(--body);
+  font-size: var(--fs-sm2);
+  line-height: 1.66;
+  max-width: 44ch;
+}
+
+.svc-dash { animation: svcDashFlow 3.4s linear infinite; }
+.svc-ring { transform-box: fill-box; transform-origin: center; animation: svcPulseRing 3.6s ease-out infinite; }
+.svc-blink { animation: svcSoftBlink 2.6s linear infinite; }
+.svc-blink--b { animation-duration: 3s; animation-delay: .8s; }
+.svc-blink--c { animation-duration: 2.6s; animation-delay: 1.5s; }
+.svc-spin { transform-box: fill-box; transform-origin: center; animation: svcSpinSlow 14s linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .svc-dash, .svc-ring, .svc-blink, .svc-blink--b, .svc-blink--c, .svc-spin { animation: none; }
+}
+
+.obs-services__closing {
+  position: relative;
+  overflow: hidden;
+  margin-top: 18px;
+  padding: clamp(36px, 4vw, 52px) clamp(28px, 4vw, 56px);
+  border-radius: 14px;
+  border: 1px solid var(--card-line);
+  background:
+    radial-gradient(70% 100% at 50% 0%, color-mix(in srgb, var(--sig) 10%, transparent), transparent 70%),
+    linear-gradient(180deg, var(--card), var(--surface));
+  text-align: center;
+}
+
+.obs-services__closing-rule {
+  position: absolute;
+  top: -0.5px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  display: block;
+  opacity: .55;
+}
+
+.obs-services__closing-rule .svc-dash {
+  stroke: var(--ice);
+  stroke-width: 1.5;
+  stroke-dasharray: 6 18;
+}
+
+.obs-services__closing h3 {
+  font-family: "Sora", sans-serif;
+  font-weight: 600;
+  color: var(--fg);
+  font-size: clamp(22px, 2.4vw, 30px);
+  line-height: 1.16;
+  letter-spacing: -.02em;
+  margin: 0 auto 14px;
+}
+
+.obs-services__closing p {
+  margin: 0 auto;
+  color: var(--body);
+  font-size: var(--fs-sm2);
+  line-height: 1.75;
+  max-width: 68ch;
 }
 
 .loop {
