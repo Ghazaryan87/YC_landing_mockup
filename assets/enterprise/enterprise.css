@@ -198,7 +198,13 @@
   color: var(--ice);
 }
 
-.es-eco__lead-icon--cohere svg { width: 20px; height: 20px; fill: currentColor; }
+.es-eco__lead-icon--cohere {
+  width: 72px;
+  height: 72px;
+  border-radius: 18px;
+}
+
+.es-eco__lead-icon--cohere img { width: 46px; height: 46px; }
 
 .es-eco__lead h3 {
   font-family: "Sora", sans-serif;

@@ -1,5 +1,6 @@
 .claude/
 .qa-tools/
+temp_anim/
 
 # Generated export artifacts
 yourcompass-site/

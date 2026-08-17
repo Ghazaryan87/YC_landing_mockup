@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="css/fonts.css">
 <link rel="stylesheet" href="assets/css/main.css">
 <link rel="stylesheet" href="assets/index/index.css">
+<link rel="stylesheet" href="assets/index/compass.css">
 </head>
 <body>
 <div id="prog" aria-hidden="true"></div>
@@ -325,39 +326,14 @@
       <p class="reframe__body" data-reveal data-d="260">YourCompass brings these disciplines together to help organizations design, deploy and operate intelligent enterprises — from the systems that observe and understand to the agents that reason and act.</p>
     </div>
 
-    <div class="wrap core-rose" id="compass">
-      <div class="rose" data-rose data-reveal>
-        <svg class="rose__svg" viewBox="0 0 880 620" aria-hidden="true">
-          <circle class="rose__ring" cx="440" cy="330" r="238"></circle>
-          <circle class="rose__ticks" cx="440" cy="330" r="238"></circle>
-          <circle class="rose__ticks rose__ticks--inner" cx="440" cy="330" r="196"></circle>
-          <line class="rose__spoke" x1="440" y1="330" x2="440" y2="92"></line>
-          <line class="rose__spoke" x1="440" y1="330" x2="678" y2="330"></line>
-          <line class="rose__spoke" x1="440" y1="330" x2="440" y2="568"></line>
-          <line class="rose__spoke" x1="440" y1="330" x2="202" y2="330"></line>
-          <g class="rose__needle" data-rose-needle>
-            <path d="M440 128 L452 330 L440 318 L428 330 Z" fill="#7BD4F5"></path>
-            <path d="M440 532 L428 330 L440 342 L452 330 Z" fill="#9BA0FF" opacity=".45"></path>
-            <circle cx="440" cy="330" r="7" fill="#F5F6FC"></circle>
-            <circle cx="440" cy="330" r="12" fill="none" stroke="#9BA0FF" stroke-width="1.5" opacity=".5"></circle>
-          </g>
-        </svg>
-
-        <div class="rose__hub t-dark">
-          <div class="rose__halo" aria-hidden="true"></div>
-          <div class="rose__disc"></div>
-          <div class="rose__hub-text">
-            <div class="rose__hub-kicker">THE INTELLIGENT CORE</div>
-            <div class="rose__hub-title">YC AI Foundry</div>
-          </div>
-        </div>
-
-        <div data-bearings></div>
+    <div class="core-rose ic-stage" id="compass" data-compass>
+      <div class="ic-bg" aria-hidden="true"></div>
+      <div class="ic-grid" aria-hidden="true"></div>
+      <div class="ic-box">
+        <div class="ic-scaler"></div>
       </div>
-
-
-
-
+      <div class="ic-labels"></div>
+      <div class="ic-tip" aria-hidden="true"></div>
     </div>
 
   </section>
@@ -1044,5 +1020,6 @@
 
 <script src="assets/js/main.js"></script>
 <script src="assets/js/app.js"></script>
+<script src="assets/js/compass.js"></script>
 </body>
 </html>

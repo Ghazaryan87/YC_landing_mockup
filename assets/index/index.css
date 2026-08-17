@@ -891,9 +891,9 @@
   font-weight: 500;
   font-size: var(--fs-2xs);
   letter-spacing: .1em;
-  color: #8A90BE;
+  color: #C3C8F0;
   padding-left: 7px;
-  border-left: 1px solid rgba(242, 245, 247, .16);
+  border-left: 1px solid rgba(242, 245, 247, .26);
 }
 
 .offices {
