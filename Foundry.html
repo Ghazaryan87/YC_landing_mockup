@@ -247,7 +247,7 @@
       </div>
     </div>
 
-    <div class="cta-block fade">
+    <div class="cta-block cta-block--center cta-block--promo fade">
       <p class="cta-block__lead">Not every task needs an autonomous agent.</p>
       <p>The right architecture may be an assistant, a human-in-the-loop agent, a multi-agent workflow or a highly autonomous system.</p>
       <p>We design for the level of autonomy the use case can justify — and the enterprise can govern.</p>
@@ -292,7 +292,7 @@
       </div>
     </div>
 
-    <div class="cta-block fade">
+    <div class="cta-block cta-block--center cta-block--promo fade">
       <p class="cta-block__lead">From systems that observe to agents that act.</p>
       <a class="btn btn--primary" href="index.html#team">Meet YourCompass <span class="arr">→</span></a>
     </div>
@@ -320,14 +320,17 @@
     <span class="fnd-kicker standalone-kicker">Trusted across the enterprise</span>
     <div class="anat__grid anat__grid--3 stag">
       <div class="anat__card">
+        <div class="anat__ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10 12 4l9 6"/><path d="M5 10v9M10 10v9M14 10v9M19 10v9"/><path d="M3 21h18"/></svg></div>
         <h3>Government</h3>
         <div class="uc__tags">Digital services &middot; Shared platforms &middot; Sovereign environments &middot; Critical operations</div>
       </div>
       <div class="anat__card">
+        <div class="anat__ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4.5 6v6c0 5 3.2 8.4 7.5 9 4.3-.6 7.5-4 7.5-9V6L12 3Z"/><path d="M9 12.2l2 2 4-4.2"/></svg></div>
         <h3>Regulated Industries</h3>
         <div class="uc__tags">Financial services &middot; Energy &middot; Utilities &middot; Transportation</div>
       </div>
       <div class="anat__card">
+        <div class="anat__ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="6" rx="1.5"/><rect x="4" y="14" width="16" height="6" rx="1.5"/><circle cx="8" cy="7" r=".9" fill="currentColor" stroke="none"/><circle cx="8" cy="17" r=".9" fill="currentColor" stroke="none"/></svg></div>
         <h3>Mission-Critical Technology</h3>
         <div class="uc__tags">Observability &middot; AIOps &middot; Enterprise systems &middot; Automation &middot; Agentic AI</div>
       </div>
@@ -336,7 +339,7 @@
 </section>
 
 <!-- ===================== TECHNOLOGY & IP ===================== -->
-<section class="fnd" id="techip">
+<section class="fnd" id="techip" hidden>
   <div class="fnd-wrap">
     <div class="sec-hd fade">
       <span class="fnd-kicker standalone-kicker">Technology &amp; IP</span>
@@ -364,10 +367,48 @@
 
 <!-- ===================== BUILT HERE. ENGINEERED FOR HERE. ===================== -->
 <section class="region" id="region">
-  <div class="fnd-wrap region__inner">
-    <h2>Built here. Engineered for here.</h2>
-    <p>With teams in the UAE and deep experience across government and regulated enterprises, we understand the architectural, regulatory and operational realities of deploying critical technology in the region.</p>
-    <p>From sovereign AI and on-premises environments to large-scale cloud and hybrid estates, we design around the requirements of the enterprise — not around the limitations of a deployment model.</p>
+  <div class="fnd-wrap region__grid">
+    <div class="region__inner">
+      <h2>Built here.<br>Engineered for here.</h2>
+      <p>With teams in the UAE and deep experience across government and regulated enterprises, we understand the architectural, regulatory and operational realities of deploying critical technology in the region.</p>
+      <p>From sovereign AI and on-premises environments to large-scale cloud and hybrid estates, we design around the requirements of the enterprise — not around the limitations of a deployment model.</p>
+    </div>
+    <div class="region__map" aria-hidden="true">
+      <svg viewBox="0 0 400 380" fill="none">
+        <defs>
+          <clipPath id="peninsulaClip">
+            <path d="M120 20 L150 15 L230 25 L250 60 L245 100 L260 130 L300 110 L305 130 L270 145 L285 180 L320 190 L345 205 L330 225 L315 235 L330 260 L320 300 L290 330 L240 345 L190 340 L165 320 L150 280 L135 220 L125 160 L115 100 L120 60 Z"/>
+          </clipPath>
+          <pattern id="peninsulaDots" width="9" height="9" patternUnits="userSpaceOnUse">
+            <circle cx="1.4" cy="1.4" r="1.15" fill="var(--ice)" opacity=".55"/>
+          </pattern>
+        </defs>
+
+        <rect x="0" y="0" width="400" height="380" fill="url(#peninsulaDots)" clip-path="url(#peninsulaClip)"/>
+        <path class="region__map-shape" d="M120 20 L150 15 L230 25 L250 60 L245 100 L260 130 L300 110 L305 130 L270 145 L285 180 L320 190 L345 205 L330 225 L315 235 L330 260 L320 300 L290 330 L240 345 L190 340 L165 320 L150 280 L135 220 L125 160 L115 100 L120 60 Z" stroke="var(--line-2)" stroke-width="1.2"/>
+
+        <g class="region__pin" data-region-pin>
+          <circle cx="195" cy="175" r="14" class="region__pin-ring"/>
+          <circle cx="195" cy="175" r="4" class="region__pin-dot"/>
+          <text x="209" y="171" class="region__pin-lbl">Saudi Arabia</text>
+        </g>
+        <g class="region__pin" data-region-pin>
+          <circle cx="300" cy="172" r="14" class="region__pin-ring"/>
+          <circle cx="300" cy="172" r="4" class="region__pin-dot"/>
+          <text x="314" y="168" class="region__pin-lbl">UAE</text>
+        </g>
+        <g class="region__pin" data-region-pin>
+          <circle cx="300" cy="118" r="14" class="region__pin-ring"/>
+          <circle cx="300" cy="118" r="4" class="region__pin-dot"/>
+          <text x="314" y="114" class="region__pin-lbl">Qatar</text>
+        </g>
+        <g class="region__pin" data-region-pin>
+          <circle cx="318" cy="270" r="14" class="region__pin-ring"/>
+          <circle cx="318" cy="270" r="4" class="region__pin-dot"/>
+          <text x="332" y="266" class="region__pin-lbl">Oman</text>
+        </g>
+      </svg>
+    </div>
   </div>
 </section>
 
@@ -456,7 +497,7 @@
       </a>
     </div>
     <div class="footer__col">
-      <span class="footer__col-hd">Navigation</span>
+      <span class="footer__col-hd footer__col-hd--hidden">Navigation</span>
       <div class="footer__links">
         <a href="index.html">Home</a>
         <a href="Foundry.html">Agentic AI</a>

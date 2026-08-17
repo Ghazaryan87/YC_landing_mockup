@@ -1724,6 +1724,8 @@ a:hover { color: var(--sig2); }
   line-height: 1;
 }
 
+.footer__col-hd--hidden { visibility: hidden; }
+
 .footer__links { display: flex; flex-direction: column; gap: 9px; }
 
 .footer__links a { color: #A7ABCB; font-size: 13px; line-height: 1.3; transition: color .2s; align-self: flex-start; }
