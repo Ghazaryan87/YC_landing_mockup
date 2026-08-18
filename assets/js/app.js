@@ -3,7 +3,7 @@
    Shared interaction layer for index, Observability, Managed
    Services, and Enterprise pages (scroll reveals, counters,
    filters, etc). NOT loaded on foundry.html today — Foundry runs
-   its own assets/foundry/foundry.js instead. Kept separate from
+   its own assets/agentic-ai/agentic-ai.js instead. Kept separate from
    main.js so this migration doesn't add new behaviour to Foundry
    as a side effect of the file reorg.
    ============================================================ */
@@ -35,10 +35,10 @@
   ];
 
   var BEARINGS = [
-    { label: 'Agentic AI', tag: '01', x: '50%', y: '7%', deg: 0, href: 'Foundry.html', link: 'Explore Agentic AI →' },
-    { label: 'Observability', tag: '02', x: '88%', y: '53.2%', deg: 90, href: 'Observability.html', link: 'Explore Observability →' },
-    { label: 'Enterprise Systems', tag: '03', x: '50%', y: '96%', deg: 180, href: 'enterprise.html', link: 'Explore Enterprise Systems →' },
-    { label: 'Managed Operations', tag: '04', x: '12%', y: '53.2%', deg: 270, href: 'managed.html', link: 'Explore Managed Operations →' }
+    { label: 'Agentic AI', tag: '01', x: '50%', y: '7%', deg: 0, href: 'agentic-ai.html', link: 'Explore Agentic AI →' },
+    { label: 'Observability', tag: '02', x: '88%', y: '53.2%', deg: 90, href: 'observability.html', link: 'Explore Observability →' },
+    { label: 'Enterprise Systems', tag: '03', x: '50%', y: '96%', deg: 180, href: 'enterprise-systems.html', link: 'Explore Enterprise Systems →' },
+    { label: 'Managed Operations', tag: '04', x: '12%', y: '53.2%', deg: 270, href: 'managed-operations.html', link: 'Explore Managed Operations →' }
   ];
 
   var METHOD_STEPS = [

@@ -1,5 +1,5 @@
 /* ============================================================
-   assets/managed/managed.css
+   assets/managed-operations/managed-operations.css
    Managed Services-only: service factory steps, integrations,
    "why different" cards.
    Requires assets/css/main.css to be loaded first.
@@ -95,6 +95,12 @@
 @media (max-width: 640px) {
 .factory .stepcard:nth-child(5) { grid-column: auto; }
 }
+
+/* the integrations intro runs the full wrap width — the chip wall below it
+   is full-bleed, so a narrow column of copy above looked pinched */
+#integrations .obs-head { max-width: none; }
+
+#integrations .obs-bridge { max-width: none; }
 
 .ms-tools { display: flex; flex-wrap: wrap; gap: 10px; }
 

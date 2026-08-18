@@ -1,5 +1,5 @@
 /* ============================================================
-   assets/enterprise/enterprise.css
+   assets/enterprise-systems/enterprise-systems.css
    Enterprise Solutions-only: capabilities grid, partner ecosystem wall.
    Requires assets/css/main.css to be loaded first.
    ============================================================ */
@@ -192,9 +192,13 @@
 
 .es-eco__lead-icon img { width: 20px; height: 20px; object-fit: contain; }
 
+/* the card carries the tile's tint, and the tile drops its own fill and
+   border, so the mark reads as sitting on the card rather than in a chip */
+.es-eco__lead--cohere { background: color-mix(in srgb, var(--ice) 14%, var(--card)); }
+
 .es-eco__lead-icon--cohere {
-  background: color-mix(in srgb, var(--ice) 14%, transparent);
-  border-color: color-mix(in srgb, var(--ice) 30%, transparent);
+  background: transparent;
+  border-color: transparent;
   color: var(--ice);
 }
 
