@@ -18,6 +18,42 @@
   var nav = document.querySelector('.nav');
   if (!nav) return;
 
+  /* ---- hide the nav's own Get In Touch once the page's own CTA is in view ---- */
+  var CTA_THRESHOLD = 0.4;
+  var pageCtas = document.querySelectorAll('[data-page-cta]');
+
+  /* Same test the observer's threshold applies, done synchronously. The
+     observer's first callback only arrives after the document has painted,
+     which is too late to decide the CTA's *initial* state — CSS keeps it out
+     of that first paint until this measurement sets .nav--cta-ready. */
+  function ctaOnScreen(el) {
+    var r = el.getBoundingClientRect();
+    if (!r.width || !r.height) return false;
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    var vw = window.innerWidth || document.documentElement.clientWidth;
+    var y = Math.max(0, Math.min(r.bottom, vh) - Math.max(r.top, 0));
+    var x = Math.max(0, Math.min(r.right, vw) - Math.max(r.left, 0));
+    return (x * y) / (r.width * r.height) >= CTA_THRESHOLD;
+  }
+
+  /* track which CTAs are on screen, not a running count — the first
+     observer callback reports every element at once, so counting made
+     one visible CTA and one off-screen CTA cancel out to zero */
+  var onScreenCtas = [];
+  for (var ci = 0; ci < pageCtas.length; ci++) {
+    if (ctaOnScreen(pageCtas[ci])) onScreenCtas.push(pageCtas[ci]);
+  }
+
+  nav.classList.add('nav--cta-boot');
+  nav.classList.toggle('nav--cta-hidden', onScreenCtas.length > 0);
+  nav.classList.add('nav--cta-ready');
+  /* two frames: the settled state has to be painted un-transitioned before
+     transitions come back, or it animates in from the pre-ready state */
+  requestAnimationFrame(function () {
+    requestAnimationFrame(function () { nav.classList.remove('nav--cta-boot'); });
+  });
+
+
   /* ---- burger panel ---- */
   var burger = nav.querySelector('[data-burger]');
   var panel = nav.querySelector('[data-mpanel]');
@@ -64,17 +100,16 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  /* ---- hide the nav's own Get In Touch once the page's own CTA is in view ---- */
   if ('IntersectionObserver' in window) {
-    var pageCtas = document.querySelectorAll('[data-page-cta]');
     if (pageCtas.length) {
-      var visibleCtas = 0;
       var ctaIO = new IntersectionObserver(function (entries) {
         entries.forEach(function (en) {
-          visibleCtas += en.isIntersecting ? 1 : -1;
+          var at = onScreenCtas.indexOf(en.target);
+          if (en.isIntersecting) { if (at < 0) onScreenCtas.push(en.target); }
+          else if (at >= 0) { onScreenCtas.splice(at, 1); }
         });
-        nav.classList.toggle('nav--cta-hidden', visibleCtas > 0);
-      }, { threshold: 0.4 });
+        nav.classList.toggle('nav--cta-hidden', onScreenCtas.length > 0);
+      }, { threshold: CTA_THRESHOLD });
       pageCtas.forEach(function (el) { ctaIO.observe(el); });
     }
 

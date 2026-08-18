@@ -75,6 +75,27 @@ html { scroll-padding-top: calc(var(--nav-h) + 16px); }
   transition: opacity .25s ease, transform .25s ease;
 }
 
+/* The nav CTA's visibility is JS-owned — it hides while the page's own CTA is
+   on screen. On every page whose hero holds a [data-page-cta] (all but
+   Foundry) the settled state at the top is *hidden*, so painting the markup's
+   default of visible first made the button appear and then fade out on every
+   nav-to-nav navigation. Keep it out of the first paint until main.js has
+   measured and set .nav--cta-ready. Safe in both directions because main.js is
+   a parser-blocking script at the end of <body>, so it always runs before the
+   first paint (measured: cta-ready lands at or before firstPaint on every
+   page) — the CTA is never missing from a frame it should have been in. The
+   bar already hard-depends on main.js (the mobile panel is [hidden] in
+   markup), so this adds no new way for the CTA to get stranded. */
+.nav:not(.nav--cta-ready) .nav__cta {
+  opacity: 0;
+  pointer-events: none;
+  transition: none;
+}
+
+/* first paint after the measurement lands: correct state, but not animated
+   into — otherwise pages that should show the CTA fade it in on every load */
+.nav--cta-boot .nav__cta { transition: none; }
+
 .nav--cta-hidden .nav__cta {
   opacity: 0;
   transform: translateY(-6px);
