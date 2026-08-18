@@ -8,7 +8,8 @@
 .ic-stage {
   position: relative;
   width: 100%;
-  height: clamp(560px, 74vh, 900px);
+  /* trimmed in step with SIZE in compass.js — see fitScale() there */
+  height: clamp(448px, 59vh, 720px);
   overflow: hidden;
   isolation: isolate;
 }
@@ -88,8 +89,8 @@
   position: absolute;
   display: flex;
   align-items: center;
-  gap: 18px;
-  padding: 20px 32px 20px 20px;
+  gap: 22px;
+  padding: 25px 40px 25px 25px;
   white-space: nowrap;
   background: rgba(14, 18, 34, .8);
   backdrop-filter: blur(10px);
@@ -103,13 +104,13 @@
 
 .ic-stage .ic-chip {
   font-family: "IBM Plex Mono", monospace;
-  font-size: 15px;
+  font-size: 19px;
   font-weight: 600;
-  width: 36px;
-  height: 36px;
+  width: 45px;
+  height: 45px;
   display: grid;
   place-items: center;
-  border-radius: 9px;
+  border-radius: 11px;
   border: 1px solid #3A4266;
   background: rgba(255, 255, 255, .03);
   color: #AAB1CF;
@@ -117,7 +118,7 @@
 
 .ic-stage .ic-title {
   font-family: "Sora", sans-serif;
-  font-size: 25px;
+  font-size: 31px;
   font-weight: 600;
   line-height: 1;
   letter-spacing: -.01em;

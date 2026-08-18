@@ -254,10 +254,22 @@
   if (compactMQ.addEventListener) compactMQ.addEventListener('change', applyLayout);
   else compactMQ.addListener(applyLayout);
 
+  /* every radius in this file lives in the 1920x1080 design space, so the
+     overall size of the rose is set here rather than by touching the ~40
+     hardcoded radii — SIZE trims the fitted scale uniformly, keeping rings,
+     ticks, labels and core text in proportion. */
+  var SIZE = 0.8;
+
   function fitScale() {
     // compact fits the rose itself (~980 units across); wide fits the whole frame
     var fw = compact ? 980 : W, fh = compact ? 980 : H;
-    return Math.min(box.offsetWidth / fw, box.offsetHeight / fh) * (compact ? 0.98 : 0.94);
+    /* .ic-stage is SIZE shorter in CSS so the gaps above and below the rose
+       stay tight rather than growing by whatever SIZE trims. The fit is
+       height-bound at most viewport sizes, so divide that back out here —
+       otherwise the shorter box would shrink the rose a second time and the
+       reduction would compound to SIZE squared. */
+    var bw = box.offsetWidth, bh = box.offsetHeight / SIZE;
+    return Math.min(bw / fw, bh / fh) * (compact ? 0.98 : 0.94) * SIZE;
   }
 
   document.addEventListener('mousemove', function (e) {

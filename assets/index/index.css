@@ -129,10 +129,10 @@
 
 .orn-pulse { animation: v4Pulse 2.6s ease-in-out infinite; }
 
-.reframe { padding: clamp(28px, 4.5vw, 44px) 0 clamp(20px, 3vw, 32px) 0; }
+.reframe { padding: clamp(28px, 4.5vw, 44px) 0 clamp(14px, 2vw, 22px) 0; }
 
 @media (min-width: 1121px) {
-.reframe { padding: clamp(49px, 7.875vw, 77px) 0 clamp(35px, 5.25vw, 56px) 0; }
+.reframe { padding: clamp(49px, 7.875vw, 77px) 0 clamp(24px, 3.6vw, 38px) 0; }
 }
 
 .reframe__glow {
