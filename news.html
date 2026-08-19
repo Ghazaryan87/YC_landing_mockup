@@ -62,8 +62,26 @@
   <!-- ============ NW.2 ARTICLES ============ -->
   <section class="section t-light news-body" data-screen-label="NW.2 Articles">
     <div class="wrap">
+      <div class="news-filters" data-reveal>
+        <label class="news-filter">
+          <span class="news-filter__label">Categories</span>
+          <select class="news-filter__select" data-filter-category>
+            <option value="">All Categories</option>
+            <option value="press-release">Press Release</option>
+          </select>
+        </label>
+        <label class="news-filter">
+          <span class="news-filter__label">Date</span>
+          <select class="news-filter__select" data-filter-date>
+            <option value="">All Dates</option>
+            <option value="2025-05-21">May 21, 2025</option>
+            <option value="2024-05-13">May 13, 2024</option>
+            <option value="2024-02-19">February 19, 2024</option>
+          </select>
+        </label>
+      </div>
       <div class="news-grid">
-      <a class="news-card" href="news-emea-services-excellence-award.html" data-reveal>
+      <a class="news-card" href="news-emea-services-excellence-award.html" data-category="press-release" data-date="2025-05-21" data-reveal>
         <div class="news-card__media"><img src="assets/news/images/emea-services-excellence-award.png" alt="" loading="lazy"></div>
         <div class="news-card__body">
           <div class="news-card__date">May 21, 2025</div>
@@ -73,7 +91,7 @@
         </div>
       </a>
 
-      <a class="news-card" href="news-services-endorsement.html" data-reveal data-d="90">
+      <a class="news-card" href="news-services-endorsement.html" data-category="press-release" data-date="2024-05-13" data-reveal data-d="90">
         <div class="news-card__media"><img src="assets/news/images/services-endorsement.png" alt="" loading="lazy"></div>
         <div class="news-card__body">
           <div class="news-card__date">May 13, 2024</div>
@@ -83,7 +101,7 @@
         </div>
       </a>
 
-      <a class="news-card" href="news-premier-partner.html" data-reveal data-d="180">
+      <a class="news-card" href="news-premier-partner.html" data-category="press-release" data-date="2024-02-19" data-reveal data-d="180">
         <div class="news-card__media"><img src="assets/news/images/premier-partner.png" alt="" loading="lazy"></div>
         <div class="news-card__body">
           <div class="news-card__date">February 19, 2024</div>
@@ -134,5 +152,21 @@
 </div>
 <script src="assets/js/main.js"></script>
 <script src="assets/js/app.js"></script>
+<script>
+(function () {
+  var catSel = document.querySelector('[data-filter-category]');
+  var dateSel = document.querySelector('[data-filter-date]');
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.news-card'));
+  function apply() {
+    cards.forEach(function (card) {
+      var okCat = !catSel.value || card.dataset.category === catSel.value;
+      var okDate = !dateSel.value || card.dataset.date === dateSel.value;
+      card.classList.toggle('news-card--hidden', !(okCat && okDate));
+    });
+  }
+  catSel.addEventListener('change', apply);
+  dateSel.addEventListener('change', apply);
+})();
+</script>
 </body>
 </html>
