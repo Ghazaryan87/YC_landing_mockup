@@ -233,6 +233,21 @@
     window.scrollTo({ top: y, behavior: reduce ? 'auto' : 'smooth' });
   }
 
+  /* the hero's Explore what we do lands with the whole rose and its branch
+     labels on screen, not at the top of the practices section — centered
+     under the fixed nav when the stage fits, pinned below it when it doesn't
+     (compact stages can outgrow a phone viewport) */
+  var exploreCta = document.querySelector('a[href="#practices"]');
+  if (exploreCta) exploreCta.addEventListener('click', function (e) {
+    e.preventDefault();
+    var navEl = document.querySelector('.nav');
+    var navH = navEl ? navEl.offsetHeight : 0;
+    var r = stage.getBoundingClientRect();
+    var avail = window.innerHeight - navH;
+    var y = r.top + window.scrollY - navH - Math.max(12, (avail - r.height) / 2);
+    window.scrollTo({ top: y, behavior: reduce ? 'auto' : 'smooth' });
+  });
+
   function setLive(i) {
     labels.forEach(function (L, j) { L.root.setAttribute('aria-pressed', String(i === j)); });
     practices.forEach(function (p, j) { p.classList.toggle('is-live', i === j); });
