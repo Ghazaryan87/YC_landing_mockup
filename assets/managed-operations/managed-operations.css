@@ -5,6 +5,16 @@
    Requires assets/css/main.css to be loaded first.
    ============================================================ */
 
+.obs-proof__grid--three { grid-template-columns: repeat(3, 1fr); }
+
+@media (max-width: 900px) {
+.obs-proof__grid--three { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 640px) {
+.obs-proof__grid--three { grid-template-columns: 1fr; }
+}
+
 .stepcard {
   position: relative;
   overflow: hidden;
