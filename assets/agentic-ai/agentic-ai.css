@@ -616,8 +616,8 @@ h1 .accent{background:linear-gradient(100deg,var(--indigo-soft),var(--indigo) 50
 .fnd .fnd-kicker{color:var(--indigo-deep)}
 .fnd .sec-hd h2{color:var(--lt-text)}
 .fnd .sec-hd p{color:var(--lt-muted)}
-.fnd__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.fnd__card{background:var(--lt-surface);border:1px solid var(--lt-line);border-radius:18px;padding:30px 28px;transition:border-color .25s;box-shadow:0 14px 36px -22px rgba(27,28,154,.18)}
+.fnd__grid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:1fr;gap:20px}
+.fnd__card{display:flex;flex-direction:column;background:var(--lt-surface);border:1px solid var(--lt-line);border-radius:18px;padding:30px 28px;transition:border-color .25s;box-shadow:0 14px 36px -22px rgba(27,28,154,.18)}
 .fnd__card:hover{border-color:rgba(27,28,154,.3)}
 .fnd__tag{font-family:var(--mono);font-size:var(--fs-2xs);letter-spacing:.18em;color:var(--indigo-deep)}
 .fnd__card h3{font-family:var(--disp);font-weight:600;font-size:20px;letter-spacing:-.02em;margin:12px 0 10px;color:var(--lt-text)}
@@ -629,7 +629,7 @@ h1 .accent{background:linear-gradient(100deg,var(--indigo-soft),var(--indigo) 50
   background:var(--lt-surface);border:1px solid var(--lt-line);padding:8px 12px;transition:border-color .2s,transform .2s,box-shadow .2s}
 .fnd__chip-ico:hover{border-color:var(--indigo-soft);transform:translateY(-2px);box-shadow:0 10px 24px -14px rgba(27,28,154,.35)}
 .fnd__chip-ico img{max-width:100%;max-height:100%;object-fit:contain}
-@media(max-width:900px){.fnd__grid{grid-template-columns:1fr}.fnd{padding:64px 0}}
+@media(max-width:900px){.fnd__grid{grid-template-columns:1fr;grid-auto-rows:auto}.fnd{padding:64px 0}}
 
 /* platform anatomy */
 .anat{padding:var(--f-sect-y) 0;background:var(--base-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -1180,7 +1180,7 @@ html,body{overflow-x:clip}
 
 /* small mono tag-line used at the foot of a card (comma/middot list) */
 .uc__tags { font-family: var(--mono); font-size: var(--fs-2xs); letter-spacing: .02em; line-height: 1.7; color: var(--ice); margin-top: 14px; }
-.fnd__card .uc__tags { color: var(--indigo-deep); }
+.fnd__card .uc__tags { color: var(--indigo-deep); margin-top: auto; padding-top: 14px; }
 
 /* region statement, paired with an Arabian Peninsula marker map */
 .region { padding: var(--f-sect-y) 0; background: var(--base); border-top: 1px solid var(--line); }
