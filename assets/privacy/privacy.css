@@ -1,0 +1,32 @@
+/* ============================================================
+   PRIVACY & COOKIES — legal prose page
+   ============================================================ */
+
+.legal-hero { padding: clamp(56px, 9vh, 104px) 0 clamp(36px, 6vh, 64px); }
+
+.legal-hero .hero__h1 { margin-bottom: 0; }
+
+.legal-body { padding: clamp(48px, 7vh, 88px) 0 clamp(64px, 9vh, 110px); }
+
+.legal-prose { max-width: 780px; }
+
+.legal-prose h2 {
+  font-family: "Sora", sans-serif;
+  font-weight: 600;
+  color: var(--fg);
+  font-size: clamp(20px, 2.2vw, 26px);
+  line-height: 1.2;
+  letter-spacing: -.015em;
+  margin: 44px 0 14px;
+}
+
+.legal-prose h2:first-child { margin-top: 0; }
+
+.legal-prose p {
+  color: var(--body);
+  font-size: clamp(15px, 1.4vw, 17px);
+  line-height: 1.7;
+  margin: 0 0 16px;
+}
+
+.legal-prose a { word-break: break-word; }

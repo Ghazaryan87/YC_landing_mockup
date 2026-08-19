@@ -1759,6 +1759,10 @@ a:hover { color: var(--sig2); }
 
 .footer__contact a:hover { color: #F2F3FA; }
 
+.footer__privacy { margin-top: 6px; font-size: 11px; color: #666B93 !important; }
+
+.footer__privacy:hover { color: #A7ABCB !important; }
+
 
 
 @media (max-width: 980px) {
