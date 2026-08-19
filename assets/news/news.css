@@ -1,0 +1,132 @@
+/* ============================================================
+   NEWS — listing grid and article prose pages
+   ============================================================ */
+
+.news-hero { padding: clamp(56px, 9vh, 104px) 0 clamp(36px, 6vh, 64px); }
+
+.news-hero .hero__h1 { margin-bottom: 0; }
+
+.news-hero .hero__sub { margin: 18px 0 0; }
+
+.news-body { padding: clamp(48px, 7vh, 88px) 0 clamp(64px, 9vh, 110px); }
+
+/* ---- listing grid ---- */
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+@media (max-width: 1080px) { .news-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 720px) { .news-grid { grid-template-columns: minmax(0, 1fr); } }
+
+.news-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--card);
+  border: 1px solid var(--card-line);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform .25s ease, border-color .25s ease;
+}
+
+.news-card:hover { transform: translateY(-4px); border-color: var(--rule); }
+
+.news-card__media {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-bottom: 1px solid var(--card-line);
+  background: var(--surface);
+}
+
+.news-card__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.news-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 22px 24px 24px;
+}
+
+.news-card__date {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.news-card__title {
+  font-family: "Sora", sans-serif;
+  font-weight: 600;
+  color: var(--fg);
+  font-size: 19px;
+  line-height: 1.3;
+  letter-spacing: -.015em;
+  margin: 0 0 10px;
+}
+
+.news-card__excerpt {
+  color: var(--body);
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0 0 18px;
+}
+
+.news-card__more {
+  margin-top: auto;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 13px;
+  color: var(--accent);
+}
+
+/* ---- article pages ---- */
+
+.article-meta {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 13px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 18px;
+}
+
+.article-prose { max-width: 780px; }
+
+.article-prose figure { margin: 0 0 36px; }
+
+.article-prose figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 20px;
+  border: 1px solid var(--card-line);
+}
+
+.article-prose h2 {
+  font-family: "Sora", sans-serif;
+  font-weight: 600;
+  color: var(--fg);
+  font-size: clamp(20px, 2.2vw, 26px);
+  line-height: 1.2;
+  letter-spacing: -.015em;
+  margin: 44px 0 14px;
+}
+
+.article-prose p {
+  color: var(--body);
+  font-size: clamp(15px, 1.4vw, 17px);
+  line-height: 1.7;
+  margin: 0 0 16px;
+}
+
+.article-prose strong { color: var(--strong); }
+
+.article-back {
+  display: inline-block;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 13px;
+  margin-top: 36px;
+}
