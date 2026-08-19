@@ -212,7 +212,7 @@
     d.style.left = p.x + 'px'; d.style.top = p.y + 'px'; d.style.opacity = 0;
     d.setAttribute('aria-pressed', 'false');
     d.innerHTML = '<span class="ic-chip">' + p.n + '</span><span class="ic-title">' + p.title + '</span>';
-    d.addEventListener('click', function () { goTo(i); });
+    d.addEventListener('click', function () { goTo(i); scrollToCard(i); });
     d.addEventListener('mouseenter', function () { hover = i; });
     d.addEventListener('mouseleave', function () { if (hover === i) hover = -1; });
     d.addEventListener('focus', function () { hover = i; });
@@ -220,6 +220,18 @@
     scaler.appendChild(d);
     return { root: d, chip: d.firstChild, title: d.lastChild };
   });
+
+  /* only on label clicks, never from auto-rotate — the card is aligned so its
+     bottom Explore link stays on screen even when the card is viewport-tall */
+  function scrollToCard(i) {
+    var card = practices[i];
+    if (!card) return;
+    var r = card.getBoundingClientRect();
+    var top = r.top + window.scrollY;
+    var y = top - Math.max(24, (window.innerHeight - r.height) / 2);
+    y = Math.max(y, top + r.height - window.innerHeight + 24);
+    window.scrollTo({ top: y, behavior: reduce ? 'auto' : 'smooth' });
+  }
 
   function setLive(i) {
     labels.forEach(function (L, j) { L.root.setAttribute('aria-pressed', String(i === j)); });
