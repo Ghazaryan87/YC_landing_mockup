@@ -213,9 +213,9 @@
     d.setAttribute('aria-pressed', 'false');
     d.innerHTML = '<span class="ic-chip">' + p.n + '</span><span class="ic-title">' + p.title + '</span>';
     d.addEventListener('click', function () { goTo(i); scrollToCard(i); });
-    d.addEventListener('mouseenter', function () { hover = i; });
+    d.addEventListener('mouseenter', function () { hover = i; goTo(i, true); });
     d.addEventListener('mouseleave', function () { if (hover === i) hover = -1; });
-    d.addEventListener('focus', function () { hover = i; });
+    d.addEventListener('focus', function () { hover = i; goTo(i, true); });
     d.addEventListener('blur', function () { if (hover === i) hover = -1; });
     scaler.appendChild(d);
     return { root: d, chip: d.firstChild, title: d.lastChild };
@@ -305,10 +305,13 @@
     my = (e.clientY / window.innerHeight - 0.5) * 2;
   });
 
-  function goTo(i) {
+  /* shortest: rotate the short way round (hover) instead of the
+     always-clockwise click flourish */
+  function goTo(i, shortest) {
     var want = PILLARS[i].a;
     var delta = ((want - ((target % 360) + 360) % 360) + 360) % 360;
-    if (delta === 0 && active !== i) delta = 360;
+    if (shortest) { if (delta > 180) delta -= 360; }
+    else if (delta === 0 && active !== i) delta = 360;
     target += delta; active = i; arrivedFlag = false; nextAdvance = t + DWELL + 0.5; lastAdv = t;
     setLive(i);
   }
