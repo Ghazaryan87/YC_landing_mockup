@@ -10,6 +10,19 @@
 
 .news-body { padding: clamp(48px, 7vh, 88px) 0 clamp(64px, 9vh, 110px); }
 
+/* ---- LinkedIn feed ---- */
+
+.news-linkedin { padding: 0 0 clamp(64px, 9vh, 110px); }
+
+.news-linkedin .h2 {
+  font-size: clamp(24px, 2.6vw, 34px);
+  margin-bottom: clamp(28px, 4vh, 44px);
+}
+
+/* the Elfsight widget is configured at a fixed 1280px — keep it inside
+   the wrap's content box, same width as the news card grid */
+.news-linkedin [class*="elfsight-app"] { max-width: 100%; overflow: hidden; }
+
 /* ---- listing filters ---- */
 
 .news-filters {
