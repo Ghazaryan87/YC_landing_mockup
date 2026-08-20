@@ -112,17 +112,5 @@
       }, { threshold: CTA_THRESHOLD });
       pageCtas.forEach(function (el) { ctaIO.observe(el); });
     }
-
-    /* ---- hide the whole bar once the footer scrolls into view ---- */
-    var footer = document.querySelector('.footer');
-    if (footer) {
-      var footerIO = new IntersectionObserver(function (entries) {
-        entries.forEach(function (en) {
-          var open = panel && !panel.hidden;
-          nav.classList.toggle('nav--hidden', en.isIntersecting && !open);
-        });
-      }, { threshold: 0.35 });
-      footerIO.observe(footer);
-    }
   }
 })();
