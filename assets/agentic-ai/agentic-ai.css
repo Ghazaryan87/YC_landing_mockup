@@ -540,9 +540,9 @@ h1 .accent{background:linear-gradient(100deg,var(--indigo-soft),var(--indigo) 50
 .contact{padding:var(--f-sect-y-lg) 0;background:var(--base);position:relative;overflow:hidden}
 .contact__glow{position:absolute;bottom:-380px;left:50%;transform:translateX(-50%);width:1200px;height:700px;border-radius:50%;
   background:radial-gradient(closest-side,rgba(94,99,242,.3),rgba(123,212,245,.06) 60%,transparent 75%);pointer-events:none;will-change:transform}
-.contact__grid{position:relative;display:grid;grid-template-columns:1.25fr 1fr;gap:70px;align-items:center;z-index:2}
+.contact__grid{position:relative;display:grid;grid-template-columns:1fr;gap:70px;align-items:center;justify-items:center;text-align:center;z-index:2}
 .contact__copy h2{font-family:var(--disp);font-weight:600;font-size:clamp(30px,4.2vw,54px);letter-spacing:-.02em;line-height:1.05;margin:16px 0 18px}
-.contact__copy p{color:var(--muted);font-size:var(--fs-base);line-height:1.6;max-width:46em}
+.contact__copy p{color:var(--muted);font-size:var(--fs-base);line-height:1.6;max-width:46em;margin-left:auto;margin-right:auto}
 .contact__alt{margin-top:30px;display:flex;align-items:center;gap:14px;font-size:var(--fs-sm2);color:var(--faint)}
 .cformwrap{position:relative;border-radius:22px;padding:1.5px;background:linear-gradient(var(--g,140deg),var(--indigo),transparent 35%,transparent 65%,var(--ice))}
 .cform{background:var(--surface);border-radius:21px;padding:34px 32px}
@@ -1093,7 +1093,8 @@ html,body{overflow-x:clip}
 
 /* even 2-up bento card, alongside the existing --7/--5 sizes */
 .bcard--6 { grid-column: span 6; min-height: 460px; }
-@media(max-width:880px){ .bcard--6{ grid-column: span 12; min-height: 0; } }
+.bcard--center { grid-column: 4 / span 6; }
+@media(max-width:880px){ .bcard--6, .bcard--center{ grid-column: span 12; min-height: 0; } }
 
 /* closing statement + CTA, reused after several sections */
 .cta-block { margin-top: 48px; max-width: 46em; }
@@ -1223,7 +1224,7 @@ html,body{overflow-x:clip}
 @media(max-width:960px){ .anat__grid--4{ grid-template-columns: 1fr 1fr; } }
 @media(max-width:640px){ .anat__grid--4{ grid-template-columns: 1fr; } }
 
-.contact__ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 26px; }
+.contact__ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 26px; justify-content: center; }
 @media(max-width:560px){ .contact__ctas{ flex-direction: column; align-items: stretch; } .contact__ctas a{ text-align:center; justify-content:center; } }
 
 .hero--simple {

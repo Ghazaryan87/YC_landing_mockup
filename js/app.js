@@ -15,7 +15,7 @@
   /* ---------- data ---------- */
 
   var OFFICES = [
-    { flag: '🇨🇦', country: 'Canada', city: 'OTTAWA', role: 'Global headquarters — founded here in 2010', lat: 45.42, lng: -75.70 },
+    { flag: '🇨🇦', country: 'Canada', city: 'OTTAWA', role: 'Global headquarters — founded in 2010', lat: 45.42, lng: -75.70 },
     { flag: '🇺🇸', country: 'USA', city: 'UNITED STATES', role: 'North American operations & technology partnerships', lat: 38.90, lng: -77.04 },
     { flag: '🇦🇪', country: 'UAE', city: 'ABU DHABI', role: 'Regional HQ & delivery hub — on-site in hours', lat: 24.45, lng: 54.38 },
     { flag: '🇸🇦', country: 'Saudi Arabia', city: 'KSA', role: 'In-Kingdom presence — local compliance, local teams', lat: 24.71, lng: 46.68 },
