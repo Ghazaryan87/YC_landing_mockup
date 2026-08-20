@@ -190,6 +190,11 @@ html { scroll-padding-top: calc(var(--nav-h) + 16px); }
    never render on top of each other */
 .nav__burger svg[hidden] { display: none; }
 
+/* any author-level display (.btn is inline-flex, .bento children are grid
+   items, …) outranks the UA sheet's [hidden] rule, so hidden elements kept
+   rendering; this restores the attribute's meaning everywhere */
+[hidden] { display: none !important; }
+
 .nav__panel {
   position: absolute;
   top: 100%;
